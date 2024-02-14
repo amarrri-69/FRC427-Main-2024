@@ -72,6 +72,8 @@ public class Arm extends SubsystemBase {
 
         if (m_ArmControlType == ArmControlType.TRAPEZOID) {
 
+            // TODO: check Ivan's code !!!
+
             impendingVelocity = m_armProfiledPIDController.calculate(getAngle(), m_targetPosition) 
                                 + m_armFeedforward.calculate(Math.toRadians(getAngle()), 0);
         }
@@ -135,7 +137,7 @@ public class Arm extends SubsystemBase {
     }
 
     public boolean isAtAngle() {
-        return m_armProfiledPIDController.atSetpoint();
+        return m_armProfiledPIDController.atGoal();
         
     }
 
