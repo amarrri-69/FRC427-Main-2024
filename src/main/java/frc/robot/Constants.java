@@ -209,8 +209,8 @@ public final class Constants {
 
     // custom feedforward
     // https://www.desmos.com/calculator/3mcdsjeubz
-    // public static final double kGravityFF = 0;
-    // public static final double kSpringFF = 0;
+    public static final double kGravityFF = 0;
+    public static final double kSpringFF = 0;
 
      
     // calculate using reca.lc
