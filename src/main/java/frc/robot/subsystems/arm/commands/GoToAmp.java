@@ -8,7 +8,7 @@ public class GoToAmp extends GoToAngle {
     Arm m_arm;
     
     public GoToAmp(Arm arm) {
-        super(arm, Constants.ArmConstants.kSpeakerPosition);
+        super(arm, Constants.ArmConstants.kAmpPosition);
     }
 
 }

@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.612220161783682,
-        "y": 5.606599684377313
+        "x": 7.951349035530153,
+        "y": 2.4072372956775996
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.331430455649497,
-        "y": 5.606599684377313
+        "x": 7.5398554807134675,
+        "y": 2.2735018903621764
       },
       "isLocked": false,
-      "linkedName": "Note 2"
+      "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.25,
-        "y": 5.4761064972366915
+        "x": 5.040032135202116,
+        "y": 1.9648817242496637
       },
       "prevControl": {
-        "x": 1.9430032825433772,
-        "y": 5.4761064972366915
+        "x": 5.708709161779227,
+        "y": 1.7899969634525723
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Speaker 2"
+      "linkedName": null
     }
   ],
   "rotationTargets": [],
@@ -33,7 +33,7 @@
   "eventMarkers": [
     {
       "name": "New Event Marker",
-      "waypointRelativePos": 0.65,
+      "waypointRelativePos": 0.55,
       "command": {
         "type": "parallel",
         "data": {
@@ -61,7 +61,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Speaker Note",
+  "folder": "Middle Back",
   "previewStartingState": null,
   "useDefaultConstraints": true
 }

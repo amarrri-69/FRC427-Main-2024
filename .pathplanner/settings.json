@@ -14,16 +14,17 @@
   ],
   "autoFolders": [
     "3 piece auto",
+    "4 note auto",
     "Archive",
     "Leave Autos",
-    "Shoot anywhere",
     "Score Preload",
+    "Shoot anywhere",
     "Testing",
     "Two Piece Middle Fling",
     "TwoPieceReturn"
   ],
-  "defaultMaxVel": 1.5,
-  "defaultMaxAccel": 1.5,
+  "defaultMaxVel": 2.0,
+  "defaultMaxAccel": 2.0,
   "defaultMaxAngVel": 120.0,
   "defaultMaxAngAccel": 120.0,
   "maxModuleSpeed": 4.5

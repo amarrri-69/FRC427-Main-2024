@@ -20,8 +20,7 @@ import frc.robot.Constants;
 
 public class Intake extends SubsystemBase {
 
-    private static Intake instance; 
-    //  = new Intake();
+    private static Intake instance = new Intake();
 
     public static Intake getInstance() {
         return instance; 
@@ -36,6 +35,7 @@ public class Intake extends SubsystemBase {
 
     CANSparkMax m_outtakeMotorSuck = new CANSparkMax(Constants.IntakeConstants.kOuttakeMotorSuckId, MotorType.kBrushless);
     RelativeEncoder m_outtakeEncoderSuck = m_outtakeMotorSuck.getEncoder();
+
 
     // beambreak checks for if theres a note in the intake
     DigitalInput m_BeamBreak = new DigitalInput(Constants.IntakeConstants.kBeamBreakId); 
@@ -63,7 +63,6 @@ public class Intake extends SubsystemBase {
     public void periodic() {
         // code inside here will run repeatedly while the robot is on
         doSendables();
-       
     }
     //so intaking the ring is sucking it
     public void intakeRing(double speed) {
@@ -75,7 +74,7 @@ public class Intake extends SubsystemBase {
     }
     //beambreak is a scanner that checks if a ring is inside the whole intake
     public boolean beamBreakHit() { 
-        return m_BeamBreak.get(); 
+        return m_BeamBreak.get();
     }
     public void stopSuck() {
         m_outtakeMotorSuck.set(0); 
@@ -88,7 +87,7 @@ public class Intake extends SubsystemBase {
      public void doSendables() { 
         SmartDashboard.putNumber("Suck Speed (m/s)", m_outtakeEncoderSuck.getVelocity());
         SmartDashboard.putNumber("Shoot Top Speed (m/s)", m_intakeEncoderShootTop.getVelocity());
-        SmartDashboard.putNumber("Shoot Bottom Speed (m/s)", m_intakeEncoderShootTop.getVelocity());
+        SmartDashboard.putNumber("Shoot Bottom Speed (m/s)", m_intakeEncoderShootBottom.getVelocity());
         SmartDashboard.putBoolean("Beam Break Hit (t/f)", beamBreakHit());
     }
 }

@@ -5,6 +5,7 @@ import frc.robot.Constants;
 
 import com.revrobotics.AbsoluteEncoder;
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkBase.IdleMode;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 import com.revrobotics.SparkAbsoluteEncoder.Type;
 import edu.wpi.first.math.controller.ArmFeedforward;
@@ -15,8 +16,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  
 public class Arm extends SubsystemBase {
     
-    private static Arm instance; 
-    //  = new Arm(); 
+    private static Arm instance = new Arm(); 
 
     public static Arm getInstance() {
         return instance; 
@@ -48,6 +48,10 @@ public class Arm extends SubsystemBase {
 
     // motor and encoder config
     public void setupMotors() {
+
+        m_armMotorRight.setIdleMode(IdleMode.kBrake);
+        m_armMotorLeft.setIdleMode(IdleMode.kBrake);
+
         m_armMotorRight.setInverted(Constants.ArmConstants.kRightMotorInverted);
         m_armMotorLeft.setInverted(Constants.ArmConstants.kLeftMotorInverted);
         
@@ -62,7 +66,10 @@ public class Arm extends SubsystemBase {
         m_armProfiledPIDController.setTolerance(Constants.ArmConstants.kTolerance);
         
         // left arm motor would follow right arm  motor's voltage intake 
-        m_armMotorLeft.follow(m_armMotorRight);
+        m_armMotorLeft.follow(m_armMotorRight, true);
+
+        m_armMotorLeft.burnFlash(); 
+        m_armMotorRight.burnFlash();
     }
 
     public void periodic() {
@@ -90,9 +97,9 @@ public class Arm extends SubsystemBase {
         boolean passReverseSoftLimit = reverseSoftLimit() && impendingVelocity < 0;
         boolean passForwardSoftLimit = forwardSoftLimit() && impendingVelocity > 0;
 
-        if (!passReverseSoftLimit && !passForwardSoftLimit) {
+        // if (!passReverseSoftLimit && !passForwardSoftLimit) {
             m_armMotorRight.set(impendingVelocity); 
-        }
+        // }
 
         SmartDashboard.putNumber("Impending Velocity (m/s)", impendingVelocity);
         SmartDashboard.putBoolean("Pass Reverse Soft Limit", passReverseSoftLimit);
@@ -100,11 +107,16 @@ public class Arm extends SubsystemBase {
     }
 
     public boolean reverseSoftLimit() {
-        return (m_limitSwitch.get() || getAngle() < Constants.ArmConstants.kReverseSoftLimit);
+        // return (getLimitSwitchValue() || getAngle() < Constants.ArmConstants.kReverseSoftLimit);
+        return (getAngle() < Constants.ArmConstants.kReverseSoftLimit);
     }
 
     public boolean forwardSoftLimit() {
         return getAngle() > Constants.ArmConstants.kForwardSoftLimit;
+    }
+
+    public boolean getLimitSwitchValue() {
+        return m_limitSwitch.get(); 
     }
 
     // public void setKG(double kG) {
@@ -128,7 +140,7 @@ public class Arm extends SubsystemBase {
     }
 
     public double getAngle() {
-        return m_armEncoderRight.getPosition();
+        return m_armEncoderRight.getPosition() > 180 ? m_armEncoderRight.getPosition() - 360 : m_armEncoderRight.getPosition();
     }
 
 
@@ -184,13 +196,18 @@ public class Arm extends SubsystemBase {
     // add logging for arm 
     // are units correct?
     public void doSendables() {
+        SmartDashboard.putNumber("Arm Target Position (deg)", m_targetPosition);
         SmartDashboard.putNumber("Arm Position (deg)", getAngle()); 
         SmartDashboard.putNumber("Arm Velocity (deg/sec)", m_armEncoderRight.getVelocity());
         SmartDashboard.putNumber("Arm Position Error (deg)", getError());
         SmartDashboard.putNumber("Arm Velocity Error (deg/sec)", getVelocityError());
         SmartDashboard.putBoolean("Is Arm At Set Point", isAtAngle());
-        SmartDashboard.putBoolean("Arm Limit Switch", m_limitSwitch.get());
+        // SmartDashboard.putBoolean("Arm Limit Switch", getLimitSwitchValue());
         SmartDashboard.putString("Arm Control Type", m_ArmControlType.toString());
         SmartDashboard.putString("Arm Control State", getArmControlState().toString());
+        // SmartDashboard.putBoolean("left inverted", m_armMotorLeft.getInverted()); 
+        // SmartDashboard.putBoolean("right inverted", m_armMotorRight.getInverted()); 
+        SmartDashboard.putNumber("left volt", m_armMotorLeft.get()); 
+        SmartDashboard.putNumber("right volt", m_armMotorRight.get()); 
     }
 }

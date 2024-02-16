@@ -2,37 +2,61 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.6634748038091614,
-      "y": 6.600687689894831
+      "x": 1.25,
+      "y": 5.4761064972366915
     },
-    "rotation": 60.0
+    "rotation": 0
   },
   "command": {
     "type": "sequential",
     "data": {
       "commands": [
         {
-          "type": "path",
+          "type": "named",
           "data": {
-            "pathName": "Speaker to Note 1"
+            "name": "ShootAnywhere"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Note to Speaker 1"
+            "pathName": "Speaker to Note 2"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "ShootSpeaker"
+            "name": "ShootAnywhere"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Speaker Middle 1"
+            "pathName": "Note 2 to Note 3"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "ShootAnywhere"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Note 3 to Note 1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "ShootAnywhere"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Note 1 to Middle 1st"
           }
         },
         {
@@ -44,7 +68,7 @@
         {
           "type": "named",
           "data": {
-            "name": "ShootOut"
+            "name": "ShootAnywhere"
           }
         },
         {
@@ -56,18 +80,18 @@
         {
           "type": "path",
           "data": {
-            "pathName": "2nd middle note back score"
+            "pathName": "2nd middle note back"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "ShootOut"
+            "name": "ShootAnywhere"
           }
         }
       ]
     }
   },
-  "folder": "Two Piece Middle Fling",
+  "folder": "4 note auto",
   "choreoAuto": false
 }

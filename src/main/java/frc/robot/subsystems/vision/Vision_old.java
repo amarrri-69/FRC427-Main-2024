@@ -18,12 +18,12 @@ import frc.robot.Constants;
 import frc.robot.subsystems.drivetrain.Drivetrain;
 import edu.wpi.first.wpilibj.Timer;
 
-public class Vision extends SubsystemBase {
+public class Vision_old extends SubsystemBase {
 
     
-    private static Vision instance = new Vision(Drivetrain.getInstance());
+    private static Vision_old instance = new Vision_old(Drivetrain.getInstance());
 
-    public static Vision getInstance() {
+    public static Vision_old getInstance() {
         return instance; 
     }
 
@@ -42,7 +42,7 @@ public class Vision extends SubsystemBase {
     private double[] botPoseValues;
 
     // Creates a new limelight object
-    private Vision(Drivetrain drivetrain) {
+    private Vision_old(Drivetrain drivetrain) {
         limelightNT = NetworkTableInstance.getDefault().getTable("limelight");
         this.drivetrain = drivetrain;
     }

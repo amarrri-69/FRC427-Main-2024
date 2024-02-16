@@ -43,10 +43,10 @@ public final class Constants {
   }
   public static class DrivetrainConstants {
     // Swerve IDs
-    public static SwerveModuleConfig frontLeft = new SwerveModuleConfig("FrontLeft", 1, 2, 12, 0.44921875, true, true, SensorDirectionValue.CounterClockwise_Positive); 
-    public static SwerveModuleConfig frontRight = new SwerveModuleConfig("FrontRight", 7, 8, 9, -0.160889, true, true, SensorDirectionValue.CounterClockwise_Positive); 
-    public static SwerveModuleConfig backLeft = new SwerveModuleConfig("BackLeft", 3, 4, 10, 0.216797, true, true, SensorDirectionValue.CounterClockwise_Positive); 
-    public static SwerveModuleConfig backRight = new SwerveModuleConfig("BackRight", 5, 6, 11, 0.167236, true, true, SensorDirectionValue.CounterClockwise_Positive); 
+    public static SwerveModuleConfig frontLeft = new SwerveModuleConfig("FrontLeft", 8, 7, 12, 0.44921875, true, true, SensorDirectionValue.CounterClockwise_Positive); 
+    public static SwerveModuleConfig frontRight = new SwerveModuleConfig("FrontRight", 2, 1, 9, -0.160889, true, true, SensorDirectionValue.CounterClockwise_Positive); 
+    public static SwerveModuleConfig backLeft = new SwerveModuleConfig("BackLeft", 6, 5, 10, 0.216797, true, true, SensorDirectionValue.CounterClockwise_Positive); 
+    public static SwerveModuleConfig backRight = new SwerveModuleConfig("BackRight", 4, 3, 11, 0.167236, true, true, SensorDirectionValue.CounterClockwise_Positive); 
 
 
     // Gearing & Conversions
@@ -97,7 +97,7 @@ public final class Constants {
     public static final double kModuleDrive_P = 0.0006890099939482752; 
     public static final double kModuleDrive_I = 0; 
     public static final double kModuleDrive_D = 0; 
-    public static final double kModuleDrive_FF = 0.2;
+    public static final double kModuleDrive_FF = 0.22;
 
     // found from sysid for one of the turn modules or tune by yourself
     // turn PID values for a swerve module
@@ -179,11 +179,11 @@ public final class Constants {
 
   public class ArmConstants {
     public static final int kLimitSwitchId = 1;
-    public static final int kArmMotorRightId = 14;
-    public static final int kArmMotorLeftId = 13;
+    public static final int kArmMotorRightId = 13;
+    public static final int kArmMotorLeftId = 14;
 
     public static final boolean kRightMotorInverted = false;
-    public static final boolean kLeftMotorInverted = false; 
+    public static final boolean kLeftMotorInverted = true; 
 
     public static final int kMotorCurrentLimit = 40;
     
@@ -220,8 +220,9 @@ public final class Constants {
 
      
     // calculate using reca.lc
+    // reduction: 500
     // CoM distance: 21.77 in
-    // Arm mass: 20.755 lbs
+    // Arm mass: 18 lbs
     
     public static final double kS = 0; 
     public static final double kG = 0; // 0.79 V
@@ -257,6 +258,10 @@ public final class Constants {
     public static final double kMaxAccuracyRange = 1000;
     public static final Pose2d kRedAllianceSpeaker = new Pose2d(0, 5.54, new Rotation2d());
     public static final Pose2d kBlueAllianceSpeaker = new Pose2d(16.5, 5.54, new Rotation2d());
+    public static final double blueShootRange = 5.87;
+    public static final double redShootRange = 10.71;
+    public static final double shootAnywhereTimeout = 4;
+    public static final double waitAfterShot = 1;
 
     // TODO: tune
     public static final Function<Double, Double> distanceToArmAngle = (dist) -> 0.0; 
@@ -297,6 +302,7 @@ public final class Constants {
       public static final LEDPattern kMoving = new FadeLEDPattern(1,kGold, Color.kWhite);
       public static final LEDPattern kFail = new FadeLEDPattern(1,Color.kRed, kGold);
       public static final LEDPattern kIntake = new FadeLEDPattern(1,kCobaltBlue, Color.kGreen);
+      public static final LEDPattern kMovingToNote = LEDPattern.kEmpty; // TODO: add a pattern for this
       public static final LEDPattern kShootAnywhere = new SolidLEDPattern(kCobaltBlue);
       public static final LEDPattern kArmMoving = new SolidLEDPattern(Color.kOrange);
       public static final LEDPattern kArmAtAmp = new SolidLEDPattern(Color.kPink);
