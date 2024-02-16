@@ -25,17 +25,17 @@ public class TunePIDGoToAngle extends Command {
                     IOUtils.get("Arm D", Constants.ArmConstants.kD));
 
         m_arm.m_armFeedforward = new ArmFeedforward(
-            IOUtils.get("Arm kS", Constants.ArmConstants.kS), 
-            IOUtils.get("Arm kG", Constants.ArmConstants.kG), 
-            IOUtils.get("Arm kV", Constants.ArmConstants.kV), 
-            IOUtils.get("Arm kA", Constants.ArmConstants.kA));
+            IOUtils.get("Arm kS", Constants.ArmConstants.ksVolts), 
+            IOUtils.get("Arm kG", Constants.ArmConstants.kgVolts), 
+            IOUtils.get("Arm kV", Constants.ArmConstants.kvVoltSecondsPerMeter), 
+            IOUtils.get("Arm kA", Constants.ArmConstants.kaVoltSecondsSquaredPerMeter));
 
         m_arm.goToAngle(IOUtils.get("Arm Angle"));
     }
 
     public boolean isFinished() {
         // confirmation that arm is at angle
-        return m_arm.isAtAngle(); 
+        return m_arm.atGoal(); 
     }
 
     public void end(boolean interrupted) {

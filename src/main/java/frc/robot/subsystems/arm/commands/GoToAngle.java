@@ -27,7 +27,7 @@ public class GoToAngle extends Command {
 
     public boolean isFinished() {
         // confirmation that arm is at angle
-        return m_arm.isAtAngle(); 
+        return m_arm.atGoal(); 
     }
 
     public void end(boolean interrupted) {

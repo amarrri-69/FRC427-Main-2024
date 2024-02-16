@@ -209,27 +209,23 @@ public final class Constants {
     public static final double kI = 0;
     public static final double kD = 0;
 
-    // motion profile
-    public static final double kMaxArmVelocity = 0;
-    public static final double kMaxArmAcceleration = 0; 
-
-    // custom feedforward
-    // https://www.desmos.com/calculator/3mcdsjeubz
-    // public static final double kGravityFF = 0;
-    // public static final double kSpringFF = 0;
-
-     
     // calculate using reca.lc
     // reduction: 500
     // CoM distance: 21.77 in
     // Arm mass: 18 lbs
-    
-    public static final double kS = 0; 
-    public static final double kG = 0; // 0.79 V
-    public static final double kV = 0; // 1.95 V*s/rad
-    public static final double kA = 0; // 0.06 V*s^2/rad
-    
+    public static final double ksVolts = 0; 
+    public static final double kgVolts = 0; // 0.79 V
+    public static final double kvVoltSecondsPerMeter = 0; // 1.95 V*s/rad
+    public static final double kaVoltSecondsSquaredPerMeter = 0; // 0.06 V*s^2/rad
 
+    // motion profile
+    public static final double kMaxArmVelocity = 4;
+    public static final double kMaxArmAcceleration = 3; 
+    public static final double kRelativePositionConversionFactor = 360.0 / (5*5*5*4);
+    public static final double kRelativeVelocityConversionFactor = kRelativePositionConversionFactor / 60;
+    public static final double kDt = 0.02;
+
+    
   }
 
   public static class HangConstants {
