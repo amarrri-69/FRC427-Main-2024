@@ -89,7 +89,7 @@ public final class Constants {
     
     public static double kMaxSpeedMetersPerSecond = 4; // max velocity (no turning) of robot; may tune to be a fraction of the attainable module speed
     public static double kMaxSlowSpeedMetersPerSecond = 1.0; 
-    public static final double kMaxAccelerationMetersPerSecondSquared = kMaxSpeedMetersPerSecond / 0.1; // max acceleration of robot (accelerate to max speed in 1 second)
+    public static final double kMaxAccelerationMetersPerSecondSquared = kMaxSpeedMetersPerSecond / 0.05; // max acceleration of robot (accelerate to max speed in 1 second)
     public static double kMaxRotationRadPerSecond = 4.50; // 3.00; // max rotation speed of the robot
     public static final double kMaxSlowRotationRadPerSecond = Math.PI / 2; 
     public static final double kMaxRotationAccelerationRadPerSecondSquared = kMaxRotationRadPerSecond / 0.001; // max angular acceleration of robot
@@ -120,7 +120,8 @@ public final class Constants {
     public static final double kTurnVelocityThreshold = 0; 
 
     // current limits for each motor
-    public static final int kDriveCurrentLimit = 40; 
+    public static final int kDriveCurrentLimit = 35; 
+    public static final int kDriveSecondaryLimit = 50; 
     public static final double kDriveRampRate = 0.01; 
      
     public static final int kTurnCurrentLimit = 20; 
@@ -134,9 +135,9 @@ public final class Constants {
 
   public static class Trajectory {
     // translational PID of robot for trajectory use
-    public static final double kDrive_P = 2.25; 
+    public static final double kDrive_P = 5.00; 
     public static final double kDrive_I = 0; 
-    public static final double kDrive_D = 0.0001;
+    public static final double kDrive_D = 0.0005;
 
     // angular PID (same as turn pid)
     public static final double kOmega_P = 3.25; 

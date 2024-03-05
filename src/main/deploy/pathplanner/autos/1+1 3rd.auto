@@ -28,6 +28,12 @@
           "data": {
             "pathName": "Speaker 3 move out to note"
           }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "ShootAnywhere"
+          }
         }
       ]
     }

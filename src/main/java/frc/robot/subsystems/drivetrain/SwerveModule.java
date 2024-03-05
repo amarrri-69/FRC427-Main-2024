@@ -83,6 +83,7 @@ public class SwerveModule {
     // Sets current limits, idle modes, etc. for each motor for maximum performance
     private void configureMotors(boolean driveInverted, boolean rotateInverted) {
         this.driveMotor.setSmartCurrentLimit(Constants.DrivetrainConstants.kDriveCurrentLimit); 
+        // this.driveMotor.setSecondaryCurrentLimit(Constants.DrivetrainConstants.kDriveSecondaryLimit); 
         this.driveMotor.setIdleMode(IdleMode.kBrake); 
         this.driveMotor.enableVoltageCompensation(12); 
         this.driveMotor.setClosedLoopRampRate(Constants.DrivetrainConstants.kDriveRampRate);
