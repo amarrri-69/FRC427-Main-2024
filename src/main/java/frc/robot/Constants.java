@@ -302,9 +302,28 @@ public final class Constants {
     public static final Function<Double, Double> distanceToArmAngle = (dist) -> 5.82663 * Math.atan(3.94527 * dist - 7.66052) + 24.8349 + 3.22; // interpolationMap.get(dist); 
     public static final BooleanSupplier readyToShoot = () -> Intake.getInstance().atDesiredShootSpeed() && Drivetrain.getInstance().atTargetAngle() && Arm.getInstance().isAtAngle(); 
 
-    public static final InterpolatingDoubleTreeMap interpolationMap = new InterpolatingDoubleTreeMap(); 
+    public static final InterpolatingDoubleTreeMap armInterpolationMap = new InterpolatingDoubleTreeMap(); 
+    
+    public static final Function<Double, Double> distanceToArmAngle = (dist) -> armInterpolationMap.get(dist); 
+    // 5.82663 * Math.atan(3.94527 * dist - 7.66052) + 24.8349; 
+    public static final BooleanSupplier readyToShoot = () -> Intake.getInstance().atDesiredShootSpeed() && Drivetrain.getInstance().atTargetAngle() && Arm.getInstance().isAtAngle(); 
+
     static {
       // interpolationMap.put(0, 0); 
+      // interpolationMap.put(dist, angle);
+      armInterpolationMap.put(1.37154,20.0);
+      armInterpolationMap.put(2.0046,28.0);
+      armInterpolationMap.put(2.37813, 34.0);
+      armInterpolationMap.put(2.9402, 36.0);
+      armInterpolationMap.put(3.5022, 39.0);
+      armInterpolationMap.put(3.8638, 40.0);
+    }
+
+    public static final InterpolatingDoubleTreeMap speedInterpolationMap = new InterpolatingDoubleTreeMap();
+    public static final Function<Double, Double> distanceToArmSpeed = (dist) -> speedInterpolationMap.get(dist);
+
+    static {
+      speedInterpolationMap.put(0.0,Math.PI); // Fix this value
     }
   }
 

@@ -17,6 +17,7 @@ import frc.robot.subsystems.intake.commands.OuttakeToSpeaker;
 import frc.robot.subsystems.intake.commands.SetShooterSpeed;
 import frc.robot.util.ChassisState;
 import frc.robot.util.DriverController;
+import frc.robot.util.GeometryUtils;
 
 public class GeneralizedReleaseRoutine extends Command {
     
@@ -72,10 +73,10 @@ public class GeneralizedReleaseRoutine extends Command {
         timer.stop();
         boolean isInRange = false;
         if (this.optAlliance.get() == DriverStation.Alliance.Blue) {
-            isInRange = drivetrain.getPose().getX() <= Constants.GeneralizedReleaseConstants.blueShootRange;
+            isInRange = (drivetrain.getPose().getX() <= Constants.GeneralizedReleaseConstants.blueShootRange) && GeometryUtils.isInBlueTriangle(drivetrain.getPose());
         }
         else if (this.optAlliance.get() == DriverStation.Alliance.Red) {
-            isInRange = drivetrain.getPose().getX() >= Constants.GeneralizedReleaseConstants.redShootRange;
+            isInRange = (drivetrain.getPose().getX() >= Constants.GeneralizedReleaseConstants.redShootRange) && GeometryUtils.isInRedTriangle(drivetrain.getPose());
         }
 
         if (!isInRange || !interrupted) {
