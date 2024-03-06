@@ -301,13 +301,8 @@ public final class Constants {
     
     public static final Function<Double, Double> distanceToArmAngle = (dist) -> 5.82663 * Math.atan(3.94527 * dist - 7.66052) + 24.8349 + 3.22; // interpolationMap.get(dist); 
     public static final BooleanSupplier readyToShoot = () -> Intake.getInstance().atDesiredShootSpeed() && Drivetrain.getInstance().atTargetAngle() && Arm.getInstance().isAtAngle(); 
-
     public static final InterpolatingDoubleTreeMap armInterpolationMap = new InterpolatingDoubleTreeMap(); 
-    
-    public static final Function<Double, Double> distanceToArmAngle = (dist) -> armInterpolationMap.get(dist); 
-    // 5.82663 * Math.atan(3.94527 * dist - 7.66052) + 24.8349; 
-    public static final BooleanSupplier readyToShoot = () -> Intake.getInstance().atDesiredShootSpeed() && Drivetrain.getInstance().atTargetAngle() && Arm.getInstance().isAtAngle(); 
-
+  
     static {
       // interpolationMap.put(0, 0); 
       // interpolationMap.put(dist, angle);
