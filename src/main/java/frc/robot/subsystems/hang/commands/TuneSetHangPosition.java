@@ -2,12 +2,13 @@ package frc.robot.subsystems.hang.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.hang.Hang;
+import frc.robot.subsystems.hang.Hang.HangControlType;
 import frc.robot.util.IOUtils;
 
 //Fine optimal hang Speed
-public class TuneSetHangPosition extends Command{
+public class TuneSetHangPosition extends Command {
     //Create Hang and Speed
-    Hang m_Hang;
+    private Hang m_Hang;
     
     public TuneSetHangPosition(Hang hang) {
         m_Hang = hang;
@@ -18,7 +19,7 @@ public class TuneSetHangPosition extends Command{
 
 
     public void initialize() {
-
+        m_Hang.setHangMode(HangControlType.PID);
         // runs when the command is FIRST STARTED
     }
 

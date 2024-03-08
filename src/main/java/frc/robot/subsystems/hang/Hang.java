@@ -4,8 +4,8 @@ import com.revrobotics.CANSparkBase.IdleMode;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
-import com.revrobotics.SparkPIDController;
 
+import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import frc.robot.util.IOUtils;
@@ -18,7 +18,8 @@ public class Hang extends SubsystemBase {
     }
 
     //Initializing velocity variable
-    public double m_targetPosition;
+    private double m_manualVelocity = 0; 
+    public double m_targetPosition = 0;
     
     //Initialize Motors
     private CANSparkMax m_HangMotor = new CANSparkMax(Constants.HangConstants.kHangMotorID, MotorType.kBrushless);
@@ -26,7 +27,10 @@ public class Hang extends SubsystemBase {
     //Encoder Initialize
     private RelativeEncoder m_HangEncoder = m_HangMotor.getEncoder();
 
-    private SparkPIDController m_HangPIDController = m_HangMotor.getPIDController(); 
+    private PIDController m_HangPidController = new PIDController(Constants.HangConstants.kP, Constants.HangConstants.kI, Constants.HangConstants.kD);
+
+    private HangControlType m_HangControlType = HangControlType.MANUAL;
+
 
     private Hang() {
         setupMotors();
@@ -51,21 +55,29 @@ public class Hang extends SubsystemBase {
     }
 
     public void setPID(double p, double i, double d) {
-        m_HangPIDController.setP(p);
-        m_HangPIDController.setI(i);
-        m_HangPIDController.setD(d);
+        m_HangPidController.setP(p);
+        m_HangPidController.setI(i);
+        m_HangPidController.setD(d);
     }
 
     @Override
     public void periodic() {
-        // m_HangPIDController.setReference(m_targetPosition, ControlType.kPosition); 
+
+        double velocity = 0; 
 
         //Constantly sends logs to Smart Dashboard
         doSendables();
-    }
 
-    public void setSpeed(double speed) {
-        m_HangMotor.set(speed);
+          if (m_HangControlType == HangControlType.PID) {
+            velocity = m_HangPidController.calculate(getHangPosition(), m_targetPosition);
+        }
+        
+        // velocity controlled manually
+        else if (m_HangControlType == HangControlType.MANUAL) {
+            velocity = m_manualVelocity; 
+        }
+
+        m_HangMotor.set(velocity);
     }
 
     public void doSendables() {
@@ -78,6 +90,9 @@ public class Hang extends SubsystemBase {
         IOUtils.set("Hang Bus Voltage", m_HangMotor.getBusVoltage());
         IOUtils.set("Hang Output", m_HangMotor.getAppliedOutput());
         
+    }
+    public void setManualVelocity(double velocity) {
+        this.m_manualVelocity = velocity;
     }
 
     public double getHangPosition() {
@@ -96,4 +111,20 @@ public class Hang extends SubsystemBase {
         return Math.abs(m_HangEncoder.getPosition() - this.m_targetPosition); 
     }
 
+    public double getHangVelocity() {
+        return m_HangEncoder.getVelocity();
+    }
+
+    public double getMotorCurrent() {
+        return m_HangMotor.getOutputCurrent();
+    }
+
+    public void setHangMode(HangControlType type) {
+        this.m_HangControlType = type;
+    }
+
+    public enum HangControlType {
+        MANUAL, 
+        PID
+    }
 }

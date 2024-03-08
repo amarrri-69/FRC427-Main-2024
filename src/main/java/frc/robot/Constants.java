@@ -263,6 +263,9 @@ public final class Constants {
     public static final double kHangInitial = 0;
 
     public static final double kHangTolerance = 2;
+
+    public static final double kHookStallCurrent = 7.5; 
+    public static final double kMinSpeed = 1; 
   }
 
   public static class Vision {
