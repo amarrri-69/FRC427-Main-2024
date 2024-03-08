@@ -3,6 +3,7 @@ package frc.robot.util;
 import edu.wpi.first.math.geometry.Pose2d;
 import frc.robot.util.quad.Line;
 import frc.robot.util.quad.OrderedPair;
+import frc.robot.util.quad.Triangle;
 
 public class GeometryUtils {
 
@@ -28,6 +29,16 @@ public class GeometryUtils {
         return new OrderedPair(xCoordinate, yCoordinate);
     }
 
-    
+    public static boolean isInTriangle(OrderedPair pointA, OrderedPair pointB, OrderedPair pointC, OrderedPair comparisonPoint) {
+    Triangle triangle = new Triangle(pointA, pointB, pointC);
+        return triangle.isPointInterior(comparisonPoint);
+    }
+    public static boolean isInRedStage(OrderedPair robotPose) {
+        return isInTriangle(new OrderedPair(13.42, 4.09), new OrderedPair(10.88, 5.62), new OrderedPair(10.88, 2.61), robotPose);
+    }
+    public static boolean isInBlueStage(OrderedPair robotPose) {
+       
+        return isInTriangle(new OrderedPair(3.11, 4.09), new OrderedPair(5.73, 5.62), new OrderedPair(5.73, 2.61), robotPose);
+    }
     
 }

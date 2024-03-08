@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import frc.robot.Constants;
+import frc.robot.subsystems.drivetrain.Drivetrain;
 
 public class MoveToAmp {
     public static Pose2d getTargetPose() {
@@ -40,6 +41,10 @@ public class MoveToAmp {
             return Commands.none(); 
         }
 
+        Drivetrain drivetrain = Drivetrain.getInstance();
+        TurnToAngle turn = new TurnToAngle(drivetrain, targetPose.getRotation().getDegrees());
+        
+
         // Create the constraints to use while pathfinding
         PathConstraints constraints = new PathConstraints(
             Constants.Trajectory.kMaxVelocityMetersPerSecond, 
@@ -55,7 +60,7 @@ public class MoveToAmp {
                 0.0, // Goal end velocity in meters/sec
                 0.0 // Rotation delay distance in meters. This is how far the robot should travel before attempting to rotate.
         );
-        return pathfindingCommand;
+        return turn.andThen(pathfindingCommand);
     }
 }
 
