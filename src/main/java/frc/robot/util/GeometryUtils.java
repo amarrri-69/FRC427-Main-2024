@@ -3,6 +3,7 @@ package frc.robot.util;
 import edu.wpi.first.math.geometry.Pose2d;
 import frc.robot.util.quad.Line;
 import frc.robot.util.quad.OrderedPair;
+import frc.robot.util.quad.Quadrilateral;
 import frc.robot.util.quad.Triangle;
 
 public class GeometryUtils {
@@ -12,6 +13,11 @@ public class GeometryUtils {
                && bottomRight.getX() >= pose.getX() 
                && topLeft.getY() >= pose.getY() 
                && bottomRight.getY() <= pose.getY();  
+    }
+
+    public static boolean isPoseInQuadrilateral(Pose2d pose, OrderedPair p1, OrderedPair p2, OrderedPair p3, OrderedPair p4) {
+        Quadrilateral quad = new Quadrilateral(p1, p2, p3, p4); 
+        return quad.isPointInterior(OrderedPair.fromPose2d(pose)); 
     }
 
     public static OrderedPair getBisector(OrderedPair basePair, OrderedPair oppositePair1, OrderedPair oppositePair2) {

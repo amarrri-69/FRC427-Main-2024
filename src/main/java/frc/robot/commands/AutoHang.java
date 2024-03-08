@@ -30,7 +30,7 @@ public class AutoHang {
         Alliance alliance = getTargetPose();
 
         if (alliance == Alliance.Blue) {
-            if (isPoseInRectangle(robotPose, 
+            if (GeometryUtils.isPoseInQuadrilateral(robotPose, 
                 Constants.AutoHang.blueBottomLeft1,
                 Constants.AutoHang.blueBottomRight1,
                 Constants.AutoHang.blueTopRight1,
@@ -38,7 +38,7 @@ public class AutoHang {
             )) {
                 return 120;
             }
-            else if (isPoseInRectangle(robotPose, 
+            else if (GeometryUtils.isPoseInQuadrilateral(robotPose, 
                 Constants.AutoHang.blueBottomLeft2,
                 Constants.AutoHang.blueBottomRight2,
                 Constants.AutoHang.blueTopRight2,
@@ -46,7 +46,7 @@ public class AutoHang {
             )) {
                 return 0;
             }
-            else if (isPoseInRectangle(robotPose, 
+            else if (GeometryUtils.isPoseInQuadrilateral(robotPose, 
                 Constants.AutoHang.blueBottomLeft3,
                 Constants.AutoHang.blueBottomRight3,
                 Constants.AutoHang.blueTopRight3,
@@ -56,7 +56,7 @@ public class AutoHang {
             }
         }
         if (alliance == Alliance.Red) {
-            if (isPoseInRectangle(robotPose, 
+            if (GeometryUtils.isPoseInQuadrilateral(robotPose, 
                 Constants.AutoHang.redBottomLeft1,
                 Constants.AutoHang.redBottomRight1,
                 Constants.AutoHang.redTopRight1,
@@ -64,7 +64,7 @@ public class AutoHang {
             )) {
                 return 60;
             }
-            else if (isPoseInRectangle(robotPose, 
+            else if (GeometryUtils.isPoseInQuadrilateral(robotPose, 
                 Constants.AutoHang.redBottomLeft2,
                 Constants.AutoHang.redBottomRight2,
                 Constants.AutoHang.redTopRight2,
@@ -72,7 +72,7 @@ public class AutoHang {
             )) {
                 return -180;
             }
-            else if (GeometryUtils.isPoseInRectangle(robotPose, 
+            else if (GeometryUtils.isPoseInQuadrilateral(robotPose, 
                 Constants.AutoHang.redBottomLeft3,
                 Constants.AutoHang.redBottomRight3,
                 Constants.AutoHang.redTopRight3,
