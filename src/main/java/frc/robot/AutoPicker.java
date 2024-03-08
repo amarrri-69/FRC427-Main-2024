@@ -8,6 +8,7 @@ import com.pathplanner.lib.util.HolonomicPathFollowerConfig;
 import com.pathplanner.lib.util.PIDConstants;
 import com.pathplanner.lib.util.ReplanningConfig;
 
+import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -20,6 +21,7 @@ import frc.robot.subsystems.drivetrain.Drivetrain;
 import frc.robot.subsystems.intake.Intake;
 import frc.robot.subsystems.intake.commands.OuttakeToSpeaker;
 import frc.robot.commands.RevAndAngle;
+import frc.robot.commands.RevAndAngleWithPose;
 
 // class to store, set up, and choose autos
 public class AutoPicker {
@@ -78,6 +80,9 @@ public class AutoPicker {
         
         NamedCommands.registerCommand("Shoot", OuttakeToSpeaker.shoot(Intake.getInstance()).finallyDo(() -> Arm.getInstance().goToAngle(Constants.ArmConstants.kTravelPosition)));
         NamedCommands.registerCommand("RevAndAngleAnywhere", new RevAndAngle(Arm.getInstance(), Intake.getInstance(), Drivetrain.getInstance()));
+        NamedCommands.registerCommand("RevBlueFirst", new RevAndAngleWithPose(Arm.getInstance(), Intake.getInstance(), Drivetrain.getInstance(), Constants.SetPoints.blueFirstMiddle));
+        NamedCommands.registerCommand("RevBlueSecond", new RevAndAngleWithPose(Arm.getInstance(), Intake.getInstance(), Drivetrain.getInstance(), Constants.SetPoints.blueSecondMiddle));
+        NamedCommands.registerCommand("RevBlueThird", new RevAndAngleWithPose(Arm.getInstance(), Intake.getInstance(), Drivetrain.getInstance(), Constants.SetPoints.blueThirdMiddle));
 
         // NamedCommands.registerCommand("GoToSpeaker", new PrintCommand("Going to Speaker"));
         // NamedCommands.registerCommand("IntakeGround", new PrintCommand("Intaking from ground!"));

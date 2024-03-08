@@ -13,7 +13,7 @@ import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.interpolation.InterpolatingDoubleTreeMap;
-import  edu.wpi.first.math.geometry.Transform3d;
+import edu.wpi.first.math.geometry.Transform3d;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.util.Color;
@@ -422,4 +422,10 @@ public final class Constants {
     public static final OrderedPair blueSourceBR = new OrderedPair(16.5, 0); 
   }
   
+  public static class SetPoints {
+    public static final Pose2d blueThirdMiddle = new Pose2d(2.55, 3.15,null);
+    public static final Pose2d blueSecondMiddle = new Pose2d(3.59, 5.80, null);
+    public static final Pose2d blueFirstMiddle = new Pose2d(3.38, 7.02, null);
+
+  }
 }

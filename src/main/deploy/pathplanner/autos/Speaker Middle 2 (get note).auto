@@ -2,25 +2,31 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.6634748038091614,
-      "y": 6.600687689894831
+      "x": 1.3057281252407118,
+      "y": 5.503726295673142
     },
-    "rotation": 60.0
+    "rotation": 0
   },
   "command": {
     "type": "sequential",
     "data": {
       "commands": [
         {
-          "type": "path",
+          "type": "named",
           "data": {
-            "pathName": "Speaker to Note 1"
+            "name": "ShootSpeaker"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Note to Speaker 1"
+            "pathName": "Speaker to Note 2"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Note to Speaker 2"
           }
         },
         {
@@ -32,37 +38,32 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Speaker Middle 1"
+            "pathName": "Note to Middle 2nd"
           }
         },
         {
-          "type": "path",
+          "type": "parallel",
           "data": {
-            "pathName": "Middle Note 1st going back"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "ShootOut"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "1st back to 2nd middle note"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "2nd middle note back score"
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "2nd middle note back score"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "RevBlueSecond"
+                }
+              }
+            ]
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "ShootOut"
+            "name": "Shoot"
           }
         }
       ]

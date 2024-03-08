@@ -3,16 +3,16 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.25,
-        "y": 5.4761064972366915
+        "x": 1.3057281252407118,
+        "y": 5.503726295673142
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.7047647365436907,
-        "y": 6.691938312786578
+        "x": 1.7604928617844025,
+        "y": 6.719558111223029
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Speaker 2"
     },
     {
       "anchor": {

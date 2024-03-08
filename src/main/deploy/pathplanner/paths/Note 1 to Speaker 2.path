@@ -16,16 +16,16 @@
     },
     {
       "anchor": {
-        "x": 1.25,
-        "y": 5.4761064972366915
+        "x": 1.3057281252407118,
+        "y": 5.503726295673142
       },
       "prevControl": {
-        "x": 1.4909002249082197,
-        "y": 5.76090976743357
+        "x": 1.5466283501489315,
+        "y": 5.788529565870021
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Speaker 2"
     }
   ],
   "rotationTargets": [],
