@@ -9,6 +9,7 @@ import com.revrobotics.RelativeEncoder;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import frc.robot.subsystems.arm.Arm.ArmControlType;
 import frc.robot.util.IOUtils;
 
 public class Hang extends SubsystemBase {
@@ -20,6 +21,8 @@ public class Hang extends SubsystemBase {
 
     //Initializing velocity variable
     private double m_velocity = 0;
+    private double m_hangFeedforward;
+    private double m_manualVelocity = 0; 
     public double m_targetPosition;
     
     //Initialize Motors
@@ -29,6 +32,8 @@ public class Hang extends SubsystemBase {
     private RelativeEncoder m_HangEncoder = m_HangMotor.getEncoder();
 
     private PIDController m_HangPidController = new PIDController(Constants.HangConstants.kP, Constants.HangConstants.kI, Constants.HangConstants.kD);
+
+    private HangControlType m_HangControlType;
 
 
     private Hang() {
@@ -74,6 +79,17 @@ public class Hang extends SubsystemBase {
         
         //Constantly sends logs to Smart Dashboard
         doSendables();
+
+          if (m_HangControlType == HangControlType.PID) {
+
+            m_velocity = m_HangPidController.calculate(getHangPosition(), m_targetPosition) 
+                                + m_hangFeedforward;
+        }
+        
+        // velocity controlled manually
+        else if (m_HangControlType == HangControlType.MANUAL) {
+            m_velocity = m_manualVelocity; 
+        }
     }
 
     public void doSendables() {
@@ -95,6 +111,11 @@ public class Hang extends SubsystemBase {
         //Method to change speed
         this.m_velocity = speed;
     }
+    public void setManualVelocity(double velocity){
+        this.m_manualVelocity = velocity;
+    }
+
+
 
     public double getHangPosition() {
         return m_HangEncoder.getPosition();
@@ -111,5 +132,11 @@ public class Hang extends SubsystemBase {
     public boolean velocityWithinTolerance(double TargetSpeed) {
         return Math.abs(m_HangEncoder.getVelocity()-TargetSpeed) <= Constants.HangConstants.kHangTolerance;
     }
+
+    public enum HangControlType {
+        MANUAL, 
+        PID
+    }
+    
 
 }
