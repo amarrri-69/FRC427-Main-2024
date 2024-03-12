@@ -1,14 +1,14 @@
 package frc.robot.subsystems.hang.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.hang.Hang;
-import frc.robot.subsystems.hang.Hang.HangControlType;
+import frc.robot.subsystems.hang.IHang;
+import frc.robot.subsystems.hang.IHang.HangControlType;
 
 public class SetHangSpeed extends Command {
-    private Hang m_Hang; 
+    private IHang m_Hang; 
     private double m_velocity = 0; 
 
-    public SetHangSpeed(Hang hang, double velocity) {
+    public SetHangSpeed(IHang hang, double velocity) {
         this.m_Hang = hang; 
         this.m_velocity = velocity; 
 

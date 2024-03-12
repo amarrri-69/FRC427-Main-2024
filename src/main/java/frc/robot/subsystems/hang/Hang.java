@@ -6,11 +6,10 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 
 import edu.wpi.first.math.controller.PIDController;
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import frc.robot.util.IOUtils;
 
-public class Hang extends SubsystemBase {
+public class Hang extends IHang {
     private static Hang instance = new Hang();
 
     public static Hang getInstance() {
@@ -41,7 +40,7 @@ public class Hang extends SubsystemBase {
         m_HangMotor.setInverted(Constants.HangConstants.kMotorInverted);
         
         //Sets Smart Limits
-        m_HangMotor.setSmartCurrentLimit(20, Constants.HangConstants.kHangMotorLimit);
+        m_HangMotor.setSmartCurrentLimit(Constants.HangConstants.kHangStallCurrent, Constants.HangConstants.kHangMotorLimit);
 
         //Conversion Factors for encoders
         m_HangEncoder.setPositionConversionFactor(Constants.HangConstants.kPositionConversionFactor);
@@ -99,7 +98,7 @@ public class Hang extends SubsystemBase {
         return m_HangEncoder.getPosition();
     }
 
-    public void setPosition(double targetPosition) {
+    public void setHangPosition(double targetPosition) {
         this.m_targetPosition = targetPosition;
     }
 
@@ -121,10 +120,5 @@ public class Hang extends SubsystemBase {
 
     public void setHangMode(HangControlType type) {
         this.m_HangControlType = type;
-    }
-
-    public enum HangControlType {
-        MANUAL, 
-        PID
     }
 }

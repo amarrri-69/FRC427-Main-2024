@@ -1,16 +1,16 @@
 package frc.robot.subsystems.hang.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.hang.Hang;
-import frc.robot.subsystems.hang.Hang.HangControlType;
+import frc.robot.subsystems.hang.IHang;
+import frc.robot.subsystems.hang.IHang.HangControlType;
 import frc.robot.util.IOUtils;
 
 //Fine optimal hang Speed
 public class TuneSetHangPosition extends Command {
     //Create Hang and Speed
-    private Hang m_Hang;
+    private IHang m_Hang;
     
-    public TuneSetHangPosition(Hang hang) {
+    public TuneSetHangPosition(IHang hang) {
         m_Hang = hang;
         
         //Makes sure only one thing can run on hang at a time
@@ -26,7 +26,7 @@ public class TuneSetHangPosition extends Command {
     public void execute() {
         //Gets speed from IOUtils
         m_Hang.setPID(IOUtils.getNumber("Hang kP"), IOUtils.getNumber("Hang kI"), IOUtils.getNumber("Hang kD"));
-        m_Hang.setPosition(IOUtils.getNumber("Hang Target Position"));
+        m_Hang.setHangPosition(IOUtils.getNumber("Hang Target Position"));
         // runs repeatedly until the command is finished
     }
 

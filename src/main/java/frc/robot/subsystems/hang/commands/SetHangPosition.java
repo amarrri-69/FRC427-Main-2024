@@ -1,13 +1,13 @@
 package frc.robot.subsystems.hang.commands;
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.hang.Hang;
-import frc.robot.subsystems.hang.Hang.HangControlType;
+import frc.robot.subsystems.hang.IHang;
+import frc.robot.subsystems.hang.IHang.HangControlType;
 
 public class SetHangPosition extends Command {
-    Hang m_Hang;
+    IHang m_Hang;
     double m_position;
     
-    public SetHangPosition(Hang hang, double position) {
+    public SetHangPosition(IHang hang, double position) {
         this.m_Hang = hang;
         this.m_position = position;
 
@@ -18,7 +18,7 @@ public class SetHangPosition extends Command {
 
     public void initialize() {
         m_Hang.setHangMode(HangControlType.PID);
-        m_Hang.setPosition(m_position);
+        m_Hang.setHangPosition(m_position);
         // runs when the command is FIRST STARTED
     }
 

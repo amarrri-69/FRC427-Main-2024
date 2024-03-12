@@ -141,7 +141,7 @@ public class GeneralizedHangRoutine extends Command {
 
     public static Command primeHang(Hang hang) {
         return new SetHangSpeed(hang, 0.5).alongWith(Commands.waitUntil(() -> 
-            hang.getMotorCurrent() >= Constants.HangConstants.kHookStallCurrent && Math.abs(hang.getHangVelocity()) <= Constants.HangConstants.kMinSpeed
+            hang.getMotorCurrent() >= Constants.HangConstants.kHangStallCurrent && Math.abs(hang.getHangVelocity()) <= Constants.HangConstants.kMinSpeed
         ))
         .andThen(new SetHangSpeed(hang, 0)); 
     }
