@@ -279,8 +279,7 @@ public final class Constants {
 
     public static final boolean kRightMotorInverted = false;
     public static final boolean kLeftMotorInverted = false;
-    public static final int kHangStallCurrent = 0;
-    public static final int kHangMotorLimit = 0;
+
     public static final double kPositionConversionFactor = 0;
     public static final double kVelocityConversionFactor = 0;
     

@@ -12,7 +12,6 @@ public class SetHangSpeed extends Command {
         this.m_Hang = hang; 
         this.m_velocity = velocity; 
 
-
         addRequirements(hang);
     }
 

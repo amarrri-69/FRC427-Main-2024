@@ -20,7 +20,6 @@ public class TuneSetHangPosition extends Command {
 
     public void initialize() {
         m_Hang.setHangMode(HangControlType.PID);
-        // runs when the command is FIRST STARTED
     }
 
     public void execute() {

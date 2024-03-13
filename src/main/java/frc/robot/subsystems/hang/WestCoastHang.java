@@ -40,8 +40,8 @@ public class WestCoastHang extends IHang {
         m_rightHangMotor.setInverted(Constants.WestCoastHangConstants.kRightMotorInverted);
         
         //Sets Smart Limits
-        m_rightHangMotor.setSmartCurrentLimit(Constants.WestCoastHangConstants.kHangStallCurrent, Constants.WestCoastHangConstants.kHangMotorLimit);
-        m_leftHangMotor.setSmartCurrentLimit(Constants.WestCoastHangConstants.kHangStallCurrent, Constants.WestCoastHangConstants.kHangMotorLimit);
+        m_rightHangMotor.setSmartCurrentLimit(Constants.HangConstants.kHangStallCurrent, Constants.HangConstants.kHangMotorLimit);
+        m_leftHangMotor.setSmartCurrentLimit(Constants.HangConstants.kHangStallCurrent, Constants.HangConstants.kHangMotorLimit);
 
         //Conversion Factors for encoders
         m_rightHangEncoder.setPositionConversionFactor(Constants.WestCoastHangConstants.kPositionConversionFactor);

@@ -19,4 +19,3 @@ public abstract class IHang extends SubsystemBase {
     }
 
 }
-
