@@ -359,10 +359,10 @@ public final class Constants {
       public static final LEDPattern kIntake = new FadeLEDPattern(1,kCobaltBlue, Color.kGreen);
       public static final LEDPattern kMovingToNote = new RainbowPattern(1);
       public static final LEDPattern kShootAnywhere = new ConditionalPattern(new SolidLEDPattern(Color.kRed)).addCondition(Constants.GeneralizedReleaseConstants.readyToShoot::getAsBoolean, new SolidLEDPattern(Color.kGreen));
-      public static final LEDPattern kArmMoving = new SolidLEDPattern(Color.kLightBlue);
-      public static final LEDPattern kArmAtAmp = new SolidLEDPattern(Color.kSkyBlue);
-      public static final LEDPattern kArmAtSpeaker = new SolidLEDPattern(Color.kBlue);
-      public static final LEDPattern kArmAtGround = new SolidLEDPattern(Color.kDarkBlue);
+      public static final LEDPattern kArmMoving = new SolidLEDPattern(Color.kGold); //3
+      public static final LEDPattern kArmAtAmp = new SolidLEDPattern(kDefaultColor); //4
+      public static final LEDPattern kArmAtSpeaker = new SolidLEDPattern(Color.kYellow); //2
+      public static final LEDPattern kArmAtGround = new SolidLEDPattern(Color.kLightYellow); //Lightest to Darkest (1-4) 1
       // public static final LEDPattern kShootAmp = new SolidLEDPattern(Color.kBlue);
       // public static final LEDPattern kShootSpeaker = new SolidLEDPattern(Color.kBlue);
       public static final LEDPattern kArmCustom = new SolidLEDPattern(Color.kSeaGreen);
