@@ -79,7 +79,7 @@ public class Arm extends SubsystemBase {
         m_armRelativeEncoder.setPositionConversionFactor(Constants.ArmConstants.kRelativePositionConversionFactor); 
         m_armRelativeEncoder.setVelocityConversionFactor(Constants.ArmConstants.kRelativeVelocityConversionFactor); 
         
-        m_armMotorRight.setPeriodicFramePeriod(PeriodicFrame.kStatus5, 20);
+        m_armMotorRight.setPeriodicFramePeriod(PeriodicFrame.kStatus5, 200);
         // in tina we trust
         // m_armRelativeEncoder.setPosition(m_armEncoderRight.getPosition());
     }
@@ -212,7 +212,7 @@ public class Arm extends SubsystemBase {
         SmartDashboard.putNumber("Arm Absolute Position (deg)", m_armAbsoluteEncoder.getPosition()); 
         SmartDashboard.putNumber("Arm Velocity (deg/sec)", m_armAbsoluteEncoder.getVelocity());
         SmartDashboard.putNumber("Arm Error (deg)", getError());
-        SmartDashboard.putBoolean("Is Arm At Set Point", isAtAngle());
+        SmartDashboard.putBoolean("Arm At Set Point", isAtAngle());
         SmartDashboard.putString("Arm Control Type", m_ArmControlType.toString());
         SmartDashboard.putString("Arm Control State", getArmControlState().toString());
         SmartDashboard.putNumber("left volt", m_armMotorLeft.get()); 

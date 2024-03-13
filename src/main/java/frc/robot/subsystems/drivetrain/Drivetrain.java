@@ -1,6 +1,5 @@
 package frc.robot.subsystems.drivetrain;
 
-import java.util.Arrays;
 import java.util.Optional;
 
 import com.kauailabs.navx.frc.AHRS;
@@ -88,7 +87,7 @@ public class Drivetrain extends SubsystemBase {
 
     this.odometry.update(gyro.getRotation2d(), getPositions());
 
-    if (!SwerveUtils.isPoseValid(this.getPose())) {
+    if (!SwerveUtils.isPoseValid(this.getPose()) && DriverStation.isEnabled()) {
       this.odometry.resetPosition(gyro.getRotation2d(), getPositions(), lastPose);
     }
 
@@ -113,6 +112,8 @@ public class Drivetrain extends SubsystemBase {
     frontRight.doSendables();
     backLeft.doSendables();
     backRight.doSendables();
+
+    SmartDashboard.putBoolean("Turn at desired angle", atTargetAngle());
   }
 
   
@@ -242,10 +243,10 @@ public class Drivetrain extends SubsystemBase {
   }
 
   public void updateModules() {
+    this.backRight.commandState();
     this.frontLeft.commandState();
     this.frontRight.commandState();
     this.backLeft.commandState();
-    this.backRight.commandState();
   }
 
   // returns the positions of all the swerve modules
@@ -291,6 +292,10 @@ public class Drivetrain extends SubsystemBase {
   // zeros the current heading of the robot
   public void zeroHeading() {
     setHeading(Rotation2d.fromDegrees(0));
+  }
+
+  public void zeroGyroHeading() {
+    
   }
 
   public void setHeading(Rotation2d heading) {

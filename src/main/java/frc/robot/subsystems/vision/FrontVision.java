@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 // Figures out which game pieces are near
 public class FrontVision extends SubsystemBase {
-     public static FrontVision instance  = new FrontVision();
+     public static FrontVision instance = new FrontVision();
 
     private PhotonCamera camera;
     private PhotonPipelineResult latestResult;

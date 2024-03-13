@@ -1,7 +1,6 @@
 package frc.robot.subsystems.drivetrain.commands;
 
 import java.util.Optional;
-import java.util.function.Supplier;
 
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;

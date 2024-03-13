@@ -2,10 +2,13 @@ package frc.robot;
 
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
+import com.pathplanner.lib.path.PathPlannerPath;
+import com.pathplanner.lib.path.PathPlannerTrajectory;
 import com.pathplanner.lib.util.HolonomicPathFollowerConfig;
 import com.pathplanner.lib.util.PIDConstants;
 import com.pathplanner.lib.util.ReplanningConfig;
 
+import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -17,6 +20,8 @@ import frc.robot.subsystems.arm.commands.GoToSpeaker;
 import frc.robot.subsystems.drivetrain.Drivetrain;
 import frc.robot.subsystems.intake.Intake;
 import frc.robot.subsystems.intake.commands.OuttakeToSpeaker;
+import frc.robot.commands.RevAndAngle;
+import frc.robot.commands.RevAndAngleWithPose;
 
 // class to store, set up, and choose autos
 public class AutoPicker {
@@ -60,7 +65,7 @@ public class AutoPicker {
 
         chooser = AutoBuilder.buildAutoChooser(); 
 
-        registerExtraAutos();
+        // registerExtraAutos();
 
     }
 
@@ -72,6 +77,12 @@ public class AutoPicker {
         // NamedCommands.registerCommand("ShootOut", new OuttakeToSpeaker(Intake.getInstance(),0.5,1));
         NamedCommands.registerCommand("ShootAnywhere", AutomationCommands.shootFromAnywhere());
         NamedCommands.registerCommand("MoveToNext", new PrintCommand("Moving to next"));
+        
+        NamedCommands.registerCommand("Shoot", OuttakeToSpeaker.shoot(Intake.getInstance()).finallyDo(() -> Arm.getInstance().goToAngle(Constants.ArmConstants.kTravelPosition)));
+        NamedCommands.registerCommand("RevAndAngleAnywhere", new RevAndAngle(Arm.getInstance(), Intake.getInstance(), Drivetrain.getInstance()));
+        NamedCommands.registerCommand("RevBlueFirst", RevAndAngleWithPose.createCommand(Arm.getInstance(), Intake.getInstance(), Constants.SetPoints.blueFirstMiddle));
+        NamedCommands.registerCommand("RevBlueSecond", RevAndAngleWithPose.createCommand(Arm.getInstance(), Intake.getInstance(), Constants.SetPoints.blueSecondMiddle));
+        NamedCommands.registerCommand("RevBlueThird", RevAndAngleWithPose.createCommand(Arm.getInstance(), Intake.getInstance(), Constants.SetPoints.blueThirdMiddle));
 
         // NamedCommands.registerCommand("GoToSpeaker", new PrintCommand("Going to Speaker"));
         // NamedCommands.registerCommand("IntakeGround", new PrintCommand("Intaking from ground!"));
