@@ -4,6 +4,8 @@ import edu.wpi.first.math.geometry.Pose2d;
 import frc.robot.util.quad.Line;
 import frc.robot.util.quad.OrderedPair;
 import frc.robot.util.quad.Triangle;
+import frc.robot.util.quad.Quadrilateral;
+import frc.robot.util.quad.Triangle;
 
 public class GeometryUtils {
 
@@ -12,6 +14,11 @@ public class GeometryUtils {
                && bottomRight.getX() >= pose.getX() 
                && topLeft.getY() >= pose.getY() 
                && bottomRight.getY() <= pose.getY();  
+    }
+
+    public static boolean isPoseInQuadrilateral(Pose2d pose, OrderedPair p1, OrderedPair p2, OrderedPair p3, OrderedPair p4) {
+        Quadrilateral quad = new Quadrilateral(p1, p2, p3, p4); 
+        return quad.isPointInterior(OrderedPair.fromPose2d(pose)); 
     }
 
     public static OrderedPair getBisector(OrderedPair basePair, OrderedPair oppositePair1, OrderedPair oppositePair2) {
@@ -37,6 +44,16 @@ public class GeometryUtils {
         return new Triangle(new OrderedPair(0.0,0.0), new OrderedPair(0.0,0.0), new OrderedPair(0.0,0.0)).isPointInterior(new OrderedPair(robotPose.getX(), robotPose.getY()));
     }
 
-    
+    public static boolean isInTriangle(OrderedPair pointA, OrderedPair pointB, OrderedPair pointC, OrderedPair comparisonPoint) {
+    Triangle triangle = new Triangle(pointA, pointB, pointC);
+        return triangle.isPointInterior(comparisonPoint);
+    }
+    public static boolean isInRedStage(OrderedPair robotPose) {
+        return isInTriangle(new OrderedPair(13.42, 4.09), new OrderedPair(10.88, 5.62), new OrderedPair(10.88, 2.61), robotPose);
+    }
+    public static boolean isInBlueStage(OrderedPair robotPose) {
+       
+        return isInTriangle(new OrderedPair(3.11, 4.09), new OrderedPair(5.73, 5.62), new OrderedPair(5.73, 2.61), robotPose);
+    }
     
 }

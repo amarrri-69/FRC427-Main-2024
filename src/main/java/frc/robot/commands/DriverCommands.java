@@ -2,6 +2,7 @@ package frc.robot.commands;
 
 import java.util.Set;
 
+import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.GenericHID.RumbleType;
@@ -35,23 +36,9 @@ public class DriverCommands {
       }), 
       vibrateController(controller, 0.5)
     )
-    .andThen(new WaitCommand(3))
+    .andThen(new WaitCommand(0.75))
     .finallyDo(() -> Led.getInstance().beamHit = false); 
   }
 
-  public static Command tuneShooting(Drivetrain drivetrain, Arm arm, Intake intake) {
-    return Commands.defer(() -> {
-        double angle = IOUtils.get("arm angle"); 
-        ShootAnywhereResult res = ShootAnywhere.getShootValues(drivetrain.getPose()); 
-        if (res == null) return Commands.none();
-        TurnToAngle turnToAngle = new TurnToAngle(drivetrain, res.getDriveAngleDeg());
 
-        return Commands.sequence(
-            turnToAngle, 
-            new GoToAngle(arm, angle),
-            OuttakeToSpeaker.revAndIndex(intake),
-            OuttakeToSpeaker.shoot(intake)
-        );
-    }, Set.of(drivetrain, arm, intake)); 
-  }
 }

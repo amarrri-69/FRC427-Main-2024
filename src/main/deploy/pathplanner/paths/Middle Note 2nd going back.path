@@ -20,8 +20,8 @@
         "y": 5.797086096541862
       },
       "prevControl": {
-        "x": 4.278769058791251,
-        "y": 6.357575421917761
+        "x": 4.3302057531433364,
+        "y": 6.460448810621932
       },
       "nextControl": null,
       "isLocked": false,
@@ -30,30 +30,12 @@
   ],
   "rotationTargets": [],
   "constraintZones": [],
-  "eventMarkers": [
-    {
-      "name": "New Event Marker",
-      "waypointRelativePos": 0.55,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": [
-            {
-              "type": "named",
-              "data": {
-                "name": "GoToSpeaker"
-              }
-            }
-          ]
-        }
-      }
-    }
-  ],
+  "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 1.0,
-    "maxAcceleration": 1.0,
-    "maxAngularVelocity": 120.0,
-    "maxAngularAcceleration": 120.0
+    "maxVelocity": 3.0,
+    "maxAcceleration": 2.25,
+    "maxAngularVelocity": 360.0,
+    "maxAngularAcceleration": 300.0
   },
   "goalEndState": {
     "velocity": 0,

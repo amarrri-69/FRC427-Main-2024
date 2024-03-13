@@ -58,10 +58,12 @@ public class Intake extends SubsystemBase {
         m_intakeMotorShootTop.setInverted(Constants.IntakeConstants.kShootTopIntakeInverted);
         m_intakeMotorShootTop.setSmartCurrentLimit(Constants.IntakeConstants.kShootTopMotorlimit);
         m_intakeEncoderShootTop.setVelocityConversionFactor(Constants.IntakeConstants.kShootVelocityConversionFactor); 
+        m_intakeMotorShootTop.enableVoltageCompensation(12); 
 
         m_intakeMotorShootBottom.setInverted(Constants.IntakeConstants.kShootBottomIntakeInverted);
         m_intakeMotorShootBottom.setSmartCurrentLimit(Constants.IntakeConstants.kShootBottomMotorlimit);
         m_intakeEncoderShootTop.setVelocityConversionFactor(Constants.IntakeConstants.kShootVelocityConversionFactor); 
+        m_intakeMotorShootBottom.enableVoltageCompensation(12); 
         m_intakeMotorShootBottom.follow(m_intakeMotorShootTop);
 
         m_outtakeMotorSuck.setInverted(Constants.IntakeConstants.kSuckOuttakeInverted);
@@ -112,6 +114,7 @@ public class Intake extends SubsystemBase {
         SmartDashboard.putNumber("Suck Speed (m/s)", m_outtakeEncoderSuck.getVelocity());
         SmartDashboard.putNumber("Shoot Top Speed (m/s)", m_intakeEncoderShootTop.getVelocity());
         SmartDashboard.putNumber("Shoot Bottom Speed (m/s)", m_intakeEncoderShootBottom.getVelocity());
+        SmartDashboard.putNumber("Outtake Desired Speed", m_desireSpeed); 
         SmartDashboard.putBoolean("Shoot At Desired Speed", atDesiredShootSpeed()); 
         SmartDashboard.putBoolean("Beam Break Hit (t/f)", beamBreakHit());
     }

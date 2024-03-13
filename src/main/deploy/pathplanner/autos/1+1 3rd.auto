@@ -14,48 +14,30 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Speaker to Note 3"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "Note to Speaker 3"
+            "pathName": "Speaker 3 moves out"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "ShootSpeaker"
+            "name": "ShootAnywhere"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Speaker to Note 3"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "Note 3 to Middle 4th"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "Middle Note 4th going back score"
+            "pathName": "Speaker 3 move out to note"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "ShootSpeaker"
+            "name": "ShootAnywhere"
           }
         }
       ]
     }
   },
-  "folder": "Two Piece Middle Fling",
+  "folder": "2 piece auto",
   "choreoAuto": false
 }

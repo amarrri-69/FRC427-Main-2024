@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.6634748038091614,
-      "y": 6.600687689894831
+      "x": 1.3057281252407118,
+      "y": 5.503726295673142
     },
-    "rotation": 60.0
+    "rotation": 0
   },
   "command": {
     "type": "sequential",
@@ -14,61 +14,19 @@
         {
           "type": "named",
           "data": {
-            "name": "ShootSpeaker"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "MoveToNext"
+            "name": "ShootAnywhere"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Speaker to Note 1"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "MoveToNext"
+            "pathName": "Speaker to Note 2"
           }
         },
         {
           "type": "named",
           "data": {
             "name": "ShootAnywhere"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "MoveToNext"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "Note 1 to Note 2"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "MoveToNext"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "ShootAnywhere"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "MoveToNext"
           }
         },
         {
@@ -80,7 +38,13 @@
         {
           "type": "named",
           "data": {
-            "name": "MoveToNext"
+            "name": "ShootAnywhere"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Note 3 to Note 1"
           }
         },
         {
@@ -90,14 +54,44 @@
           }
         },
         {
+          "type": "path",
+          "data": {
+            "pathName": "Note 1 to Middle 1st"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Middle Note 1st going back"
+          }
+        },
+        {
           "type": "named",
           "data": {
-            "name": "MoveToNext"
+            "name": "ShootAnywhere"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "1st back to 2nd middle note"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "2nd middle note back"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "ShootAnywhere"
           }
         }
       ]
     }
   },
-  "folder": null,
+  "folder": "4 piece auto",
   "choreoAuto": false
 }

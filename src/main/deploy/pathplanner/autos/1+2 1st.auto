@@ -2,25 +2,19 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.25,
-      "y": 5.4761064972366915
+      "x": 0.7193498096269378,
+      "y": 6.6250462325486055
     },
-    "rotation": 0
+    "rotation": 60.0
   },
   "command": {
     "type": "sequential",
     "data": {
       "commands": [
         {
-          "type": "named",
-          "data": {
-            "name": "ShootSpeaker"
-          }
-        },
-        {
           "type": "path",
           "data": {
-            "pathName": "Speaker to Note 2"
+            "pathName": "Speaker 1 moves out"
           }
         },
         {
@@ -32,7 +26,19 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Note 2 to Note 3"
+            "pathName": "Speaker 1 move out to note"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "ShootAnywhere"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Note 1 to Note 2"
           }
         },
         {
@@ -44,6 +50,6 @@
       ]
     }
   },
-  "folder": "Shoot anywhere",
+  "folder": "3 piece auto",
   "choreoAuto": false
 }

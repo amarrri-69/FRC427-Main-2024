@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.25,
-      "y": 5.4761064972366915
+      "x": 1.3057281252407118,
+      "y": 5.503726295673142
     },
     "rotation": 0
   },
@@ -11,6 +11,12 @@
     "type": "sequential",
     "data": {
       "commands": [
+        {
+          "type": "named",
+          "data": {
+            "name": "ShootSpeaker"
+          }
+        },
         {
           "type": "path",
           "data": {
@@ -30,9 +36,28 @@
           }
         },
         {
-          "type": "path",
+          "type": "parallel",
           "data": {
-            "pathName": "2nd middle note back"
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "2nd middle note back score"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "RevBlueSecond"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Shoot"
           }
         }
       ]

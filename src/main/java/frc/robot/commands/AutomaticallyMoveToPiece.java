@@ -14,20 +14,22 @@ public class AutomaticallyMoveToPiece {
     public static Command waitForVision(FrontVision frontVision) {
         return Commands.waitUntil(() -> {
             var result = frontVision.getLatestVisionResult();
-            return result.hasTargets(); 
+            return result == null ? false : result.hasTargets(); 
         }); 
     }
 
     public static Command automaticallyMoveToPiece(DriverController driverController, Drivetrain drivetrain, FrontVision frontVision) {
-        var result = frontVision.getLatestVisionResult();
+        var result = frontVision.getLastSuccessfulResult();
         if (!result.hasTargets()) return Commands.none();
         
-        double angleToTurn = frontVision.getNoteRotation();
+        double angleToTurn = - frontVision.getNoteRotation();
         double actualAngle = angleToTurn + drivetrain.getPose().getRotation().getDegrees();
 
         return new ParallelRaceGroup(Commands.run(() -> {
 
             ChassisSpeeds driverInput = driverController.getDesiredChassisSpeeds();
+
+            driverInput.vyMetersPerSecond = 0; 
 
             drivetrain.swerveDriveFieldRel(new ChassisState(
                 driverInput.vxMetersPerSecond * Math.cos(Math.toRadians(actualAngle)) - driverInput.vyMetersPerSecond * Math.sin(Math.toRadians(actualAngle)), 

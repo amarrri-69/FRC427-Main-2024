@@ -16,16 +16,16 @@
     },
     {
       "anchor": {
-        "x": 1.25,
-        "y": 5.4761064972366915
+        "x": 1.3057281252407118,
+        "y": 5.503726295673142
       },
       "prevControl": {
-        "x": 1.4909002249082197,
-        "y": 5.76090976743357
+        "x": 1.5466283501489315,
+        "y": 5.788529565870021
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Speaker 2"
     }
   ],
   "rotationTargets": [],
@@ -51,9 +51,9 @@
   ],
   "globalConstraints": {
     "maxVelocity": 3.0,
-    "maxAcceleration": 2.0,
-    "maxAngularVelocity": 180.0,
-    "maxAngularAcceleration": 90.0
+    "maxAcceleration": 2.25,
+    "maxAngularVelocity": 360.0,
+    "maxAngularAcceleration": 300.0
   },
   "goalEndState": {
     "velocity": 0,
@@ -63,5 +63,5 @@
   "reversed": false,
   "folder": "Speaker Note",
   "previewStartingState": null,
-  "useDefaultConstraints": false
+  "useDefaultConstraints": true
 }

@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.25,
-      "y": 5.4761064972366915
+      "x": 1.3057281252407118,
+      "y": 5.503726295673142
     },
     "rotation": 0
   },
@@ -45,6 +45,24 @@
           "type": "path",
           "data": {
             "pathName": "Note 3 to Speaker 2"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "ShootSpeaker"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Speaker 2 to Note 1"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Note 1 to Speaker 2"
           }
         },
         {

@@ -12,27 +12,9 @@
     "data": {
       "commands": [
         {
-          "type": "named",
-          "data": {
-            "name": "ShootSpeaker"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "MoveToNext"
-          }
-        },
-        {
           "type": "path",
           "data": {
-            "pathName": "Speaker to Note 1"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "MoveToNext"
+            "pathName": "Speaker 1 moves out"
           }
         },
         {
@@ -42,14 +24,20 @@
           }
         },
         {
+          "type": "path",
+          "data": {
+            "pathName": "Speaker 1 move out to note"
+          }
+        },
+        {
           "type": "named",
           "data": {
-            "name": "MoveToNext"
+            "name": "ShootAnywhere"
           }
         }
       ]
     }
   },
-  "folder": null,
+  "folder": "2 piece auto",
   "choreoAuto": false
 }

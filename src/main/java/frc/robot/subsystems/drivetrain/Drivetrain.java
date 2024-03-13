@@ -22,6 +22,8 @@ import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.smartdashboard.Field2d;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import frc.robot.subsystems.drivetrain.SwerveModule.DriveState;
@@ -37,13 +39,15 @@ public class Drivetrain extends SubsystemBase {
     }
 
   // set up the four swerve modules  
-  private SwerveModule frontLeft = new SwerveModule(Constants.DrivetrainConstants.frontLeft); 
+  public SwerveModule frontLeft = new SwerveModule(Constants.DrivetrainConstants.frontLeft); 
   private SwerveModule frontRight = new SwerveModule(Constants.DrivetrainConstants.frontRight); 
   private SwerveModule backLeft = new SwerveModule(Constants.DrivetrainConstants.backLeft); 
   private SwerveModule backRight = new SwerveModule(Constants.DrivetrainConstants.backRight); 
 
   // initialize swerve position estimator
   private SwerveDrivePoseEstimator odometry; 
+
+  private Pose2d lastPose = new Pose2d(); 
 
   // initialize the gyro on the robot
   public AHRS gyro = new AHRS(SPI.Port.kMXP);
@@ -80,12 +84,21 @@ public class Drivetrain extends SubsystemBase {
     SmartDashboard.putNumber("drive x", odometry.getEstimatedPosition().getX());
     SmartDashboard.putNumber("drive y", odometry.getEstimatedPosition().getY());
     SmartDashboard.putNumber("drive omega", odometry.getEstimatedPosition().getRotation().getDegrees());
-    
+
     this.odometry.update(gyro.getRotation2d(), getPositions());
+
+    if (!SwerveUtils.isPoseValid(this.getPose()) && DriverStation.isEnabled()) {
+      this.odometry.resetPosition(gyro.getRotation2d(), getPositions(), lastPose);
+    }
 
     m_odometryField.setRobotPose(getPose());
     SmartDashboard.putData("Robot Odometry Field", m_odometryField);
     SmartDashboard.putData("Robot Vision Field", m_visionField);
+    
+    updateModules();
+    
+    lastPose = this.getPose();
+
     doSendables();
   }
 
@@ -99,6 +112,8 @@ public class Drivetrain extends SubsystemBase {
     frontRight.doSendables();
     backLeft.doSendables();
     backRight.doSendables();
+
+    SmartDashboard.putBoolean("Turn at desired angle", atTargetAngle());
   }
 
   
@@ -204,9 +219,6 @@ public class Drivetrain extends SubsystemBase {
 
     if (optAlliance.isEmpty()) return; 
 
-
-    SmartDashboard.putBoolean("flip field", flipRotationField);
-
     if (flipRotationField && optAlliance.get() == Alliance.Red) thetaDegrees += 180; 
      if (turn || gyro.getRate() > 0.25) lastTurnedTheta = this.getRotation().getDegrees(); 
      double rotSpeed = rotationController.calculate(this.getRotation().getDegrees(), turn ? thetaDegrees : lastTurnedTheta); 
@@ -228,6 +240,13 @@ public class Drivetrain extends SubsystemBase {
       this.frontRight.updateState(states[1], driveState);
       this.backLeft.updateState(states[2], driveState);
       this.backRight.updateState(states[3], driveState);
+  }
+
+  public void updateModules() {
+    this.backRight.commandState();
+    this.frontLeft.commandState();
+    this.frontRight.commandState();
+    this.backLeft.commandState();
   }
 
   // returns the positions of all the swerve modules
@@ -275,6 +294,10 @@ public class Drivetrain extends SubsystemBase {
     setHeading(Rotation2d.fromDegrees(0));
   }
 
+  public void zeroGyroHeading() {
+    
+  }
+
   public void setHeading(Rotation2d heading) {
     resetOdometry(new Pose2d(this.getPose().getX(), this.getPose().getY(), heading));
   } 
@@ -305,5 +328,11 @@ public class Drivetrain extends SubsystemBase {
     odometry.addVisionMeasurement(pose3d.toPose2d(), timestamp, stdDevs);
 
     m_visionField.setRobotPose(pose3d.toPose2d());
+  }
+
+  public Command zeroDrivetrain() {
+    return Commands.runOnce(() -> {
+      this.swerveDrive(0, 0, 0, false);
+    }, this); 
   }
 }

@@ -35,17 +35,17 @@ public class SetShooterSpeed extends Command {
     // stops the Shooting motors
     public void end(boolean interrupted) {
         // runs when the command is ended
-        
     }
 
     public static Command indexNote(Intake intake) {
         return Commands.runOnce(() -> intake.intakeRing(-0.075))
         .alongWith(Commands.waitUntil(() -> !intake.beamBreakHit()))
-        .finallyDo(() -> intake.stopSuck()); 
+        .finallyDo(() -> {
+            intake.stopSuck(); 
+        }); 
     }
 
     public static Command revAndIndex(Intake intake, double speed) {
-        return new SetShooterSpeed(intake, speed).alongWith(indexNote(intake)); 
+        return indexNote(intake).alongWith(new SetShooterSpeed(intake, speed)); 
     }
-    
 }
