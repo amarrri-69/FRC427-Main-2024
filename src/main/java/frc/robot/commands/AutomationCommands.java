@@ -78,6 +78,10 @@ public class AutomationCommands {
     });
   }
 
+  public static Command pathFindToAmpAndMoveArm() {
+    return pathFindToAmp().alongWith(new GoToAmp(Arm.getInstance()));
+  }
+
   public static Command pathFindToGamePiece(DriverController controller) {
     return Commands.runOnce(() -> {
       Led.getInstance().isMovingToNote = true; 

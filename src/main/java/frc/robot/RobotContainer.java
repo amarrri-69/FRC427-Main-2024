@@ -162,6 +162,9 @@ public class RobotContainer {
       driverController.x()
       .whileTrue(AutomationCommands.pathFindToGamePiece(driverController)); 
 
+      driverController.b()
+      .whileTrue(AutomationCommands.pathFindToAmpAndMoveArm());
+
       driverController.leftTrigger()
       .whileTrue(AutomationCommands.generalizedReleaseCommand(driverController));
 

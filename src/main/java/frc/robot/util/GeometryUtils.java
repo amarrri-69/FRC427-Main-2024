@@ -3,6 +3,7 @@ package frc.robot.util;
 import edu.wpi.first.math.geometry.Pose2d;
 import frc.robot.util.quad.Line;
 import frc.robot.util.quad.OrderedPair;
+import frc.robot.util.quad.Triangle;
 import frc.robot.util.quad.Quadrilateral;
 import frc.robot.util.quad.Triangle;
 
@@ -33,6 +34,14 @@ public class GeometryUtils {
         double yCoordinate = - oppositeDistance * Math.sin(rightTriangleAngle) + oppositePair1.getY();
         double xCoordinate = - oppositeDistance * Math.cos(rightTriangleAngle) + oppositePair1.getX();
         return new OrderedPair(xCoordinate, yCoordinate);
+    }
+
+    public static boolean isInRedTriangle(Pose2d robotPose) {
+        return new Triangle(new OrderedPair(0.0,0.0), new OrderedPair(0.0,0.0), new OrderedPair(0.0,0.0)).isPointInterior(new OrderedPair(robotPose.getX(), robotPose.getY()));
+    }
+
+    public static boolean isInBlueTriangle(Pose2d robotPose) {
+        return new Triangle(new OrderedPair(0.0,0.0), new OrderedPair(0.0,0.0), new OrderedPair(0.0,0.0)).isPointInterior(new OrderedPair(robotPose.getX(), robotPose.getY()));
     }
 
     public static boolean isInTriangle(OrderedPair pointA, OrderedPair pointB, OrderedPair pointC, OrderedPair comparisonPoint) {
