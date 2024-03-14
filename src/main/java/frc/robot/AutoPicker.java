@@ -16,10 +16,12 @@ import edu.wpi.first.wpilibj2.command.PrintCommand;
 import frc.robot.commands.AutomationCommands;
 import frc.robot.commands.ShootAnywhere;
 import frc.robot.subsystems.arm.Arm;
+import frc.robot.subsystems.arm.commands.GoToAngle;
 import frc.robot.subsystems.arm.commands.GoToSpeaker;
 import frc.robot.subsystems.drivetrain.Drivetrain;
 import frc.robot.subsystems.intake.Intake;
 import frc.robot.subsystems.intake.commands.OuttakeToSpeaker;
+import frc.robot.subsystems.intake.commands.SetShooterSpeed;
 import frc.robot.commands.RevAndAngle;
 import frc.robot.commands.RevAndAngleWithPose;
 
@@ -80,9 +82,12 @@ public class AutoPicker {
         
         NamedCommands.registerCommand("Shoot", OuttakeToSpeaker.shoot(Intake.getInstance()).finallyDo(() -> Arm.getInstance().goToAngle(Constants.ArmConstants.kTravelPosition)));
         NamedCommands.registerCommand("RevAndAngleAnywhere", new RevAndAngle(Arm.getInstance(), Intake.getInstance(), Drivetrain.getInstance()));
-        NamedCommands.registerCommand("RevBlueFirst", new RevAndAngleWithPose(Arm.getInstance(), Intake.getInstance(), Drivetrain.getInstance(), Constants.SetPoints.blueFirstMiddle));
-        NamedCommands.registerCommand("RevBlueSecond", new RevAndAngleWithPose(Arm.getInstance(), Intake.getInstance(), Drivetrain.getInstance(), Constants.SetPoints.blueSecondMiddle));
-        NamedCommands.registerCommand("RevBlueThird", new RevAndAngleWithPose(Arm.getInstance(), Intake.getInstance(), Drivetrain.getInstance(), Constants.SetPoints.blueThirdMiddle));
+        NamedCommands.registerCommand("RevBlueFirst", RevAndAngleWithPose.createCommand(Arm.getInstance(), Intake.getInstance(), Drivetrain.getInstance(), Constants.SetPoints.blueFirstMiddle));
+        NamedCommands.registerCommand("RevBlueSecond", RevAndAngleWithPose.createCommand(Arm.getInstance(), Intake.getInstance(), Drivetrain.getInstance(), Constants.SetPoints.blueSecondMiddle));
+        NamedCommands.registerCommand("RevBlueCenter", RevAndAngleWithPose.createCommand(Arm.getInstance(), Intake.getInstance(), Drivetrain.getInstance(), Constants.SetPoints.blueCenter));
+        NamedCommands.registerCommand("RevOut", new GoToAngle(Arm.getInstance(), 20).alongWith(new SetShooterSpeed(Intake.getInstance(), 800)));
+
+
 
         // NamedCommands.registerCommand("GoToSpeaker", new PrintCommand("Going to Speaker"));
         // NamedCommands.registerCommand("IntakeGround", new PrintCommand("Intaking from ground!"));

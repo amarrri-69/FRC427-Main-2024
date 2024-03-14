@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.281268050080585,
-        "y": 4.051088149625884
+        "x": 2.55,
+        "y": 3.15
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.918712198326652,
-        "y": 7.13941317606946
+        "x": 4.330205753137036,
+        "y": 3.1170636777416734
       },
       "isLocked": false,
-      "linkedName": "Note 3"
+      "linkedName": "MN4 going back"
     },
     {
       "anchor": {
-        "x": 7.797038952473896,
-        "y": 5.740335089692736
+        "x": 7.622154191676804,
+        "y": 4.0429241760739165
       },
       "prevControl": {
-        "x": 7.383497680915234,
-        "y": 5.755595454936529
+        "x": 6.727155709944218,
+        "y": 4.361831681062141
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Middle Note 2"
+      "linkedName": "Middle Note 3"
     }
   ],
   "rotationTargets": [],
@@ -33,7 +33,7 @@
   "eventMarkers": [
     {
       "name": "New Event Marker",
-      "waypointRelativePos": 0.75,
+      "waypointRelativePos": 0.3,
       "command": {
         "type": "parallel",
         "data": {
@@ -51,9 +51,9 @@
   ],
   "globalConstraints": {
     "maxVelocity": 3.0,
-    "maxAcceleration": 2.0,
-    "maxAngularVelocity": 180.0,
-    "maxAngularAcceleration": 90.0
+    "maxAcceleration": 2.25,
+    "maxAngularVelocity": 360.0,
+    "maxAngularAcceleration": 300.0
   },
   "goalEndState": {
     "velocity": 0,
@@ -61,7 +61,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Note Middle",
+  "folder": "Middle Back",
   "previewStartingState": null,
-  "useDefaultConstraints": false
+  "useDefaultConstraints": true
 }

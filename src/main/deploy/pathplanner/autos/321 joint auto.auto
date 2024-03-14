@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.3057281252407118,
-      "y": 5.503726295673142
+      "x": 0.6987751318861041,
+      "y": 4.4544177308906
     },
-    "rotation": 0
+    "rotation": -60.0
   },
   "command": {
     "type": "sequential",
@@ -20,7 +20,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Speaker to Note 2"
+            "pathName": "Speaker to Middle 4th"
           }
         },
         {
@@ -28,15 +28,15 @@
           "data": {
             "commands": [
               {
-                "type": "path",
+                "type": "named",
                 "data": {
-                  "pathName": "Note to Speaker 2"
+                  "name": "RevBlueThird"
                 }
               },
               {
-                "type": "named",
+                "type": "path",
                 "data": {
-                  "name": "RevBlueCenter"
+                  "pathName": "MN4 going back"
                 }
               }
             ]
@@ -51,7 +51,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Speaker 2 to Note 3"
+            "pathName": "MN4 going to MN3"
           }
         },
         {
@@ -59,15 +59,15 @@
           "data": {
             "commands": [
               {
-                "type": "path",
+                "type": "named",
                 "data": {
-                  "pathName": "Note 3 to Speaker 2"
+                  "name": "RevOut"
                 }
               },
               {
-                "type": "named",
+                "type": "path",
                 "data": {
-                  "name": "RevBlueCenter"
+                  "pathName": "MN3 going back"
                 }
               }
             ]
@@ -82,7 +82,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Speaker 2 to Note 1"
+            "pathName": "MN3 going to MN2"
           }
         },
         {
@@ -92,13 +92,13 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "Note 1 to Speaker 2"
+                  "pathName": "MN2 going back"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "RevBlueCenter"
+                  "name": "RevOut"
                 }
               }
             ]
@@ -113,6 +113,6 @@
       ]
     }
   },
-  "folder": "3 piece auto",
+  "folder": "Two Piece Middle Fling",
   "choreoAuto": false
 }

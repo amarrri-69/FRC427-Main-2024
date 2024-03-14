@@ -3,52 +3,34 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 7.797038952473896,
-        "y": 5.740335089692736
+        "x": 7.622154191676804,
+        "y": 4.0429241760739165
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.5995317971939915,
-        "y": 5.9407675546040375
+        "x": 7.313534025564292,
+        "y": 4.31039498670476
       },
       "isLocked": false,
-      "linkedName": "Middle Note 2"
+      "linkedName": "Middle Note 3"
     },
     {
       "anchor": {
-        "x": 3.589517354473306,
-        "y": 5.797086096541862
+        "x": 6.346524171745086,
+        "y": 5.874070495008159
       },
       "prevControl": {
-        "x": 4.3302057531433364,
-        "y": 6.460448810621932
+        "x": 6.387673527226754,
+        "y": 5.874070495008159
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Middle 2 Back"
+      "linkedName": "MN3 going back"
     }
   ],
   "rotationTargets": [],
   "constraintZones": [],
-  "eventMarkers": [
-    {
-      "name": "New Event Marker",
-      "waypointRelativePos": 0.55,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": [
-            {
-              "type": "named",
-              "data": {
-                "name": "GoToSpeaker"
-              }
-            }
-          ]
-        }
-      }
-    }
-  ],
+  "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 2.25,
