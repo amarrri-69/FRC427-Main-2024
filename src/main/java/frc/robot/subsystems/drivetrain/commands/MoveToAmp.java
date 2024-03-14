@@ -53,6 +53,9 @@ public class MoveToAmp {
             Constants.Trajectory.kMaxAngularAccelerationRadiansPerSecondSquared
         );
 
+        System.out.println("target pose");
+        System.out.println(targetPose);
+
         // Since AutoBuilder is configured, we can use it to build pathfinding commands
         Command pathfindingCommand = AutoBuilder.pathfindToPose(
                 targetPose,

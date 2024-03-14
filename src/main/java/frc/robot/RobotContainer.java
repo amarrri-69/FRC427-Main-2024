@@ -6,6 +6,7 @@ package frc.robot;
 
 import frc.robot.commands.AutoHang;
 import frc.robot.commands.AutomationCommands;
+import frc.robot.commands.TuningCommands;
 import frc.robot.subsystems.arm.Arm;
 import frc.robot.subsystems.arm.Arm.ArmControlState;
 import frc.robot.subsystems.arm.commands.GoToAmp;
@@ -101,8 +102,8 @@ public class RobotContainer {
       .onTrue(new InstantCommand(() -> driverController.setSlowMode(Mode.SLOW)))
       .onFalse(new InstantCommand(() -> driverController.setSlowMode(Mode.NORMAL))); 
     
-    driverController.y()
-    .whileTrue(AutomationCommands.generalizedHangCommand(driverController));
+    // driverController.y()
+    // .whileTrue(AutomationCommands.generalizedHangCommand(driverController));
 
 
     manipulatorController.rightTrigger().onTrue(Commands.runOnce(() -> {
@@ -121,12 +122,10 @@ public class RobotContainer {
     ); 
 
     // TODO: tune
-    // driverController.y().whileTrue(TuningCommands.tuneShooting(drivetrain, arm, intake)); 
+    driverController.y().whileTrue(TuningCommands.tuneShooting(drivetrain, arm, intake)); 
 
     // TODO: tune
     // driverController.y().whileTrue(new TuneTurnToAngle(drivetrain)); 
-
-    driverController.a().whileTrue(AutomationCommands.pathFindToAmpAndMoveArm()); 
 
     // --- Intake --- 
 
@@ -152,7 +151,7 @@ public class RobotContainer {
     driverController.x()
     .whileTrue(AutomationCommands.pathFindToGamePiece(driverController)); 
 
-    driverController.b()
+    driverController.a()
     .whileTrue(AutomationCommands.pathFindToAmpAndMoveArm());
 
     driverController.leftTrigger()

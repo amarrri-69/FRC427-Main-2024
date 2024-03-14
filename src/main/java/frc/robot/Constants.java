@@ -116,11 +116,11 @@ public final class Constants {
     public static final double kTurn_I = 0; 
     public static final double kTurn_D = 0.0015; 
     public static final double kTurn_FF = 0; 
-    public static final double kTurnErrorThreshold = 3.0; 
+    public static final double kTurnErrorThreshold = 4.0; 
     public static final double kTurnVelocityThreshold = 0; 
 
     // current limits for each motor
-    public static final int kDriveCurrentLimit = 30; 
+    public static final int kDriveCurrentLimit = 40; 
     public static final int kDriveSecondaryLimit = 50; 
     public static final double kDriveRampRate = 0.05; 
      
@@ -145,8 +145,8 @@ public final class Constants {
     public static final double kOmega_D = 0.0001; 
 
     // max velocity & acceleration robot can go n following a trajectory
-    public static final double kMaxVelocityMetersPerSecond = 1; 
-    public static final double kMaxAccelerationMetersPerSecondSquared = 1; 
+    public static final double kMaxVelocityMetersPerSecond = 3; 
+    public static final double kMaxAccelerationMetersPerSecondSquared = 2.5; 
 
     public static final double kMaxAngularVelocityRadiansPerSecond = Units.degreesToRadians(120); 
     public static final double kMaxAngularAccelerationRadiansPerSecondSquared = Units.degreesToRadians(120); 
@@ -186,7 +186,7 @@ public final class Constants {
     public static final double kI = 0;
     public static final double kD = 0;
     public static final double kFF = 0.000215;
-    public static final double kTolerance = 200; 
+    public static final double kTolerance = 50; 
  
   }
 
@@ -328,7 +328,30 @@ public final class Constants {
       armInterpolationMap.put(3.5022, 38.0);
       armInterpolationMap.put(3.8638, 39.0);
 
-      flywheelInterpolationMap.put(0.0, 5600.0);
+      flywheelInterpolationMap.put(1.1769, 2600.0);
+      flywheelInterpolationMap.put(1.4206, 2700.0);
+      flywheelInterpolationMap.put(1.6509, 2750.0);
+      flywheelInterpolationMap.put(1.7909, 2775.0);
+      flywheelInterpolationMap.put(1.9566, 2790.0);
+      flywheelInterpolationMap.put(2.2225, 2800.0);
+      flywheelInterpolationMap.put(2.5153, 3200.0);
+      flywheelInterpolationMap.put(2.7, 5600.0);
+
+      // 1.1769, 2600
+      // 1.4206, 2700
+      // 1.6509,2750
+      // 1.7909,2775
+      // 1.9566,2790
+      // 2.2225,2800
+      // 2.5153, 3200
+      //
+      //
+      //
+      //
+      //
+
+
+
     }
   }
 
@@ -380,8 +403,8 @@ public final class Constants {
     public static final Pose2d speakerRed1 = new Pose2d(15.83, 6.58, Rotation2d.fromDegrees(120));
     public static final Pose2d speakerRed2 = new Pose2d(15.29, 5.48, Rotation2d.fromDegrees(180));
     public static final Pose2d speakerRed3 = new Pose2d(15.83, 4.51, Rotation2d.fromDegrees(-120));
-    public static final Pose2d ampBlue = new Pose2d(1.96, 7.75, Rotation2d.fromDegrees(-90));
-    public static final Pose2d ampRed = new Pose2d(14.62, 7.75, Rotation2d.fromDegrees(-90));
+    public static final Pose2d ampBlue = new Pose2d(1.83, 7.7, Rotation2d.fromDegrees(-90));
+    public static final Pose2d ampRed = new Pose2d(14.7, 7.7, Rotation2d.fromDegrees(-90));
   }
   public static final class AutoHang {
     public static final OrderedPair blueTopLeft1 = new OrderedPair(2.05, 5.93);
