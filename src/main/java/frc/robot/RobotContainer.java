@@ -107,7 +107,7 @@ public class RobotContainer {
         intake.stopSuck();
       }));
     driverController.y()
-    .onTrue(AutomationCommands.generalizedHangCommand(driverController));
+    .whileTrue(AutomationCommands.generalizedHangCommand(driverController));
 
 
 
@@ -186,10 +186,10 @@ public class RobotContainer {
 
 
     // Stop hang when neither is pressed
-    manipulatorController.povDown().negate().and(manipulatorController.povUp().negate());
-    if (manipulatorController.getLeftY() >-0.5 && manipulatorController.getLeftY() <0.5) {
-      new SetHangSpeed(hang, 0); 
-    }
+    new Trigger(() -> 
+      manipulatorController.getLeftY() < 0.5 && 
+      manipulatorController.getLeftY() > -0.5)
+    .onTrue(new SetHangSpeed(hang, 0)); 
     
 
 

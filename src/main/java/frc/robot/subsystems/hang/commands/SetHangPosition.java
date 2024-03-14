@@ -18,7 +18,7 @@ public class SetHangPosition extends Command {
 
     public void initialize() {
         m_Hang.setHangMode(HangControlType.PID);
-        m_Hang.setPosition(m_position);
+        m_Hang.setTargetPosition(m_position);
         // runs when the command is FIRST STARTED
     }
 

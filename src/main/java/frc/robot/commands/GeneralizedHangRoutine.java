@@ -37,6 +37,8 @@ public class GeneralizedHangRoutine extends Command {
 
     public void initialize() {
         this.angleToTurn = getAngle(drivetrain.getPose()); 
+
+        this.hang.setTargetPosition(Constants.HangConstants.kHangMaxUp);
     }
 
     public void execute() {
@@ -56,7 +58,7 @@ public class GeneralizedHangRoutine extends Command {
     }
 
     public void end(boolean interrupted) {
-
+        this.hang.setTargetPosition(Constants.HangConstants.kHangInitial);
     }
 
 

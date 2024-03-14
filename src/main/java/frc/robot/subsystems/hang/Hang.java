@@ -99,7 +99,7 @@ public class Hang extends SubsystemBase {
         return m_HangEncoder.getPosition();
     }
 
-    public void setPosition(double targetPosition) {
+    public void setTargetPosition(double targetPosition) {
         this.m_targetPosition = targetPosition;
     }
 
