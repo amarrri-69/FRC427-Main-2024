@@ -85,7 +85,7 @@ public class RobotContainer {
   private void configureBindings() {
     // --- Driver ---
 
-    driverController.a().onTrue(new InstantCommand(() -> {
+    driverController.b().onTrue(new InstantCommand(() -> {
       Optional<Alliance> alliance = DriverStation.getAlliance(); 
 
       if (alliance.isEmpty()) return; 
@@ -105,7 +105,7 @@ public class RobotContainer {
       }));
 
       manipulatorController.rightBumper()
-      .whileTrue(Commands.parallel(OuttakeToSpeaker.revAndIndex(intake, Constants.IntakeConstants.kShootSpeed), new GoToAngle(arm, 40)))
+      .whileTrue(Commands.parallel(OuttakeToSpeaker.revAndIndex(intake, 2500), new GoToAngle(arm, 40)))
       .onFalse(
         OuttakeToSpeaker.shoot(intake, 0.5)
         .andThen(Commands.runOnce(() -> {

@@ -87,7 +87,7 @@ public final class Constants {
     public static final double kMaxAttainableRotationRadPerSecond = kMaxAttainableModuleSpeedMetersPerSecond /
     Math.hypot(kTrackWidthMeters / 2.0, kWheelBaseMeters / 2.0); // max rotation of robot
     
-    public static double kMaxSpeedMetersPerSecond = 4; // max velocity (no turning) of robot; may tune to be a fraction of the attainable module speed
+    public static double kMaxSpeedMetersPerSecond = 5; // max velocity (no turning) of robot; may tune to be a fraction of the attainable module speed
     public static double kMaxSlowSpeedMetersPerSecond = 1.0; 
     public static final double kMaxAccelerationMetersPerSecondSquared = kMaxSpeedMetersPerSecond / 0.05; // max acceleration of robot (accelerate to max speed in 1 second)
     public static double kMaxRotationRadPerSecond = 4.50; // 3.00; // max rotation speed of the robot
@@ -179,7 +179,7 @@ public final class Constants {
     public static final double kShootRevTime = 1; 
     public static final double kShootWaitTime = 0.5; 
 
-    public static final double kAmpOuttakeSpeed = 0.3;
+    public static final double kAmpOuttakeSpeed = 0.25;
     public static final int kSuckerManualSpeed = 0;
 
     public static final double kP = 0.0003;
@@ -217,7 +217,7 @@ public final class Constants {
 
     public static final double kGroundPosition = 0;
     public static final double kTravelPosition = 20;
-    public static final double kAmpPosition = 90;
+    public static final double kAmpPosition = 85;
     public static final double kSpeakerPosition = 20;
 
     public static final double kTravelSpeed = 0.5;
