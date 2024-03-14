@@ -4,6 +4,7 @@
 
 package frc.robot;
 
+import frc.robot.commands.AutoHang;
 import frc.robot.commands.AutomationCommands;
 import frc.robot.subsystems.arm.Arm;
 import frc.robot.subsystems.arm.Arm.ArmControlState;
@@ -15,6 +16,7 @@ import frc.robot.subsystems.arm.commands.GoToTravel;
 import frc.robot.subsystems.drivetrain.Drivetrain;
 import frc.robot.subsystems.drivetrain.commands.TeleOpCommand;
 import frc.robot.subsystems.hang.Hang;
+import frc.robot.subsystems.hang.commands.SetHangSpeed;
 import frc.robot.subsystems.intake.Intake;
 import frc.robot.subsystems.intake.commands.IntakeFromGround;
 import frc.robot.subsystems.intake.commands.OuttakeToAmp;
@@ -35,6 +37,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 
 public class RobotContainer {
@@ -103,6 +106,10 @@ public class RobotContainer {
       })).onFalse(Commands.runOnce(() -> {
         intake.stopSuck();
       }));
+    driverController.y()
+    .onTrue(AutomationCommands.generalizedHangCommand(driverController));
+
+
 
       manipulatorController.rightBumper()
       .whileTrue(Commands.parallel(OuttakeToSpeaker.revAndIndex(intake, 2500), new GoToAngle(arm, 40)))
@@ -170,16 +177,20 @@ public class RobotContainer {
     // --- Hang ---
 
     // Hang Up when DPAD UP
-    // manipulatorController.povUp()
-    //   .onTrue(new SetHangSpeed(hang, Constants.HangConstants.kHangSpeed)); 
+    new Trigger(() -> manipulatorController.getLeftY() >= 0.5)
+      .onTrue(new SetHangSpeed(hang, Constants.HangConstants.kHangSpeed)); 
 
-    // //Hang Down when DPAD DOWN
-    // manipulatorController.povDown()
-    //   .onTrue(new SetHangSpeed(hang, -Constants.HangConstants.kHangSpeed)); 
+    new Trigger(() -> manipulatorController.getLeftY() <= -0.5)
+      .onTrue(new SetHangSpeed(hang, -Constants.HangConstants.kHangSpeed)); 
 
-    // // Stop hang when neither is pressed
-    // manipulatorController.povDown().negate().and(manipulatorController.povUp().negate())
-    // .onTrue(new SetHangSpeed(hang, 0)); 
+
+
+    // Stop hang when neither is pressed
+    manipulatorController.povDown().negate().and(manipulatorController.povUp().negate());
+    if (manipulatorController.getLeftY() >-0.5 && manipulatorController.getLeftY() <0.5) {
+      new SetHangSpeed(hang, 0); 
+    }
+    
 
 
 
