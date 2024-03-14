@@ -100,43 +100,33 @@ public class RobotContainer {
     driverController.rightBumper()
       .onTrue(new InstantCommand(() -> driverController.setSlowMode(Mode.SLOW)))
       .onFalse(new InstantCommand(() -> driverController.setSlowMode(Mode.NORMAL))); 
-
-      manipulatorController.rightTrigger().onTrue(Commands.runOnce(() -> {
-        intake.intakeRing(-0.2);
-      })).onFalse(Commands.runOnce(() -> {
-        intake.stopSuck();
-      }));
+    
     driverController.y()
     .whileTrue(AutomationCommands.generalizedHangCommand(driverController));
 
 
+    manipulatorController.rightTrigger().onTrue(Commands.runOnce(() -> {
+      intake.intakeRing(-0.2);
+    })).onFalse(Commands.runOnce(() -> {
+      intake.stopSuck();
+    }));
 
-      manipulatorController.rightBumper()
-      .whileTrue(Commands.parallel(OuttakeToSpeaker.revAndIndex(intake, 2500), new GoToAngle(arm, 40)))
-      .onFalse(
-        OuttakeToSpeaker.shoot(intake, 0.5)
-        .andThen(Commands.runOnce(() -> {
-          arm.goToAngle(Constants.ArmConstants.kTravelPosition);
-        }))
-      ); 
+    manipulatorController.rightBumper()
+    .whileTrue(Commands.parallel(OuttakeToSpeaker.revAndIndex(intake, 2500), new GoToAngle(arm, 40)))
+    .onFalse(
+      OuttakeToSpeaker.shoot(intake, 0.5)
+      .andThen(Commands.runOnce(() -> {
+        arm.goToAngle(Constants.ArmConstants.kTravelPosition);
+      }))
+    ); 
 
-      // TODO: tune
-      // driverController.y().whileTrue(TuningCommands.tuneShooting(drivetrain, arm, intake)); 
+    // TODO: tune
+    // driverController.y().whileTrue(TuningCommands.tuneShooting(drivetrain, arm, intake)); 
 
-      // TODO: tune
-      // driverController.y().whileTrue(new TuneTurnToAngle(drivetrain)); 
+    // TODO: tune
+    // driverController.y().whileTrue(new TuneTurnToAngle(drivetrain)); 
 
-
-   //  move to setpoints
-  //  driverController.y()
-  //  .whileTrue(AutomationCommands.pathFindToAmpAndScore(arm, intake)); // move to amp & score
-
-  //  driverController.b()
-  //  .whileTrue(AutomationCommands.pathFindToSpeakerAndScore(arm, intake)); // move to speaker & score
-
-  // TODO: test
-    // driverController.leftBumper()
-    // .whileTrue(AutomationCommands.generalizedHangCommand(driverController)); 
+    driverController.a().whileTrue(AutomationCommands.pathFindToAmpAndMoveArm()); 
 
     // --- Intake --- 
 
@@ -147,26 +137,26 @@ public class RobotContainer {
         intake.stopShoot();
       }));
 
-      // hold a button to rev up, outtakes after release
-      manipulatorController.leftBumper().and(() -> arm.getArmControlState() == ArmControlState.SPEAKER)
-      .whileTrue(OuttakeToSpeaker.revAndIndex(intake))
-      .onFalse(OuttakeToSpeaker.shoot(intake, 0.5));
-      
-     // intake
-     manipulatorController.leftBumper().and(() -> arm.getArmControlState() == ArmControlState.GROUND)
-      .whileTrue(new IntakeFromGround(intake));
+    // hold a button to rev up, outtakes after release
+    manipulatorController.leftBumper().and(() -> arm.getArmControlState() == ArmControlState.SPEAKER)
+    .whileTrue(OuttakeToSpeaker.revAndIndex(intake))
+    .onFalse(OuttakeToSpeaker.shoot(intake, 0.5));
+    
+    // intake
+    manipulatorController.leftBumper().and(() -> arm.getArmControlState() == ArmControlState.GROUND)
+    .whileTrue(new IntakeFromGround(intake));
 
-      driverController.rightTrigger()
-      .whileTrue(AutomationCommands.autoIntakeCommand()); // intake from ground auto
+    driverController.rightTrigger()
+    .whileTrue(AutomationCommands.autoIntakeCommand()); // intake from ground auto
 
-      driverController.x()
-      .whileTrue(AutomationCommands.pathFindToGamePiece(driverController)); 
+    driverController.x()
+    .whileTrue(AutomationCommands.pathFindToGamePiece(driverController)); 
 
-      driverController.b()
-      .whileTrue(AutomationCommands.pathFindToAmpAndMoveArm());
+    driverController.b()
+    .whileTrue(AutomationCommands.pathFindToAmpAndMoveArm());
 
-      driverController.leftTrigger()
-      .whileTrue(AutomationCommands.generalizedReleaseCommand(driverController));
+    driverController.leftTrigger()
+    .whileTrue(AutomationCommands.generalizedReleaseCommand(driverController));
 
 
 

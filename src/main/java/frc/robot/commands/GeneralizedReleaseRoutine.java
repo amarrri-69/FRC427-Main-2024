@@ -43,7 +43,7 @@ public class GeneralizedReleaseRoutine extends Command {
     public void initialize() {
         timer.reset();
         timer.start();
-        CommandScheduler.getInstance().schedule(SetShooterSpeed.revAndIndex(intake, Constants.IntakeConstants.kShootSpeed));
+        CommandScheduler.getInstance().schedule(SetShooterSpeed.indexNote(intake));
         this.optAlliance = DriverStation.getAlliance();
     }
 
@@ -58,10 +58,12 @@ public class GeneralizedReleaseRoutine extends Command {
 
         if (!restrictedFromShooting) {
             arm.goToAngle(results.getArmAngleDeg());
-        }
-        else {
+        } else {
             arm.goToAngle(Constants.ArmConstants.kTravelPosition);
         }
+
+        intake.outtakeRing(results.getOuttakeSpeed());
+
         ChassisState speeds = driverController.getDesiredChassisState(); 
         speeds.omegaRadians = Math.toRadians(results.getDriveAngleDeg());
         speeds.turn = true;
