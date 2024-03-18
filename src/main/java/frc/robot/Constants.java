@@ -175,17 +175,17 @@ public final class Constants {
     public static final double kSuckerIntakeSpeed = 0.75;
 
     public static final double kShootSpeed = 5600; 
-    public static final double kShootSuckerSpeed = 0.55; 
+    public static final double kShootSuckerSpeed = 0.4; 
     public static final double kShootRevTime = 1; 
     public static final double kShootWaitTime = 0.5; 
 
     public static final double kAmpOuttakeSpeed = 0.25;
     public static final int kSuckerManualSpeed = 0;
 
-    public static final double kP = 0.0003;
+    public static final double kP = 0.000030;
     public static final double kI = 0;
     public static final double kD = 0;
-    public static final double kFF = 0.000215;
+    public static final double kFF = 0.0002025 * 31.25 / 35.0;
     public static final double kTolerance = 50; 
  
   }
@@ -213,7 +213,7 @@ public final class Constants {
     public static final double kRelativeVelocityConversionFactor = kRelativePositionConversionFactor / 60; 
 
 
-    public static final double kTolerance = 2;
+    public static final double kTolerance = 0.5;
 
     public static final double kGroundPosition = 0;
     public static final double kTravelPosition = 20;
@@ -321,22 +321,25 @@ public final class Constants {
     static {
       // armInterpolationMap.put(0, 0); 
       // armInterpolationMap.put(dist, angle);
-      armInterpolationMap.put(1.37154,19.0);
-      armInterpolationMap.put(2.0046,27.0);
-      armInterpolationMap.put(2.37813, 33.0);
-      armInterpolationMap.put(2.9402, 35.0);
-      armInterpolationMap.put(3.5022, 38.0);
-      armInterpolationMap.put(3.8638, 39.0);
+      // armInterpolationMap.put(0.91, 17.0);
+      // armInterpolationMap.put(1.37154,19.0);
+      // armInterpolationMap.put(2.0046,27.0);
+      // armInterpolationMap.put(2.37813, 30.5);
+      // armInterpolationMap.put(2.5268, 32.2);
+      // armInterpolationMap.put(2.9402, 33.5);
+      // armInterpolationMap.put(3.5022, 38.0);
+      // armInterpolationMap.put(3.8638, 39.0);
 
-      flywheelInterpolationMap.put(1.1769, 2600.0);
-      flywheelInterpolationMap.put(1.4206, 2700.0);
-      flywheelInterpolationMap.put(1.6509, 2750.0);
-      flywheelInterpolationMap.put(1.7909, 2775.0);
-      flywheelInterpolationMap.put(1.9566, 2790.0);
-      flywheelInterpolationMap.put(2.2225, 2800.0);
-      flywheelInterpolationMap.put(2.5153, 3200.0);
-      flywheelInterpolationMap.put(2.7, 5600.0);
+      // flywheelInterpolationMap.put(1.1769, 2600.0); // 3100
+      // flywheelInterpolationMap.put(1.4206, 2700.0); // 3300
+      // flywheelInterpolationMap.put(1.6509, 2750.0); // 3400
+      // flywheelInterpolationMap.put(1.7909, 2775.0); // 3500
+      // flywheelInterpolationMap.put(1.9566, 2790.0); // 3600
+      // flywheelInterpolationMap.put(2.2225, 2800.0); // 3650
+      // flywheelInterpolationMap.put(2.5153, 3200.0); // 3700
+      // flywheelInterpolationMap.put(2.7, 5600.0);
 
+      //OLD
       // 1.1769, 2600
       // 1.4206, 2700
       // 1.6509,2750
@@ -345,12 +348,39 @@ public final class Constants {
       // 2.2225,2800
       // 2.5153, 3200
       //
-      //
-      //
-      //
-      //
+      //NEW
+      //1.0519,2400
+      //1.219,2400
+      //1.432,2400
+      //1.695,2500
+      //1.93,2500
+      //2.18,2600
+      //2.31,2600
+      //2.5268,2900
 
+      armInterpolationMap.put(1.160310, 17.0);
+      armInterpolationMap.put(1.324259, 18.0);
+      armInterpolationMap.put(1.528990, 20.5);
+      armInterpolationMap.put(1.764248, 24.5);
+      armInterpolationMap.put(1.961984, 26.5);
+      armInterpolationMap.put(2.242998, 30.0);
+      armInterpolationMap.put(2.545966, 34.0);
+      armInterpolationMap.put(2.8188528, 34.9);
+      armInterpolationMap.put(3.189439307, 37.95);
+      armInterpolationMap.put(3.461469, 38.27175);
+      armInterpolationMap.put(3.698021, 39.13);
 
+      flywheelInterpolationMap.put(1.160310, 2500.0);
+      flywheelInterpolationMap.put(1.324259, 2500.0);
+      flywheelInterpolationMap.put(1.528990, 2600.0);
+      flywheelInterpolationMap.put(1.764248, 2600.0);
+      flywheelInterpolationMap.put(1.961984, 2700.0);
+      flywheelInterpolationMap.put(2.242998, 2800.0);
+      flywheelInterpolationMap.put(2.545966, 2900.0);
+      flywheelInterpolationMap.put(2.8188528, 3100.0);
+      flywheelInterpolationMap.put(3.189439307, 3380.0);
+      flywheelInterpolationMap.put(3.461469, 3600.0);
+      flywheelInterpolationMap.put(3.698021, 4000.0);
 
     }
   }

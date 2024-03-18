@@ -12,6 +12,7 @@ import frc.robot.subsystems.drivetrain.Drivetrain;
 import frc.robot.subsystems.drivetrain.commands.TurnToAngle;
 import frc.robot.subsystems.intake.Intake;
 import frc.robot.subsystems.intake.commands.OuttakeToSpeaker;
+import frc.robot.subsystems.intake.commands.SetShooterSpeed;
 import frc.robot.util.IOUtils;
 
 public class TuningCommands {
@@ -35,7 +36,8 @@ public class TuningCommands {
             Commands.runOnce(() -> {
               drivetrain.swerveDrive(new ChassisSpeeds(), false);
             }),
-            OuttakeToSpeaker.revAndIndex(intake, speed).withTimeout(5),
+            SetShooterSpeed.indexNote(intake),
+            OuttakeToSpeaker.revAndIndex(intake, speed), 
             OuttakeToSpeaker.shoot(intake)
         ).finallyDo(() -> {
           intake.stopShoot();
