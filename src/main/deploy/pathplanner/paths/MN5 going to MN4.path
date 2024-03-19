@@ -3,34 +3,52 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 7.797038952473896,
-        "y": 5.740335089692736
+        "x": 7.766176935862645,
+        "y": 0.7715504152812825
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.5995317971939915,
-        "y": 5.9407675546040375
+        "x": 7.529568141843051,
+        "y": 2.417524634548016
       },
       "isLocked": false,
-      "linkedName": "Middle Note 2"
+      "linkedName": "Middle Note 5"
     },
     {
       "anchor": {
-        "x": 3.599804693343723,
-        "y": 5.976943883712329
+        "x": 7.786751613603477,
+        "y": 2.4072372956775996
       },
       "prevControl": {
-        "x": 4.3404930920137526,
-        "y": 6.640306597792399
+        "x": 7.766176935862642,
+        "y": 2.3716009084811174
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Middle 2 Back"
+      "linkedName": "Middle Note 4"
     }
   ],
   "rotationTargets": [],
   "constraintZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "New Event Marker",
+      "waypointRelativePos": 0.3,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "IntakeGround"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 2.25,

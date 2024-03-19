@@ -1,0 +1,70 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 0.6987751318861041,
+        "y": 4.4544177308906
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 1.501187563778637,
+        "y": 3.045052305643458
+      },
+      "isLocked": false,
+      "linkedName": "Speaker 3"
+    },
+    {
+      "anchor": {
+        "x": 7.766176935862645,
+        "y": 0.7715504152812825
+      },
+      "prevControl": {
+        "x": 6.850603776395523,
+        "y": 0.740688398670031
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "Middle Note 5"
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "eventMarkers": [
+    {
+      "name": "New Event Marker",
+      "waypointRelativePos": 1,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "IntakeGround"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 4.0,
+    "maxAcceleration": 4.0,
+    "maxAngularVelocity": 120.0,
+    "maxAngularAcceleration": 120.0
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 0,
+    "rotateFast": true
+  },
+  "reversed": false,
+  "folder": "Note Middle",
+  "previewStartingState": {
+    "rotation": -60.0,
+    "velocity": 0
+  },
+  "useDefaultConstraints": true
+}
