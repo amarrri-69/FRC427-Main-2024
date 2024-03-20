@@ -192,11 +192,11 @@ public final class Constants {
 
   public class ArmConstants {
     public static final int kLimitSwitchId = 1;
-    public static final int kArmMotorRightId = 13;
-    public static final int kArmMotorLeftId = 14;
+    public static final int kArmMotorRightId = 14;
+    public static final int kArmMotorLeftId = 13;
 
-    public static final boolean kRightMotorInverted = false;
-    public static final boolean kLeftMotorInverted = true; 
+    public static final boolean kRightMotorInverted = true;
+    public static final boolean kLeftMotorInverted = false; 
 
     public static final int kMotorCurrentLimit = 40;
     

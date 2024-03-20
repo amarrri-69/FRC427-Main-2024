@@ -61,7 +61,7 @@ public class RobotContainer {
   private final FrontVision frontVision = FrontVision.getInstance(); 
 
   // hang mechanism of robot
-  private final Hang hang = Hang.getInstance();
+  // private final Hang hang = Hang.getInstance();
   
   // arm of the robot
   private final Arm arm = Arm.getInstance();
@@ -169,19 +169,19 @@ public class RobotContainer {
     // --- Hang ---
 
     // Hang Up when DPAD UP
-    new Trigger(() -> manipulatorController.getLeftY() >= 0.5)
-      .onTrue(new SetHangSpeed(hang, Constants.HangConstants.kHangSpeed)); 
+    // new Trigger(() -> manipulatorController.getLeftY() >= 0.5)
+    //   .onTrue(new SetHangSpeed(hang, Constants.HangConstants.kHangSpeed)); 
 
-    new Trigger(() -> manipulatorController.getLeftY() <= -0.5)
-      .onTrue(new SetHangSpeed(hang, -Constants.HangConstants.kHangSpeed)); 
+    // new Trigger(() -> manipulatorController.getLeftY() <= -0.5)
+    //   .onTrue(new SetHangSpeed(hang, -Constants.HangConstants.kHangSpeed)); 
 
 
 
     // Stop hang when neither is pressed
-    new Trigger(() -> 
-      manipulatorController.getLeftY() < 0.5 && 
-      manipulatorController.getLeftY() > -0.5)
-    .onTrue(new SetHangSpeed(hang, 0)); 
+    // new Trigger(() -> 
+    //   manipulatorController.getLeftY() < 0.5 && 
+    //   manipulatorController.getLeftY() > -0.5)
+    // .onTrue(new SetHangSpeed(hang, 0)); 
     
 
 

@@ -36,8 +36,8 @@ public class Arm extends SubsystemBase {
     private CANSparkMax m_armMotorLeft = new CANSparkMax(Constants.ArmConstants.kArmMotorLeftId, MotorType.kBrushless);
 
     // encoder from the right motor
-    private AbsoluteEncoder m_armAbsoluteEncoder = m_armMotorRight.getAbsoluteEncoder(Type.kDutyCycle);
-    private RelativeEncoder m_armRelativeEncoder = m_armMotorRight.getEncoder();
+    private AbsoluteEncoder m_armAbsoluteEncoder = m_armMotorLeft.getAbsoluteEncoder(Type.kDutyCycle);
+    private RelativeEncoder m_armRelativeEncoder = m_armMotorLeft.getEncoder();
     
     private PIDController m_armPIDController = new PIDController(Constants.ArmConstants.kP, Constants.ArmConstants.kI, Constants.ArmConstants.kD);
     
@@ -64,7 +64,7 @@ public class Arm extends SubsystemBase {
         m_armMotorLeft.setSmartCurrentLimit(Constants.ArmConstants.kMotorCurrentLimit);
         
         // left arm motor would follow right arm  motor's voltage intake 
-        m_armMotorLeft.follow(m_armMotorRight, Constants.ArmConstants.kLeftMotorInverted);
+        m_armMotorRight.follow(m_armMotorLeft, Constants.ArmConstants.kRightMotorInverted);
 
         m_armMotorLeft.burnFlash(); 
         m_armMotorRight.burnFlash();
