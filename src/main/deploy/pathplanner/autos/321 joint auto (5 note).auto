@@ -24,21 +24,65 @@
           }
         },
         {
-          "type": "path",
+          "type": "parallel",
           "data": {
-            "pathName": "MN5 going to MN4"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "MN4 to MN3 (short)"
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "MN5 back"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "RevOut"
+                }
+              }
+            ]
           }
         },
         {
           "type": "named",
           "data": {
             "name": "Shoot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "MN5 going to MN4"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "MN4 back"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "RevOut"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Shoot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "MN4 to MN3 (short)"
           }
         },
         {
@@ -104,9 +148,28 @@
           }
         },
         {
-          "type": "path",
+          "type": "parallel",
           "data": {
-            "pathName": "MN1 back"
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "MN1 back"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "RevOut"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Shoot"
           }
         }
       ]

@@ -3,16 +3,16 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 7.786751613603477,
-        "y": 2.4072372956775996
+        "x": 6.8197417597842716,
+        "y": 4.0429241760739165
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.725027580380975,
-        "y": 2.4689613289001016
+        "x": 6.907032724691901,
+        "y": 4.0429241760739165
       },
       "isLocked": false,
-      "linkedName": "Middle Note 4"
+      "linkedName": "MN4 back"
     },
     {
       "anchor": {
@@ -20,8 +20,8 @@
         "y": 4.0429241760739165
       },
       "prevControl": {
-        "x": 7.056350553803865,
-        "y": 3.7857407043134885
+        "x": 7.128361925896784,
+        "y": 4.032636837203499
       },
       "nextControl": null,
       "isLocked": false,
@@ -32,20 +32,20 @@
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 3.0,
-    "maxAcceleration": 2.25,
+    "maxVelocity": 3.5,
+    "maxAcceleration": 3.5,
     "maxAngularVelocity": 360.0,
     "maxAngularAcceleration": 300.0
   },
   "goalEndState": {
     "velocity": 0,
     "rotation": 0,
-    "rotateFast": false
+    "rotateFast": true
   },
   "reversed": false,
   "folder": "Middle Back",
   "previewStartingState": {
-    "rotation": 0,
+    "rotation": -30.0,
     "velocity": 0
   },
   "useDefaultConstraints": true

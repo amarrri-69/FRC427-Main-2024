@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 6.346524171745086,
-        "y": 5.874070495008159
+        "x": 6.8608911152659395,
+        "y": 5.915219850489826
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.572845626894262,
-        "y": 5.966656544841913
+        "x": 7.159223942508036,
+        "y": 5.894645172748992
       },
       "isLocked": false,
       "linkedName": "MN3 going back"
@@ -50,8 +50,8 @@
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 3.0,
-    "maxAcceleration": 2.25,
+    "maxVelocity": 3.5,
+    "maxAcceleration": 3.5,
     "maxAngularVelocity": 360.0,
     "maxAngularAcceleration": 300.0
   },

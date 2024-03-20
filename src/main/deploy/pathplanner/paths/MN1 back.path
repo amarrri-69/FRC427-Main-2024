@@ -8,20 +8,20 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.622154191676804,
-        "y": 7.386309308959469
+        "x": 7.5398554807134675,
+        "y": 7.45832068105239
       },
       "isLocked": false,
       "linkedName": "Middle Note 1"
     },
     {
       "anchor": {
-        "x": 6.2230761053000805,
-        "y": 7.180562531551129
+        "x": 6.881465793006774,
+        "y": 7.468608019922806
       },
       "prevControl": {
-        "x": 7.004913859451779,
-        "y": 7.231999225903213
+        "x": 7.200373297989704,
+        "y": 7.437746003311556
       },
       "nextControl": null,
       "isLocked": false,
@@ -32,14 +32,14 @@
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 3.0,
-    "maxAcceleration": 2.25,
+    "maxVelocity": 3.5,
+    "maxAcceleration": 3.5,
     "maxAngularVelocity": 360.0,
     "maxAngularAcceleration": 300.0
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0,
+    "rotation": 10.0,
     "rotateFast": false
   },
   "reversed": false,
