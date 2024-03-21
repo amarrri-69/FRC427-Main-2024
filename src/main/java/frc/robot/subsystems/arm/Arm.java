@@ -58,12 +58,12 @@ public class Arm extends SubsystemBase {
         m_armMotorRight.setIdleMode(IdleMode.kBrake);
         m_armMotorLeft.setIdleMode(IdleMode.kBrake);
 
-        m_armMotorRight.setInverted(Constants.ArmConstants.kRightMotorInverted);
+        m_armMotorLeft.setInverted(Constants.ArmConstants.kLeftMotorInverted);
         
         m_armMotorRight.setSmartCurrentLimit(Constants.ArmConstants.kMotorCurrentLimit);
         m_armMotorLeft.setSmartCurrentLimit(Constants.ArmConstants.kMotorCurrentLimit);
         
-        // left arm motor would follow right arm  motor's voltage intake 
+        // right arm motor would follow left arm motor's voltage 
         m_armMotorRight.follow(m_armMotorLeft, Constants.ArmConstants.kRightMotorInverted);
 
         m_armMotorLeft.burnFlash(); 
@@ -79,7 +79,6 @@ public class Arm extends SubsystemBase {
         m_armRelativeEncoder.setPositionConversionFactor(Constants.ArmConstants.kRelativePositionConversionFactor); 
         m_armRelativeEncoder.setVelocityConversionFactor(Constants.ArmConstants.kRelativeVelocityConversionFactor); 
         
-        m_armMotorRight.setPeriodicFramePeriod(PeriodicFrame.kStatus5, 200);
         // in tina we trust
         // m_armRelativeEncoder.setPosition(m_armEncoderRight.getPosition());
     }
@@ -114,7 +113,7 @@ public class Arm extends SubsystemBase {
         boolean passForwardSoftLimit = forwardSoftLimit() && impendingVelocity > 0;
 
         // if (!passReverseSoftLimit && !passForwardSoftLimit) {
-            m_armMotorRight.set(impendingVelocity); 
+            m_armMotorLeft.set(impendingVelocity); 
         // }
 
         SmartDashboard.putNumber("Impending Velocity (m/s)", impendingVelocity);
