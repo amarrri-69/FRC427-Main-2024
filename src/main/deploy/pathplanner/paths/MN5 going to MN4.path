@@ -3,16 +3,16 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 7.766176935862645,
-        "y": 0.7715504152812825
+        "x": 6.8300290986546885,
+        "y": 2.304363906973428
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.529568141843051,
-        "y": 2.417524634548016
+        "x": 7.210660636860121,
+        "y": 2.355800601325514
       },
       "isLocked": false,
-      "linkedName": "Middle Note 5"
+      "linkedName": "MN5 back"
     },
     {
       "anchor": {
@@ -50,18 +50,21 @@
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 3.0,
-    "maxAcceleration": 2.25,
+    "maxVelocity": 3.5,
+    "maxAcceleration": 3.5,
     "maxAngularVelocity": 360.0,
     "maxAngularAcceleration": 300.0
   },
   "goalEndState": {
     "velocity": 0,
     "rotation": 0,
-    "rotateFast": false
+    "rotateFast": true
   },
   "reversed": false,
   "folder": "Middle Back",
-  "previewStartingState": null,
+  "previewStartingState": {
+    "rotation": -50.0,
+    "velocity": 0
+  },
   "useDefaultConstraints": true
 }

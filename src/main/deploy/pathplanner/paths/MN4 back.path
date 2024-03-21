@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.281268050080585,
-        "y": 4.051088149625884
+        "x": 7.786751613603477,
+        "y": 2.4072372956775996
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.73592926070787,
-        "y": 4.051088149625884
+        "x": 7.807326291344312,
+        "y": 2.442873682874082
       },
       "isLocked": false,
-      "linkedName": "Note 3"
+      "linkedName": "Middle Note 4"
     },
     {
       "anchor": {
-        "x": 0.6987751318861041,
-        "y": 4.4544177308906
+        "x": 6.8197417597842716,
+        "y": 4.0429241760739165
       },
       "prevControl": {
-        "x": 0.729344668982161,
-        "y": 4.465544132468861
+        "x": 7.118074587026367,
+        "y": 4.022349498327938
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Speaker 3"
+      "linkedName": "MN4 back"
     }
   ],
   "rotationTargets": [],
@@ -33,7 +33,7 @@
   "eventMarkers": [
     {
       "name": "New Event Marker",
-      "waypointRelativePos": 0.5,
+      "waypointRelativePos": 0.0,
       "command": {
         "type": "parallel",
         "data": {
@@ -41,7 +41,7 @@
             {
               "type": "named",
               "data": {
-                "name": "GoToSpeaker"
+                "name": "IntakeGround"
               }
             }
           ]
@@ -57,14 +57,11 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -60.0,
+    "rotation": -30.0,
     "rotateFast": true
   },
   "reversed": false,
-  "folder": "Speaker Note",
-  "previewStartingState": {
-    "rotation": 0.0,
-    "velocity": 0
-  },
+  "folder": "Middle Back",
+  "previewStartingState": null,
   "useDefaultConstraints": true
 }
