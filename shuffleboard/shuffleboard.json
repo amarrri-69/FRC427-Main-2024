@@ -1693,18 +1693,11 @@
               3
             ],
             "content": {
-              "_type": "Graph",
+              "_type": "Text View",
               "_source0": "network_table:///SmartDashboard/Shoot Top Speed (m/s)",
               "_title": "SmartDashboard/Shoot Top Speed (m/s)",
               "_glyph": 148,
-              "_showGlyph": false,
-              "Graph/Visible time": 30.0,
-              "Graph/X-axis auto scrolling": true,
-              "Y-axis/Automatic bounds": true,
-              "Y-axis/Upper bound": 1.0,
-              "Y-axis/Lower bound": -1.0,
-              "Y-axis/Unit": "ul",
-              "Visible data/SmartDashboard/Shoot Top Speed (m/s)": true
+              "_showGlyph": false
             }
           },
           "6,0": {
@@ -1746,6 +1739,19 @@
               "_showGlyph": false,
               "Colors/Color when true": "#7CFC00FF",
               "Colors/Color when false": "#8B0000FF"
+            }
+          },
+          "4,2": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Indexer Current",
+              "_title": "SmartDashboard/Indexer Current",
+              "_glyph": 148,
+              "_showGlyph": false
             }
           }
         }
