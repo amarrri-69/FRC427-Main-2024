@@ -196,7 +196,7 @@ public final class Constants {
     public static final int kArmMotorLeftId = 13;
 
     public static final boolean kRightMotorInverted = true;
-    public static final boolean kLeftMotorInverted = false; 
+    public static final boolean kLeftMotorInverted = true; 
 
     public static final int kMotorCurrentLimit = 40;
     
@@ -361,29 +361,55 @@ public final class Constants {
       //2.31,2600
       //2.5268,2900
 
-      armInterpolationMap.put(1.160310, 17.0);
-      armInterpolationMap.put(1.324259, 18.0);
-      armInterpolationMap.put(1.528990, 20.5);
-      armInterpolationMap.put(1.764248, 24.5);
-      armInterpolationMap.put(1.961984, 26.5);
-      armInterpolationMap.put(2.242998, 30.0);
-      armInterpolationMap.put(2.545966, 34.0);
-      armInterpolationMap.put(2.8188528, 34.9);
-      armInterpolationMap.put(3.189439307, 37.95);
-      armInterpolationMap.put(3.461469, 38.27175);
-      armInterpolationMap.put(3.698021, 39.13);
+      // double kArmAdjust = 0; // -1.25; 
 
-      flywheelInterpolationMap.put(1.160310, 2500.0);
-      flywheelInterpolationMap.put(1.324259, 2500.0);
-      flywheelInterpolationMap.put(1.528990, 2600.0);
-      flywheelInterpolationMap.put(1.764248, 2600.0);
-      flywheelInterpolationMap.put(1.961984, 2700.0);
-      flywheelInterpolationMap.put(2.242998, 2800.0);
-      flywheelInterpolationMap.put(2.545966, 2900.0);
-      flywheelInterpolationMap.put(2.8188528, 3100.0);
-      flywheelInterpolationMap.put(3.189439307, 3380.0);
-      flywheelInterpolationMap.put(3.461469, 3600.0);
-      flywheelInterpolationMap.put(3.698021, 4000.0);
+      // armInterpolationMap.put(1.160310, 17.0 + kArmAdjust);
+      // armInterpolationMap.put(1.324259, 18.0 + kArmAdjust);
+      // armInterpolationMap.put(1.528990, 20.5 + kArmAdjust);
+      // armInterpolationMap.put(1.764248, 24.5 + kArmAdjust);
+      // armInterpolationMap.put(1.961984, 26.5 + kArmAdjust);
+      // armInterpolationMap.put(2.242998, 30.0 + kArmAdjust);
+      // armInterpolationMap.put(2.545966, 34.0 + kArmAdjust);
+      // armInterpolationMap.put(2.8188528, 34.9 + kArmAdjust);
+      // armInterpolationMap.put(3.189439307, 37.95 + kArmAdjust);
+      // armInterpolationMap.put(3.461469, 38.27175 + kArmAdjust);
+      // armInterpolationMap.put(3.698021, 39.13 + kArmAdjust);
+
+      // double kFlywheelAdjust = 0; // -50; 
+
+      // flywheelInterpolationMap.put(1.160310, 2500.0 + kFlywheelAdjust);
+      // flywheelInterpolationMap.put(1.324259, 2500.0 + kFlywheelAdjust);
+      // flywheelInterpolationMap.put(1.528990, 2600.0 + kFlywheelAdjust);
+      // flywheelInterpolationMap.put(1.764248, 2600.0 + kFlywheelAdjust);
+      // flywheelInterpolationMap.put(1.961984, 2700.0 + kFlywheelAdjust);
+      // flywheelInterpolationMap.put(2.242998, 2800.0 + kFlywheelAdjust);
+      // flywheelInterpolationMap.put(2.545966, 2900.0 + kFlywheelAdjust);
+      // flywheelInterpolationMap.put(2.8188528, 3100.0 + kFlywheelAdjust);
+      // flywheelInterpolationMap.put(3.189439307, 3380.0 + kFlywheelAdjust);
+      // flywheelInterpolationMap.put(3.461469, 3600.0 + kFlywheelAdjust);
+      // flywheelInterpolationMap.put(3.698021, 4000.0 + kFlywheelAdjust);
+
+      armInterpolationMap.put(1.0, 16.5);
+      armInterpolationMap.put(1.261146, 17.0);
+      armInterpolationMap.put(1.555493, 22.5);
+      armInterpolationMap.put(1.749017, 25.0);
+      armInterpolationMap.put(1.945373, 30.0);
+      armInterpolationMap.put(2.68227, 32.5);
+      armInterpolationMap.put(2.533997, 36.0);
+      armInterpolationMap.put(2.85052, 36.9);
+      armInterpolationMap.put(2.98085, 40.5);
+      armInterpolationMap.put(3.222661, 41.3);
+
+      flywheelInterpolationMap.put(1.0, 2400.0);
+      flywheelInterpolationMap.put(1.261146, 2400.0);
+      flywheelInterpolationMap.put(1.555493, 2400.0);
+      flywheelInterpolationMap.put(1.749017, 2500.0);
+      flywheelInterpolationMap.put(1.945373, 2600.0);
+      flywheelInterpolationMap.put(2.68227, 2800.0);
+      flywheelInterpolationMap.put(2.533997, 2800.0);
+      flywheelInterpolationMap.put(2.85052, 2800.00);
+      flywheelInterpolationMap.put(2.98085, 3200.0);
+      flywheelInterpolationMap.put(3.222661, 3200.0);
 
     }
   }

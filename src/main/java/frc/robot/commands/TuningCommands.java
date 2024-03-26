@@ -23,11 +23,15 @@ public class TuningCommands {
         boolean usePresetSpeed = IOUtils.getBoolean("TuneShooting/Use Preset Speed"); 
 
         ShootAnywhereResult res = ShootAnywhere.getShootValues(drivetrain.getPose());
+
+        
+        if (res == null) return Commands.none();
+
+        IOUtils.set("TuneShooting/Preset Angle", res.getArmAngleDeg()); 
+        IOUtils.set("TuneShooting/Preset Speed", res.getOuttakeSpeed()); 
         
         double angle = usePresetAngle ? res.getArmAngleDeg() : IOUtils.getNumber("TuneShooting/Desired Angle"); 
         double speed = usePresetSpeed ? res.getOuttakeSpeed() : IOUtils.getNumber("TuneShooting/Desired Speed");
-
-        if (res == null) return Commands.none();
         TurnToAngle turnToAngle = new TurnToAngle(drivetrain, res.getDriveAngleDeg());
 
         return Commands.sequence(

@@ -117,5 +117,6 @@ public class Intake extends SubsystemBase {
         SmartDashboard.putNumber("Outtake Desired Speed", m_desireSpeed); 
         SmartDashboard.putBoolean("Shoot At Desired Speed", atDesiredShootSpeed()); 
         SmartDashboard.putBoolean("Beam Break Hit (t/f)", beamBreakHit());
+        SmartDashboard.putNumber("Indexer Current", m_outtakeMotorSuck.getOutputCurrent());
     }
 }

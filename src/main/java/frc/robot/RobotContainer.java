@@ -123,7 +123,7 @@ public class RobotContainer {
     ); 
 
     // TODO: tune
-    // driverController.y().whileTrue(TuningCommands.tuneShooting(drivetrain, arm, intake)); 
+    driverController.y().whileTrue(TuningCommands.tuneShooting(drivetrain, arm, intake)); 
 
     // TODO: tune
     // driverController.y().whileTrue(new TuneTurnToAngle(drivetrain)); 
@@ -189,7 +189,7 @@ public class RobotContainer {
 
     // TESTING
     // driverController.y().onTrue(Commands.runOnce(() -> hang.setSpeed(0.6))).onFalse(Commands.runOnce(() -> hang.setSpeed(0)));
-    driverController.y().onTrue(Commands.runOnce(() -> arm.setSpeed(0.4))).onFalse(Commands.runOnce(() -> arm.setSpeed(0)));  
+    // driverController.y().onTrue(Commands.runOnce(() -> arm.setSpeed(0.1))).onFalse(Commands.runOnce(() -> arm.setSpeed(0)));  
     // driverController.b().onTrue(Commands.runOnce(() -> hang.setSpeed(-0.6))).onFalse(Commands.runOnce(() -> hang.setSpeed(0)));
     // driverController.y().onTrue(Commands.runOnce(() -> hang.setSpeed(0.))).onFalse(Commands.runOnce(() -> hang.setSpeed(0))); 
     // driverController.x().onTrue(new SetVelocity(arm, -0.4)).onFalse(new SetVelocity(arm, 0));
