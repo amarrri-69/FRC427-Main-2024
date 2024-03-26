@@ -148,8 +148,8 @@ public final class Constants {
     public static final double kMaxVelocityMetersPerSecond = 3; 
     public static final double kMaxAccelerationMetersPerSecondSquared = 2.5; 
 
-    public static final double kMaxAngularVelocityRadiansPerSecond = Units.degreesToRadians(120); 
-    public static final double kMaxAngularAccelerationRadiansPerSecondSquared = Units.degreesToRadians(120); 
+    public static final double kMaxAngularVelocityRadiansPerSecond = Units.degreesToRadians(360); 
+    public static final double kMaxAngularAccelerationRadiansPerSecondSquared = Units.degreesToRadians(360); 
   }
 
   public static class IntakeConstants {
@@ -281,6 +281,9 @@ public final class Constants {
     public static final OrderedPair kBlueAllianceRightSpeakerCoordinate = new OrderedPair(0, 0);
     public static final OrderedPair kRedAllianceLeftSpeakerCoordinate = new OrderedPair(0, 0);
     public static final OrderedPair kRedAllianceRightSpeakerCoordinate = new OrderedPair(0, 0);
+
+    public static final double kFrontPitchDegrees = -10; 
+    public static final double kCameraHeightMeters = 0.25; 
     
     static {
       kAprilTagFieldLayout.setOrigin(OriginPosition.kBlueAllianceWallRightSide);

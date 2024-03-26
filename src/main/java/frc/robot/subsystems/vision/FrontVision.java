@@ -3,8 +3,12 @@ package frc.robot.subsystems.vision;
 import org.photonvision.PhotonCamera;
 import org.photonvision.targeting.PhotonPipelineResult;
 
+import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.math.geometry.Transform2d;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 
 // Figures out which game pieces are near
 public class FrontVision extends SubsystemBase {
@@ -34,7 +38,7 @@ public class FrontVision extends SubsystemBase {
         if (this.latestResult.hasTargets()) lastSuccessfulResult = latestResult; 
 
         
-        SmartDashboard.putNumber("Target Yaw",getNoteRotation());
+        SmartDashboard.putNumber("Target Yaw",getNoteYaw());
     }
 
     public static FrontVision getInstance() {
@@ -49,9 +53,42 @@ public class FrontVision extends SubsystemBase {
         return this.lastSuccessfulResult;
     }
 
-    public double getNoteRotation() {
+    public double getNoteYaw() {
         if (this.latestResult == null || !this.latestResult.hasTargets()) return 0; 
-        return latestResult.getBestTarget().getYaw();
+        return -latestResult.getBestTarget().getYaw();
+    }
+
+    public double getNotePitch() {
+        if (this.latestResult == null || !this.latestResult.hasTargets()) return 0; 
+        return latestResult.getBestTarget().getPitch();
+    }
+
+    public double getCurrentNoteForwardDistance() {
+        return getNoteForwardDistance(Math.toRadians(getNoteYaw())); 
+    }
+
+    public double getCurrentNoteHorizontalDistance() {
+        return getNoteHorizontalDistance(Math.toRadians(getNotePitch()), Math.toRadians(getNoteYaw())); 
+    }
+
+    public Transform2d getNotePose() {
+        return new Transform2d(getCurrentNoteForwardDistance(), getCurrentNoteHorizontalDistance(), Rotation2d.fromDegrees(getNoteYaw())); 
+    }
+
+    public double getNoteForwardDistance(double pitch) {
+        double pitchFromHorizontal = Math.abs(pitch + Constants.Vision.kFrontPitchDegrees);
+        
+        // law of sines to determine third distance
+        double a = Constants.Vision.kCameraHeightMeters / Math.sin(pitchFromHorizontal); 
+
+        return Math.sqrt(a * a - Math.pow(Constants.Vision.kCameraHeightMeters, 2)); 
+    }
+
+    public double getNoteHorizontalDistance(double pitch, double yaw) {
+        double alpha = Math.PI / 2 - yaw; 
+        double forwardDist = getNoteForwardDistance(pitch); 
+
+        return forwardDist * Math.sin(yaw) / Math.sin(alpha); 
     }
 
 }
