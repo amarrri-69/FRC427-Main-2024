@@ -127,4 +127,23 @@ public class AutomationCommands {
       Led.getInstance().isHanging = false; 
     });
   }
+
+  public static Command pickupNote() {
+    return Commands.runOnce(() -> {
+      Led.getInstance().isMovingToNote = true; 
+    })
+    .andThen(() -> {
+      Arm.getInstance().goToAngle(30);
+    })
+    .andThen(AutomaticallyMoveToPiece.waitForVision(FrontVision.getInstance()))
+    .andThen(Commands.either(
+      AutomaticallyMoveToPiece.autoMoveToPiece(Drivetrain.getInstance(), FrontVision.getInstance()), 
+      Commands.none(), 
+      () -> FrontVision.getInstance().getLatestVisionResult().hasTargets()
+    ))
+    .finallyDo(() -> {
+      Led.getInstance().isMovingToNote = false; 
+      Arm.getInstance().goToAngle(Constants.ArmConstants.kTravelPosition);
+    }); 
+  }
 }

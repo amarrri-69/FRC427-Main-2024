@@ -5,6 +5,7 @@
 package frc.robot;
 
 import frc.robot.commands.AutoHang;
+import frc.robot.commands.AutomaticallyMoveToPiece;
 import frc.robot.commands.AutomationCommands;
 import frc.robot.commands.TuningCommands;
 import frc.robot.subsystems.arm.Arm;
