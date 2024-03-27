@@ -8,8 +8,8 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.501187563778637,
-        "y": 3.045052305643458
+        "x": 1.7476556149471196,
+        "y": 1.0355029292633349
       },
       "isLocked": false,
       "linkedName": "Speaker 3"
@@ -20,8 +20,8 @@
         "y": 0.7715504152812825
       },
       "prevControl": {
-        "x": 6.850603776395523,
-        "y": 0.740688398670031
+        "x": 6.402081152666857,
+        "y": 0.8540230344439866
       },
       "nextControl": null,
       "isLocked": false,
@@ -33,7 +33,7 @@
   "eventMarkers": [
     {
       "name": "New Event Marker",
-      "waypointRelativePos": 1,
+      "waypointRelativePos": 0.7,
       "command": {
         "type": "parallel",
         "data": {
@@ -51,7 +51,7 @@
   ],
   "globalConstraints": {
     "maxVelocity": 3.5,
-    "maxAcceleration": 3.5,
+    "maxAcceleration": 2.25,
     "maxAngularVelocity": 360.0,
     "maxAngularAcceleration": 300.0
   },

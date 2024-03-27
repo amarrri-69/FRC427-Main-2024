@@ -75,10 +75,10 @@ public final class Constants {
     // Kinematics
     public static final SwerveDriveKinematics kDriveKinematics = new SwerveDriveKinematics(
       // wheel locations relative to the center of the robot
-      new Translation2d(kTrackWidthMeters / 2, kWheelBaseMeters / 2), // front left
-      new Translation2d(kTrackWidthMeters / 2, -kWheelBaseMeters / 2), // front right
-      new Translation2d(-kTrackWidthMeters / 2, kWheelBaseMeters / 2), // back left
-      new Translation2d(-kTrackWidthMeters / 2, -kWheelBaseMeters / 2) // back right
+      new Translation2d(kWheelBaseMeters / 2, kTrackWidthMeters / 2), // front left
+      new Translation2d(kWheelBaseMeters / 2, -kTrackWidthMeters / 2), // front right
+      new Translation2d(-kWheelBaseMeters / 2, kTrackWidthMeters / 2), // back left
+      new Translation2d(-kWheelBaseMeters / 2, -kTrackWidthMeters / 2) // back right
     ); 
 
     // copied speeds (https://github.com/SwerveDriveSpecialties/swerve-template-2021-unmaintained/blob/master/src/main/java/frc/robot/subsystems/DrivetrainSubsystem.java)
@@ -87,7 +87,7 @@ public final class Constants {
     public static final double kMaxAttainableRotationRadPerSecond = kMaxAttainableModuleSpeedMetersPerSecond /
     Math.hypot(kTrackWidthMeters / 2.0, kWheelBaseMeters / 2.0); // max rotation of robot
     
-    public static double kMaxSpeedMetersPerSecond = 5; // max velocity (no turning) of robot; may tune to be a fraction of the attainable module speed
+    public static double kMaxSpeedMetersPerSecond = 4.25; // max velocity (no turning) of robot; may tune to be a fraction of the attainable module speed
     public static double kMaxSlowSpeedMetersPerSecond = 1.0; 
     public static final double kMaxAccelerationMetersPerSecondSquared = kMaxSpeedMetersPerSecond / 0.05; // max acceleration of robot (accelerate to max speed in 1 second)
     public static double kMaxRotationRadPerSecond = 4.50; // 3.00; // max rotation speed of the robot
@@ -135,7 +135,7 @@ public final class Constants {
 
   public static class Trajectory {
     // translational PID of robot for trajectory use
-    public static final double kDrive_P = 5.00; 
+    public static final double kDrive_P = 5.25; 
     public static final double kDrive_I = 0; 
     public static final double kDrive_D = 0.0005;
 
@@ -165,7 +165,7 @@ public final class Constants {
     public static int kShootBottomMotorlimit = 40;
 
     public static final boolean kSuckOuttakeInverted = false;
-    public static final int kSuckOuttakeMotorLimit = 40;
+    public static final int kSuckOuttakeMotorLimit = 60;
 
     public static final double kShootVelocityConversionFactor = 1; 
     public static final double kIntakeVelocityConversionFactor = 1; 
@@ -182,12 +182,16 @@ public final class Constants {
     public static final double kAmpOuttakeSpeed = 0.25;
     public static final int kSuckerManualSpeed = 0;
 
-    public static final double kP = 0.000030;
-    public static final double kI = 0;
-    public static final double kD = 0;
-    public static final double kFF = 0.0002025 * 31.25 / 35.0;
-    public static final double kTolerance = 50; 
- 
+    public static final double kTopP = 0.00004; // 0.000030;
+    public static final double kTopI = 0;
+    public static final double kTopD = 0;
+    public static final double kTopFF = 0.0001750357; // 0.0002025 * 31.25 / 35.0;
+    public static final double kTolerance = 100; 
+    
+    public static final double kBottomP = 0.00004; // 0.000030;
+    public static final double kBottomI = 0;
+    public static final double kBottomD = 0;
+    public static final double kBottomFF = 0.000180; // 0.0002025 * 31.25 / 35.0;
   }
 
   public class ArmConstants {
@@ -217,7 +221,7 @@ public final class Constants {
 
     public static final double kGroundPosition = 0;
     public static final double kTravelPosition = 20;
-    public static final double kAmpPosition = 85;
+    public static final double kAmpPosition = 90;
     public static final double kSpeakerPosition = 20;
 
     public static final double kTravelSpeed = 0.5;
@@ -296,8 +300,8 @@ public final class Constants {
     public static final Pose2d kRedAllianceSpeaker = new Pose2d(16.5, 5.54, new Rotation2d());
     public static final Pose2d kBlueAllianceSpeaker = new Pose2d(0, 5.54, new Rotation2d());
 
-    public static final Pose2d kRedAllianceSpeakerTarget = new Pose2d(16.5 - 0.5, 5.54, new Rotation2d()); 
-    public static final Pose2d kBlueAllianceSpeakerTarget = new Pose2d(0.5, 5.54, new Rotation2d()); 
+    public static final Pose2d kRedAllianceSpeakerTarget = new Pose2d(16.5 - 0.15, 5.54, new Rotation2d()); 
+    public static final Pose2d kBlueAllianceSpeakerTarget = new Pose2d(0.15, 5.54, new Rotation2d()); 
 
     public static final double blueShootRange = 5.87;
     public static final double redShootRange = 10.71;
@@ -386,23 +390,25 @@ public final class Constants {
       // flywheelInterpolationMap.put(3.461469, 3600.0 + kFlywheelAdjust);
       // flywheelInterpolationMap.put(3.698021, 4000.0 + kFlywheelAdjust);
 
-      armInterpolationMap.put(1.0, 16.5);
-      armInterpolationMap.put(1.261146, 17.0);
-      armInterpolationMap.put(1.555493, 22.5);
-      armInterpolationMap.put(1.749017, 25.0);
-      armInterpolationMap.put(1.945373, 30.0);
-      armInterpolationMap.put(2.68227, 32.5);
-      armInterpolationMap.put(2.533997, 36.0);
-      armInterpolationMap.put(2.85052, 36.9);
-      armInterpolationMap.put(2.98085, 40.5);
-      armInterpolationMap.put(3.222661, 41.3);
+      double kArmOffset = -4.0; 
+
+      armInterpolationMap.put(1.0, 16.5 + kArmOffset);
+      armInterpolationMap.put(1.261146, 17.0 + kArmOffset);
+      armInterpolationMap.put(1.555493, 22.5 + kArmOffset);
+      armInterpolationMap.put(1.749017, 24.0 + kArmOffset);
+      armInterpolationMap.put(1.945373, 29.0 + kArmOffset);
+      armInterpolationMap.put(2.268227, 33.0 + kArmOffset);
+      armInterpolationMap.put(2.533997, 36.0 + kArmOffset);
+      armInterpolationMap.put(2.85052, 37.5 + kArmOffset);
+      armInterpolationMap.put(2.98085, 39.0 + kArmOffset);
+      armInterpolationMap.put(3.222661, 41.3 + kArmOffset);
 
       flywheelInterpolationMap.put(1.0, 2400.0);
       flywheelInterpolationMap.put(1.261146, 2400.0);
       flywheelInterpolationMap.put(1.555493, 2400.0);
       flywheelInterpolationMap.put(1.749017, 2500.0);
       flywheelInterpolationMap.put(1.945373, 2600.0);
-      flywheelInterpolationMap.put(2.68227, 2800.0);
+      flywheelInterpolationMap.put(2.268227, 2800.0);
       flywheelInterpolationMap.put(2.533997, 2800.0);
       flywheelInterpolationMap.put(2.85052, 2800.00);
       flywheelInterpolationMap.put(2.98085, 3200.0);
@@ -417,16 +423,16 @@ public final class Constants {
     public static final Color kGold = new Color(142, 66, 0); // 142.17, 66.44
 
     public static final int kLedPort = 6; 
-    public static final int kLedLength = 40; 
+    public static final int kLedLength = 30; 
 
     public static final int kLed1Start = 0; 
-    public static final int kLed1End = 10; 
-    public static final int kLed2Start = 10; 
-    public static final int kLed2End = 17;
-    public static final int kLed3Start = 17;
-    public static final int kLed3End = 20;
-    public static final int kLed4Start = 20;
-    public static final int kLed4End = 39;
+    public static final int kLed1End = 3; 
+    public static final int kLed2Start = 3; 
+    public static final int kLed2End = 4;
+    public static final int kLed3Start = 0;
+    public static final int kLed3End = 11;
+    public static final int kLed4Start = 11;
+    public static final int kLed4End = 25;
 
     public static final class Patterns {
       public static final LEDPattern kDefault = new SolidLEDPattern(LEDs.kDefaultColor);
@@ -459,8 +465,8 @@ public final class Constants {
     public static final Pose2d speakerRed1 = new Pose2d(15.83, 6.58, Rotation2d.fromDegrees(120));
     public static final Pose2d speakerRed2 = new Pose2d(15.29, 5.48, Rotation2d.fromDegrees(180));
     public static final Pose2d speakerRed3 = new Pose2d(15.83, 4.51, Rotation2d.fromDegrees(-120));
-    public static final Pose2d ampBlue = new Pose2d(1.83, 7.7, Rotation2d.fromDegrees(-90));
-    public static final Pose2d ampRed = new Pose2d(14.7, 7.7, Rotation2d.fromDegrees(-90));
+    public static final Pose2d ampBlue = new Pose2d(1.83, 7.4, Rotation2d.fromDegrees(-90));
+    public static final Pose2d ampRed = new Pose2d(14.7, 7.4, Rotation2d.fromDegrees(-90));
   }
   public static final class AutoHang {
     public static final OrderedPair blueTopLeft1 = new OrderedPair(2.05, 5.93);

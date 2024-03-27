@@ -41,8 +41,8 @@ public class Led extends SubsystemBase {
     //public boolean isShootingToAmp = false;
     //public boolean isShootingToSpeaker = false;
 
-    private LEDStrip armLeft; 
-    private LEDStrip armRight;
+    // private LEDStrip armLeft; 
+    // private LEDStrip armRight;
     private LEDStrip hangLeft;
     private LEDStrip hangRight;
 
@@ -72,14 +72,14 @@ public class Led extends SubsystemBase {
         //Actually sets length from buffer to Leds
         this.buffer = new AddressableLEDBuffer(length); 
 
-        armLeft = new LEDStrip(buffer, Constants.LEDs.kLed1Start, Constants.LEDs.kLed1End); 
-        armRight = new LEDStrip(buffer, Constants.LEDs.kLed2Start, Constants.LEDs.kLed2End); 
+        // armLeft = new LEDStrip(buffer, Constants.LEDs.kLed1Start, Constants.LEDs.kLed1End); 
+        // armRight = new LEDStrip(buffer, Constants.LEDs.kLed2Start, Constants.LEDs.kLed2End); 
         hangRight = new LEDStrip(buffer, Constants.LEDs.kLed3Start, Constants.LEDs.kLed3End); 
         hangLeft = new LEDStrip(buffer, Constants.LEDs.kLed4Start, Constants.LEDs.kLed4End); 
 
         this.ledStrips = List.of(
-            armLeft,
-            armRight,
+            // armLeft,
+            // armRight,
             hangLeft,
             hangRight
 
@@ -111,8 +111,8 @@ public class Led extends SubsystemBase {
     }
 
     public void setArmPattern(LEDPattern pattern) {
-        armLeft.setPattern(pattern);
-        armRight.setPattern(pattern);
+        // armLeft.setPattern(pattern);
+        // armRight.setPattern(pattern);
     }
 
     public void setHangPattern(LEDPattern pattern) {
@@ -128,8 +128,8 @@ public class Led extends SubsystemBase {
         LEDPattern decidedHangPattern = LEDPattern.kEmpty;
 
     //    lower priorities
-        if (DriverStation.isEnabled()) decidedArmPattern = Constants.LEDs.Patterns.kEnabled; 
-        if (DriverStation.isDisabled()) decidedArmPattern = Constants.LEDs.Patterns.kDisabled; 
+        if (DriverStation.isEnabled()) decidedArmPattern = Constants.LEDs.Patterns.kDefault; 
+        if (DriverStation.isDisabled()) decidedArmPattern = Constants.LEDs.Patterns.kDefault; 
         if (DriverStation.isAutonomousEnabled()) decidedArmPattern = Constants.LEDs.Patterns.kAuto;
        
          if (Arm.getInstance().getArmControlState() == ArmControlState.TRAVEL) decidedHangPattern = Constants.LEDs.Patterns.kArmMoving;

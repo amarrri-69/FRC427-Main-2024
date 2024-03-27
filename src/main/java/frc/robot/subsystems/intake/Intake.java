@@ -1,5 +1,7 @@
 package frc.robot.subsystems.intake;
 
+import java.util.Set;
+
 import com.revrobotics.CANSparkBase;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
@@ -8,6 +10,8 @@ import com.revrobotics.CANSparkLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -29,7 +33,8 @@ public class Intake extends SubsystemBase {
     }
 
     // desire speed
-    private double m_desireSpeed;
+    private double m_desiredTopSpeed;
+    private double m_desiredBottomSpeed; 
     
     // establishes the motors for shooter and sucker. Also establishes the beambreak.
     CANSparkMax m_intakeMotorShootTop = new CANSparkMax(Constants.IntakeConstants.kIntakeMotorShootTopId, MotorType.kBrushless);
@@ -41,7 +46,8 @@ public class Intake extends SubsystemBase {
     CANSparkMax m_outtakeMotorSuck = new CANSparkMax(Constants.IntakeConstants.kOuttakeMotorSuckId, MotorType.kBrushless);
     RelativeEncoder m_outtakeEncoderSuck = m_outtakeMotorSuck.getEncoder();
 
-    SparkPIDController m_intakePidController = m_intakeMotorShootTop.getPIDController();
+    SparkPIDController m_outtakeTopController = m_intakeMotorShootTop.getPIDController();
+    SparkPIDController m_outtakeBottomController = m_intakeMotorShootBottom.getPIDController();
 
 
     // beambreak checks for if theres a note in the intake
@@ -62,9 +68,8 @@ public class Intake extends SubsystemBase {
 
         m_intakeMotorShootBottom.setInverted(Constants.IntakeConstants.kShootBottomIntakeInverted);
         m_intakeMotorShootBottom.setSmartCurrentLimit(Constants.IntakeConstants.kShootBottomMotorlimit);
-        m_intakeEncoderShootTop.setVelocityConversionFactor(Constants.IntakeConstants.kShootVelocityConversionFactor); 
+        m_intakeEncoderShootBottom.setVelocityConversionFactor(Constants.IntakeConstants.kShootVelocityConversionFactor); 
         m_intakeMotorShootBottom.enableVoltageCompensation(12); 
-        m_intakeMotorShootBottom.follow(m_intakeMotorShootTop);
 
         m_outtakeMotorSuck.setInverted(Constants.IntakeConstants.kSuckOuttakeInverted);
         m_outtakeMotorSuck.setSmartCurrentLimit(Constants.IntakeConstants.kSuckOuttakeMotorLimit);
@@ -72,15 +77,21 @@ public class Intake extends SubsystemBase {
     }
 
     public void setupControllers() {
-        m_intakePidController.setP(Constants.IntakeConstants.kP);
-        m_intakePidController.setI(Constants.IntakeConstants.kI);
-        m_intakePidController.setD(Constants.IntakeConstants.kD);
-        m_intakePidController.setFF(Constants.IntakeConstants.kFF);
+        m_outtakeTopController.setP(Constants.IntakeConstants.kTopP);
+        m_outtakeTopController.setI(Constants.IntakeConstants.kTopI);
+        m_outtakeTopController.setD(Constants.IntakeConstants.kTopD);
+        m_outtakeTopController.setFF(Constants.IntakeConstants.kTopFF);
+
+        m_outtakeBottomController.setP(Constants.IntakeConstants.kBottomP);
+        m_outtakeBottomController.setI(Constants.IntakeConstants.kBottomI);
+        m_outtakeBottomController.setD(Constants.IntakeConstants.kBottomD);
+        m_outtakeBottomController.setFF(Constants.IntakeConstants.kBottomFF);
     }
 
     public void periodic() {
         // code inside here will run repeatedly while the robot is on
-        m_intakePidController.setReference(m_desireSpeed, CANSparkBase.ControlType.kVelocity);
+        m_outtakeTopController.setReference(m_desiredTopSpeed, CANSparkBase.ControlType.kVelocity);
+        m_outtakeBottomController.setReference(m_desiredBottomSpeed, CANSparkBase.ControlType.kVelocity);
         doSendables();
     }
     //so intaking the ring is sucking it
@@ -90,8 +101,16 @@ public class Intake extends SubsystemBase {
     //and outtaking the ring is shooting it
     public void outtakeRing(double speed) {
         // m_intakeMotorShootTop.set(speed);
-        this.m_desireSpeed = speed;
-        
+        this.m_desiredTopSpeed = speed;
+        this.m_desiredBottomSpeed = speed + 50; 
+    }
+
+    public void outtakeTop(double speed) {
+        this.m_desiredTopSpeed = speed; 
+    }
+
+    public void outtakeBottom(double speed) {
+        this.m_desiredBottomSpeed = speed + 50; 
     }
     //beambreak is a scanner that checks if a ring is inside the whole intake
     public boolean beamBreakHit() { 
@@ -107,16 +126,56 @@ public class Intake extends SubsystemBase {
     }
 
     public boolean atDesiredShootSpeed() {
-        return (Math.abs(m_intakeEncoderShootTop.getVelocity() - m_desireSpeed) <= Constants.IntakeConstants.kTolerance); 
+        return (Math.abs(m_intakeEncoderShootTop.getVelocity() - m_desiredTopSpeed) <= Constants.IntakeConstants.kTolerance) && (Math.abs(m_intakeEncoderShootBottom.getVelocity() - m_desiredBottomSpeed) <= Constants.IntakeConstants.kTolerance); 
     }
 
      public void doSendables() { 
         SmartDashboard.putNumber("Suck Speed (m/s)", m_outtakeEncoderSuck.getVelocity());
         SmartDashboard.putNumber("Shoot Top Speed (m/s)", m_intakeEncoderShootTop.getVelocity());
         SmartDashboard.putNumber("Shoot Bottom Speed (m/s)", m_intakeEncoderShootBottom.getVelocity());
-        SmartDashboard.putNumber("Outtake Desired Speed", m_desireSpeed); 
+        SmartDashboard.putNumber("Outtake Desired Speed", m_desiredTopSpeed); 
         SmartDashboard.putBoolean("Shoot At Desired Speed", atDesiredShootSpeed()); 
         SmartDashboard.putBoolean("Beam Break Hit (t/f)", beamBreakHit());
         SmartDashboard.putNumber("Indexer Current", m_outtakeMotorSuck.getOutputCurrent());
+    }
+
+    public Command tuneTopPID() {
+        return Commands.defer(() -> {
+            SmartDashboard.putNumber("TuneShooter/P", Constants.IntakeConstants.kTopP); 
+            SmartDashboard.putNumber("TuneShooter/I", Constants.IntakeConstants.kTopI); 
+            SmartDashboard.putNumber("TuneShooter/D", Constants.IntakeConstants.kTopD); 
+            SmartDashboard.putNumber("TuneShooter/FF", Constants.IntakeConstants.kTopFF); 
+            SmartDashboard.putNumber("TuneShooter/ShooterDesiredSpeed", 0); 
+            return Commands.run(() -> {
+                double desSpeed = SmartDashboard.getNumber("TuneShooter/ShooterDesiredSpeed", 0); 
+
+                m_outtakeTopController.setP(SmartDashboard.getNumber("TuneShooter/P", Constants.IntakeConstants.kTopP)); 
+                m_outtakeTopController.setI(SmartDashboard.getNumber("TuneShooter/I", Constants.IntakeConstants.kTopI)); 
+                m_outtakeTopController.setD(SmartDashboard.getNumber("TuneShooter/D", Constants.IntakeConstants.kTopD)); 
+                m_outtakeTopController.setFF(SmartDashboard.getNumber("TuneShooter/FF", Constants.IntakeConstants.kTopFF)); 
+
+                outtakeTop(desSpeed);
+            }); 
+        }, Set.of(Intake.getInstance())); 
+    }
+
+    public Command tuneBottomPID() {
+        return Commands.defer(() -> {
+            SmartDashboard.putNumber("TuneShooter/BotP", Constants.IntakeConstants.kBottomP); 
+            SmartDashboard.putNumber("TuneShooter/BotI", Constants.IntakeConstants.kBottomI); 
+            SmartDashboard.putNumber("TuneShooter/BotD", Constants.IntakeConstants.kBottomD); 
+            SmartDashboard.putNumber("TuneShooter/BotFF", Constants.IntakeConstants.kBottomFF); 
+            SmartDashboard.putNumber("TuneShooter/ShooterDesiredSpeed", 0); 
+            return Commands.run(() -> {
+                double desSpeed = SmartDashboard.getNumber("TuneShooter/ShooterDesiredSpeed", 0); 
+
+                m_outtakeBottomController.setP(SmartDashboard.getNumber("TuneShooter/BotP", Constants.IntakeConstants.kBottomP)); 
+                m_outtakeBottomController.setI(SmartDashboard.getNumber("TuneShooter/BotI", Constants.IntakeConstants.kBottomI)); 
+                m_outtakeBottomController.setD(SmartDashboard.getNumber("TuneShooter/BotD", Constants.IntakeConstants.kBottomD)); 
+                m_outtakeBottomController.setFF(SmartDashboard.getNumber("TuneShooter/BotFF", Constants.IntakeConstants.kBottomFF)); 
+
+                outtakeBottom(desSpeed);
+            }); 
+        }, Set.of(Intake.getInstance())); 
     }
 }

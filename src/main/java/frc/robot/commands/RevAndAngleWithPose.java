@@ -55,6 +55,6 @@ public class RevAndAngleWithPose extends Command {
     }
 
     public static Command createCommand(Arm arm, Intake intake, Pose2d targetPose) {
-        return Commands.defer(() -> new RevAndAngleWithPose(arm, intake, targetPose), Set.of(arm, intake)); 
+        return Commands.defer(() -> new RevAndAngleWithPose(arm, intake, targetPose), Set.of(arm, intake)).withTimeout(2); 
     }
 } 

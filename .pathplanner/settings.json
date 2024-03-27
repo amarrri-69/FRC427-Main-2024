@@ -27,7 +27,7 @@
     "TwoPieceReturn"
   ],
   "defaultMaxVel": 3.5,
-  "defaultMaxAccel": 3.5,
+  "defaultMaxAccel": 2.25,
   "defaultMaxAngVel": 360.0,
   "defaultMaxAngAccel": 300.0,
   "maxModuleSpeed": 4.5

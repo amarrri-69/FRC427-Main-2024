@@ -66,22 +66,22 @@ public class ShootAnywhere {
          */
 
         if (alliance == DriverStation.Alliance.Blue) {
-            // targetPose = Constants.GeneralizedReleaseConstants.kBlueAllianceSpeaker;
-            // targetPose = Constants.GeneralizedReleaseConstants.kBlueAllianceSpeakerTarget;
-            targetPose = GeometryUtils.getBisector(
-            OrderedPair.fromPose2d(currentPose), 
-            OrderedPair.fromPose2d(Constants.GeneralizedReleaseConstants.kBlueAllianceSpeaker1), 
-            OrderedPair.fromPose2d(Constants.GeneralizedReleaseConstants.kBlueAllianceSpeaker2)).toPose2d(); 
-            targetArmPose = targetPose; 
+            targetArmPose = Constants.GeneralizedReleaseConstants.kBlueAllianceSpeaker;
+            targetPose = Constants.GeneralizedReleaseConstants.kBlueAllianceSpeakerTarget;
+            // targetPose = GeometryUtils.getBisector(
+            // OrderedPair.fromPose2d(currentPose), 
+            // OrderedPair.fromPose2d(Constants.GeneralizedReleaseConstants.kBlueAllianceSpeaker1), 
+            // OrderedPair.fromPose2d(Constants.GeneralizedReleaseConstants.kBlueAllianceSpeaker2)).toPose2d(); 
+            // targetArmPose = targetPose; 
             // targetArmPose = Constants.GeneralizedReleaseConstants.kRedAllianceSpeaker;
         } else if (alliance == DriverStation.Alliance.Red) {
-            // targetPose = Constants.GeneralizedReleaseConstants.kRedAllianceSpeaker;
-            // targetPose = Constants.GeneralizedReleaseConstants.kRedAllianceSpeakerTarget;
-            targetPose = GeometryUtils.getBisector(
-            OrderedPair.fromPose2d(currentPose), 
-            OrderedPair.fromPose2d(Constants.GeneralizedReleaseConstants.kRedAllianceSpeaker1), 
-            OrderedPair.fromPose2d(Constants.GeneralizedReleaseConstants.kRedAllianceSpeaker2)).toPose2d(); 
-            targetArmPose = targetPose;
+            targetArmPose = Constants.GeneralizedReleaseConstants.kRedAllianceSpeaker;
+            targetPose = Constants.GeneralizedReleaseConstants.kRedAllianceSpeakerTarget;
+            // targetPose = GeometryUtils.getBisector(
+            // OrderedPair.fromPose2d(currentPose), 
+            // OrderedPair.fromPose2d(Constants.GeneralizedReleaseConstants.kRedAllianceSpeaker1), 
+            // OrderedPair.fromPose2d(Constants.GeneralizedReleaseConstants.kRedAllianceSpeaker2)).toPose2d(); 
+            // targetArmPose = targetPose;
             // targetArmPose = Constants.GeneralizedReleaseConstants.kRedAllianceSpeaker;
         }
         if (targetPose == null) return null;
