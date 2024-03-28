@@ -86,7 +86,7 @@ public class AutoPicker {
         NamedCommands.registerCommand("RevBlueSecond", RevAndAngleWithPose.createCommand(Arm.getInstance(), Intake.getInstance(), Constants.SetPoints.blueSecondMiddle));
         NamedCommands.registerCommand("RevBlueThird", RevAndAngleWithPose.createCommand(Arm.getInstance(), Intake.getInstance(), Constants.SetPoints.blueThirdMiddle));
         NamedCommands.registerCommand("RevBlueCenter", RevAndAngleWithPose.createCommand(Arm.getInstance(), Intake.getInstance(), Constants.SetPoints.blueCenter));
-        NamedCommands.registerCommand("RevOut", new GoToAngle(Arm.getInstance(), 20).alongWith(new SetShooterSpeed(Intake.getInstance(), 2400)));
+        NamedCommands.registerCommand("RevOut", new GoToAngle(Arm.getInstance(), 20).alongWith(new SetShooterSpeed(Intake.getInstance(), 2400, 2400)));
         NamedCommands.registerCommand("AutomaticallyPickupNote", AutomationCommands.pickupNote());
 
 

@@ -7,12 +7,14 @@ import frc.robot.subsystems.intake.Intake;
 public class SetShooterSpeed extends Command {
     // declare to outtake and speed
     Intake m_intake;
-    double m_speed;
+    double m_topSpeed;
+    double m_bottomSpeed; 
 
     // establishes outtake, speed,
-    public SetShooterSpeed(Intake intake, double speed) {
+    public SetShooterSpeed(Intake intake, double topSpeed, double bottomSpeed) {
         this.m_intake = intake;
-        this.m_speed = speed;
+        this.m_topSpeed = topSpeed;
+        this.m_bottomSpeed = bottomSpeed;
 
         addRequirements(intake);
         
@@ -25,7 +27,8 @@ public class SetShooterSpeed extends Command {
     // keeps shooting motors going
     public void execute() {
         // runs repeatedly until the command is finished 
-        this.m_intake.outtakeRing(m_speed);
+        this.m_intake.outtakeTop(m_topSpeed);
+        this.m_intake.outtakeBottom(m_bottomSpeed);
     }
     //checks to stop shooting (aww shoot!)
     public boolean isFinished() {
@@ -45,7 +48,7 @@ public class SetShooterSpeed extends Command {
         }); 
     }
 
-    public static Command revAndIndex(Intake intake, double speed) {
-        return indexNote(intake).alongWith(new SetShooterSpeed(intake, speed)); 
+    public static Command revAndIndex(Intake intake, double topSpeed, double bottomSpeed) {
+        return indexNote(intake).alongWith(new SetShooterSpeed(intake, topSpeed, bottomSpeed)); 
     }
 }

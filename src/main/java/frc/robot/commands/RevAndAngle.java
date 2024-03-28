@@ -38,7 +38,8 @@ public class RevAndAngle extends Command {
         if (res == null) return; 
 
         arm.goToAngle(res.getArmAngleDeg());
-        intake.outtakeRing(res.getOuttakeSpeed());
+        intake.outtakeTop(res.getOuttakeTopSpeed());
+        intake.outtakeBottom(res.getOuttakeBottomSpeed());
     }
 
     public boolean isFinished() {

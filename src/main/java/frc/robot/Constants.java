@@ -87,7 +87,7 @@ public final class Constants {
     public static final double kMaxAttainableRotationRadPerSecond = kMaxAttainableModuleSpeedMetersPerSecond /
     Math.hypot(kTrackWidthMeters / 2.0, kWheelBaseMeters / 2.0); // max rotation of robot
     
-    public static double kMaxSpeedMetersPerSecond = 4.25; // max velocity (no turning) of robot; may tune to be a fraction of the attainable module speed
+    public static double kMaxSpeedMetersPerSecond = 4.6; // max velocity (no turning) of robot; may tune to be a fraction of the attainable module speed
     public static double kMaxSlowSpeedMetersPerSecond = 1.0; 
     public static final double kMaxAccelerationMetersPerSecondSquared = kMaxSpeedMetersPerSecond / 0.05; // max acceleration of robot (accelerate to max speed in 1 second)
     public static double kMaxRotationRadPerSecond = 4.50; // 3.00; // max rotation speed of the robot
@@ -395,28 +395,45 @@ public final class Constants {
 
       double kArmOffset = -4.0; 
 
-      armInterpolationMap.put(1.0, 16.5 + kArmOffset);
-      armInterpolationMap.put(1.261146, 17.0 + kArmOffset);
-      armInterpolationMap.put(1.555493, 22.5 + kArmOffset);
-      armInterpolationMap.put(1.749017, 24.0 + kArmOffset);
-      armInterpolationMap.put(1.945373, 29.0 + kArmOffset);
-      armInterpolationMap.put(2.268227, 33.0 + kArmOffset);
-      armInterpolationMap.put(2.533997, 36.0 + kArmOffset);
-      armInterpolationMap.put(2.85052, 37.5 + kArmOffset);
-      armInterpolationMap.put(2.98085, 39.0 + kArmOffset);
-      armInterpolationMap.put(3.222661, 41.3 + kArmOffset);
+      // armInterpolationMap.put(1.0, 16.5 + kArmOffset);
+      // armInterpolationMap.put(1.261146, 17.0 + kArmOffset);
+      // armInterpolationMap.put(1.555493, 22.5 + kArmOffset);
+      // armInterpolationMap.put(1.749017, 24.0 + kArmOffset);
+      // armInterpolationMap.put(1.945373, 29.0 + kArmOffset);
+      // armInterpolationMap.put(2.268227, 33.0 + kArmOffset);
+      // armInterpolationMap.put(2.533997, 36.0 + kArmOffset);
+      // armInterpolationMap.put(2.85052, 37.5 + kArmOffset);
+      // armInterpolationMap.put(2.98085, 39.0 + kArmOffset);
+      // armInterpolationMap.put(3.222661, 41.3 + kArmOffset);
 
-      flywheelInterpolationMap.put(1.0, 2400.0);
-      flywheelInterpolationMap.put(1.261146, 2400.0);
-      flywheelInterpolationMap.put(1.555493, 2400.0);
-      flywheelInterpolationMap.put(1.749017, 2500.0);
-      flywheelInterpolationMap.put(1.945373, 2600.0);
-      flywheelInterpolationMap.put(2.268227, 2800.0);
-      flywheelInterpolationMap.put(2.533997, 2800.0);
-      flywheelInterpolationMap.put(2.85052, 2800.00);
-      flywheelInterpolationMap.put(2.98085, 3200.0);
-      flywheelInterpolationMap.put(3.222661, 3200.0);
+      // flywheelInterpolationMap.put(1.0, 2400.0);
+      // flywheelInterpolationMap.put(1.261146, 2400.0);
+      // flywheelInterpolationMap.put(1.555493, 2400.0);
+      // flywheelInterpolationMap.put(1.749017, 2500.0);
+      // flywheelInterpolationMap.put(1.945373, 2600.0);
+      // flywheelInterpolationMap.put(2.268227, 2800.0);
+      // flywheelInterpolationMap.put(2.533997, 2800.0);
+      // flywheelInterpolationMap.put(2.85052, 2800.00);
+      // flywheelInterpolationMap.put(2.98085, 3200.0);
+      // flywheelInterpolationMap.put(3.222661, 3200.0);
 
+      armInterpolationMap.put(1.337, 21.5);
+      armInterpolationMap.put(1.714, 30.0);
+      armInterpolationMap.put(2.16038, 35.0);
+      armInterpolationMap.put(2.631287, 38.5);
+      armInterpolationMap.put(3.00, 40.0);
+
+      flywheelInterpolationMap.put(1.337, 2400.0);
+      flywheelInterpolationMap.put(1.714, 2500.0);
+      flywheelInterpolationMap.put(2.16038, 2500.0);
+      flywheelInterpolationMap.put(2.631287, 2600.0);
+      flywheelInterpolationMap.put(3.00, 2800.0);
+
+      // 1.337, 21.5, 2400
+      // 1.714, 30, 2500
+      // 2.16038, 35, 2500
+      // 2.631287, 38.5, 2600
+      // 3.00, 40, 2800
     }
   }
 

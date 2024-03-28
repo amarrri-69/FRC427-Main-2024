@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import frc.robot.util.IOUtils;
 
  /*
   * Notes about how Intake works
@@ -101,8 +102,13 @@ public class Intake extends SubsystemBase {
     //and outtaking the ring is shooting it
     public void outtakeRing(double speed) {
         // m_intakeMotorShootTop.set(speed);
-        this.m_desiredTopSpeed = speed;
-        this.m_desiredBottomSpeed = speed + 50; 
+        // if (speed == 0) {
+            this.m_desiredTopSpeed = speed; 
+            this.m_desiredBottomSpeed = speed; 
+        // } else {
+        // this.m_desiredTopSpeed = speed-600;
+        // this.m_desiredBottomSpeed = speed +600; 
+        // }
     }
 
     public void outtakeTop(double speed) {
@@ -110,7 +116,7 @@ public class Intake extends SubsystemBase {
     }
 
     public void outtakeBottom(double speed) {
-        this.m_desiredBottomSpeed = speed + 50; 
+        this.m_desiredBottomSpeed = speed; 
     }
     //beambreak is a scanner that checks if a ring is inside the whole intake
     public boolean beamBreakHit() { 

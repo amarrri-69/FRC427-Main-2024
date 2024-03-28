@@ -62,7 +62,8 @@ public class GeneralizedReleaseRoutine extends Command {
             arm.goToAngle(Constants.ArmConstants.kTravelPosition);
         }
 
-        intake.outtakeRing(results.getOuttakeSpeed());
+        intake.outtakeTop(results.getOuttakeTopSpeed());
+        intake.outtakeBottom(results.getOuttakeBottomSpeed());
 
         ChassisState speeds = driverController.getDesiredChassisState(); 
         speeds.omegaRadians = Math.toRadians(results.getDriveAngleDeg());

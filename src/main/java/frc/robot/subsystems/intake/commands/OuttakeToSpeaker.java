@@ -29,7 +29,7 @@ public class OuttakeToSpeaker extends SequentialCommandGroup {
     // }
 
     public static Command outtakeToSpeaker(Intake intake) {
-        return SetShooterSpeed.revAndIndex(intake, Constants.IntakeConstants.kShootSpeed)
+        return SetShooterSpeed.revAndIndex(intake, Constants.IntakeConstants.kShootSpeed, Constants.IntakeConstants.kShootSpeed)
         .andThen(new WaitCommand(Constants.IntakeConstants.kShootRevTime))
         .andThen(new SetSuckerIntakeSpeed(intake, Constants.IntakeConstants.kShootSuckerSpeed))
         .andThen(new WaitCommand(Constants.IntakeConstants.kShootWaitTime))
@@ -40,11 +40,11 @@ public class OuttakeToSpeaker extends SequentialCommandGroup {
     }
 
     public static Command revAndIndex(Intake intake) {
-        return revAndIndex(intake, Constants.IntakeConstants.kShootSpeed); 
+        return revAndIndex(intake, Constants.IntakeConstants.kShootSpeed, Constants.IntakeConstants.kShootSpeed); 
     }
 
-    public static Command revAndIndex(Intake intake, double shootSpeed) {
-        return SetShooterSpeed.revAndIndex(intake, shootSpeed); 
+    public static Command revAndIndex(Intake intake, double shootTopSpeed, double shootBottomSpeed) {
+        return SetShooterSpeed.revAndIndex(intake, shootTopSpeed, shootBottomSpeed); 
     }
 
     public static Command shoot(Intake intake) {

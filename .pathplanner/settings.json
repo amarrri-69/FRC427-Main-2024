@@ -14,16 +14,17 @@
     "Testing"
   ],
   "autoFolders": [
-    "2 piece auto",
-    "3 piece auto",
-    "4 piece auto",
+    "1+0",
+    "1+1",
+    "1+1+n",
+    "1+2",
+    "1+3",
     "Archive",
     "Leave Autos",
-    "1 piece auto",
     "Score Preload",
     "Shoot anywhere",
     "Testing",
-    "Two Piece Middle Fling",
+    "Fling",
     "TwoPieceReturn"
   ],
   "defaultMaxVel": 3.5,

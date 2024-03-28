@@ -4,6 +4,8 @@
 
 package frc.robot;
 
+import java.util.Set; 
+
 import frc.robot.commands.AutoHang;
 import frc.robot.commands.AutomaticallyMoveToPiece;
 import frc.robot.commands.AutomationCommands;
@@ -24,6 +26,7 @@ import frc.robot.subsystems.intake.commands.IntakeFromGround;
 import frc.robot.subsystems.intake.commands.OuttakeToAmp;
 import frc.robot.subsystems.intake.commands.OuttakeToSpeaker;
 import frc.robot.util.DriverController;
+import frc.robot.util.IOUtils;
 import frc.robot.util.DriverController.Mode;
 import frc.robot.subsystems.leds.Led;
 import frc.robot.subsystems.vision.FrontVision;
@@ -114,7 +117,16 @@ public class RobotContainer {
     }));
 
     manipulatorController.rightBumper()
-    .whileTrue(Commands.parallel(OuttakeToSpeaker.revAndIndex(intake, 2500), new GoToAngle(arm, 40)))
+    .whileTrue(Commands.parallel(OuttakeToSpeaker.revAndIndex(intake, 2500, 2500), new GoToAngle(arm, 40)))
+    .onFalse(
+      OuttakeToSpeaker.shoot(intake, 0.5)
+      .andThen(Commands.runOnce(() -> {
+        arm.goToAngle(Constants.ArmConstants.kTravelPosition);
+      }))
+    ); 
+
+    driverController.y()
+    .whileTrue(Commands.defer(() -> Commands.parallel(OuttakeToSpeaker.revAndIndex(intake, IOUtils.get("TuneShot/ShotSpeedTop", 0), IOUtils.get("TuneShot/ShotSpeedBottom", 0)), new GoToAngle(arm, IOUtils.get("TuneShot/ShotAngle", 0))), Set.of(arm, intake)))
     .onFalse(
       OuttakeToSpeaker.shoot(intake, 0.5)
       .andThen(Commands.runOnce(() -> {
@@ -123,7 +135,7 @@ public class RobotContainer {
     ); 
 
     // TODO: tune
-    driverController.y().whileTrue(TuningCommands.tuneShooting(drivetrain, arm, intake)); 
+    // driverController.y().whileTrue(TuningCommands.tuneShooting(drivetrain, arm, intake)); 
 
     // TODO: tune
     // driverController.y().whileTrue(new TuneTurnToAngle(drivetrain)); 

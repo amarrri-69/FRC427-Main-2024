@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.3057281252407118,
-      "y": 5.483151617932309
+      "x": 0.6987751318861041,
+      "y": 4.4544177308906
     },
-    "rotation": 0.0
+    "rotation": -60.0
   },
   "command": {
     "type": "sequential",
@@ -14,7 +14,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Speaker 2 moves out"
+            "pathName": "Speaker 3 moves out"
           }
         },
         {

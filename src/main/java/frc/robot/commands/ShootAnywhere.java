@@ -34,7 +34,7 @@ public class ShootAnywhere {
         TurnToAngle turnToAngle = new TurnToAngle(drivetrain, res.getDriveAngleDeg());
         GoToAngle goToAngle = new GoToAngle(arm, res.getArmAngleDeg());
         // Command outtake = OuttakeToSpeaker.outtakeToSpeaker(intake);
-        Command rev = OuttakeToSpeaker.revAndIndex(intake, res.getOuttakeSpeed()).withTimeout(1.5); 
+        Command rev = OuttakeToSpeaker.revAndIndex(intake, res.getOuttakeTopSpeed(), res.getOuttakeBottomSpeed()).withTimeout(1.5); 
         Command shoot = OuttakeToSpeaker.shoot(intake, 0.5); 
 
         return Commands.sequence(drivetrain.zeroDrivetrain(), Commands.parallel(turnToAngle, goToAngle, rev), drivetrain.zeroDrivetrain(), shoot)
@@ -96,22 +96,28 @@ public class ShootAnywhere {
         SmartDashboard.putNumber("Shoot Anywhere Arm Angle", angleToTurnArm); 
         SmartDashboard.putNumber("Shoot Anywhere Distance", distance); 
 
-        return new ShootAnywhereResult(Math.toDegrees(finalAngle), angleToTurnArm, speedToRevFlywheel); 
+        return new ShootAnywhereResult(Math.toDegrees(finalAngle), angleToTurnArm, speedToRevFlywheel - 600, speedToRevFlywheel + 600); 
     }
 
     public static class ShootAnywhereResult {
         private double drivetrainAngle; 
         private double armAngle; 
-        private double outtakeSpeed;
+        private double outtakeTopSpeed;
+        private double outtakeBottomSpeed; 
 
-        public ShootAnywhereResult(double drivetrainAngleDeg, double armAngleDeg, double outtakeSpeed) {
+        public ShootAnywhereResult(double drivetrainAngleDeg, double armAngleDeg, double outtakeTopSpeed, double outtakeBottomSpeed) {
             this.drivetrainAngle = drivetrainAngleDeg; 
             this.armAngle = armAngleDeg; 
-            this.outtakeSpeed = outtakeSpeed;
+            this.outtakeTopSpeed = outtakeTopSpeed;
+            this.outtakeBottomSpeed = outtakeBottomSpeed; 
         }
 
-        public double getOuttakeSpeed() {
-            return this.outtakeSpeed;
+        public double getOuttakeTopSpeed() {
+            return this.outtakeTopSpeed;
+        }
+
+        public double getOuttakeBottomSpeed() {
+            return this.outtakeBottomSpeed;
         }
 
         public double getDriveAngleDeg() {

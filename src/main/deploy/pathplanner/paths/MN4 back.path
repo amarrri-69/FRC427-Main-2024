@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 7.744394136475106,
-        "y": 2.4053335888403695
+        "x": 7.796643285594264,
+        "y": 2.4075340458373238
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.7649688142159405,
-        "y": 2.4409699760368517
+        "x": 7.817217963335099,
+        "y": 2.443170433033806
       },
       "isLocked": false,
       "linkedName": "Middle Note 4"
     },
     {
       "anchor": {
-        "x": 6.8197417597842716,
-        "y": 4.0429241760739165
+        "x": 5.71471835251363,
+        "y": 1.5195091928645403
       },
       "prevControl": {
-        "x": 7.118074587026367,
-        "y": 4.022349498327938
+        "x": 6.013051179755726,
+        "y": 1.4989345151185618
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "MN4 back"
+      "linkedName": "MN5 back"
     }
   ],
   "rotationTargets": [],
@@ -39,7 +39,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -30.0,
+    "rotation": -41.05481377096234,
     "rotateFast": true
   },
   "reversed": false,

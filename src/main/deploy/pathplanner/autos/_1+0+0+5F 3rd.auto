@@ -14,13 +14,13 @@
         {
           "type": "named",
           "data": {
-            "name": "ShootSpeaker"
+            "name": "ShootAnywhere"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Speaker to Middle 4th"
+            "pathName": "Speaker to Middle 5th"
           }
         },
         {
@@ -28,15 +28,15 @@
           "data": {
             "commands": [
               {
-                "type": "named",
+                "type": "path",
                 "data": {
-                  "name": "RevBlueThird"
+                  "pathName": "MN5 back"
                 }
               },
               {
-                "type": "path",
+                "type": "named",
                 "data": {
-                  "pathName": "MN4 going back"
+                  "name": "RevOut"
                 }
               }
             ]
@@ -51,7 +51,38 @@
         {
           "type": "path",
           "data": {
-            "pathName": "MN4 going to MN3"
+            "pathName": "MN5 going to MN4"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "MN4 back"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "RevOut"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Shoot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "MN4 to MN3 (short)"
           }
         },
         {
@@ -109,10 +140,41 @@
           "data": {
             "name": "Shoot"
           }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "MN2 to MN1"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "MN1 back"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "RevOut"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Shoot"
+          }
         }
       ]
     }
   },
-  "folder": "Two Piece Middle Fling",
+  "folder": "Fling",
   "choreoAuto": false
 }

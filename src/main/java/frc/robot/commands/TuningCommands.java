@@ -28,10 +28,12 @@ public class TuningCommands {
         if (res == null) return Commands.none();
 
         IOUtils.set("TuneShooting/Preset Angle", res.getArmAngleDeg()); 
-        IOUtils.set("TuneShooting/Preset Speed", res.getOuttakeSpeed()); 
+        IOUtils.set("TuneShooting/Preset Top Speed", res.getOuttakeTopSpeed());
+        IOUtils.set("TuneShooting/Preset Bottom Speed", res.getOuttakeBottomSpeed()); 
         
         double angle = usePresetAngle ? res.getArmAngleDeg() : IOUtils.getNumber("TuneShooting/Desired Angle"); 
-        double speed = usePresetSpeed ? res.getOuttakeSpeed() : IOUtils.getNumber("TuneShooting/Desired Speed");
+        double topSpeed = usePresetSpeed ? res.getOuttakeTopSpeed() : IOUtils.getNumber("TuneShooting/Desired Top Speed");
+        double bottomSpeed = usePresetSpeed ? res.getOuttakeTopSpeed() : IOUtils.getNumber("TuneShooting/Desired Bottom Speed");
         TurnToAngle turnToAngle = new TurnToAngle(drivetrain, res.getDriveAngleDeg());
 
         return Commands.sequence(
@@ -41,7 +43,7 @@ public class TuningCommands {
               drivetrain.swerveDrive(new ChassisSpeeds(), false);
             }),
             SetShooterSpeed.indexNote(intake),
-            OuttakeToSpeaker.revAndIndex(intake, speed), 
+            OuttakeToSpeaker.revAndIndex(intake, topSpeed, bottomSpeed), 
             OuttakeToSpeaker.shoot(intake)
         ).finallyDo(() -> {
           intake.stopShoot();
