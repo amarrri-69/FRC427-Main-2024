@@ -135,7 +135,7 @@ public class RobotContainer {
     ); 
 
     // TODO: tune
-    // driverController.y().whileTrue(TuningCommands.tuneShooting(drivetrain, arm, intake)); 
+    driverController.y().whileTrue(TuningCommands.tuneShooting(drivetrain, arm, intake)); 
 
     // TODO: tune
     // driverController.y().whileTrue(new TuneTurnToAngle(drivetrain)); 
