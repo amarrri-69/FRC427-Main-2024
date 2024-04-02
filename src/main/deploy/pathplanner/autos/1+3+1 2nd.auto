@@ -64,28 +64,15 @@
           "data": {
             "commands": [
               {
-                "type": "deadline",
+                "type": "path",
                 "data": {
-                  "commands": [
-                    {
-                      "type": "path",
-                      "data": {
-                        "pathName": "Middle Note 1st going back"
-                      }
-                    },
-                    {
-                      "type": "named",
-                      "data": {
-                        "name": "AngleBlueFirst"
-                      }
-                    }
-                  ]
+                  "pathName": "Middle Note 1st going back"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "RevBlueFirst"
+                  "name": "RevAndAim"
                 }
               }
             ]

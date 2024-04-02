@@ -8,12 +8,15 @@ import com.pathplanner.lib.auto.NamedCommands;
 import com.pathplanner.lib.controllers.PPHolonomicDriveController;
 import com.pathplanner.lib.util.HolonomicPathFollowerConfig;
 import com.pathplanner.lib.util.PIDConstants;
+import com.pathplanner.lib.util.PathPlannerLogging;
 import com.pathplanner.lib.util.ReplanningConfig;
 
+import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.PrintCommand;
 import frc.robot.commands.AutomationCommands;
 import frc.robot.subsystems.arm.Arm;
@@ -23,8 +26,8 @@ import frc.robot.subsystems.drivetrain.Drivetrain;
 import frc.robot.subsystems.intake.Intake;
 import frc.robot.subsystems.intake.commands.OuttakeToSpeaker;
 import frc.robot.subsystems.intake.commands.SetShooterSpeed;
-import frc.robot.commands.RevAndAngle;
 import frc.robot.commands.RevAndAngleWithPose;
+import frc.robot.commands.RevAndAngleWithSuppliedPose;
 
 // class to store, set up, and choose autos
 public class AutoPicker {
@@ -33,6 +36,7 @@ public class AutoPicker {
     Drivetrain m_driveSubsystem;
 
     private Rotation2d rotationOverride = null; 
+    private Pose2d currentPathTarget = null; 
     
     public AutoPicker(Drivetrain driveSubsystem) {
         m_driveSubsystem = driveSubsystem;
@@ -67,8 +71,14 @@ public class AutoPicker {
         );
 
         PPHolonomicDriveController.setRotationTargetOverride(() -> {
-            System.out.println(this.rotationOverride);
             return this.rotationOverride == null ? Optional.empty() : Optional.of(this.rotationOverride); 
+        });
+        PathPlannerLogging.setLogActivePathCallback((path) -> {
+            if (path.size() == 0) {
+                this.currentPathTarget = null; 
+            } else {
+                this.currentPathTarget = path.get(path.size() - 1); 
+            }
         });
 
         registerCommands(); 
@@ -91,16 +101,15 @@ public class AutoPicker {
         NamedCommands.registerCommand("ShootAnywhere", AutomationCommands.shootFromAnywhere());
         NamedCommands.registerCommand("MoveToNext", new PrintCommand("Moving to next"));
         
-        NamedCommands.registerCommand("Shoot", OuttakeToSpeaker.shoot(Intake.getInstance()).finallyDo(() -> Arm.getInstance().goToAngle(Constants.ArmConstants.kTravelPosition)));
-        NamedCommands.registerCommand("RevAndAngleAnywhere", new RevAndAngle(Arm.getInstance(), Intake.getInstance(), Drivetrain.getInstance()));
-        NamedCommands.registerCommand("RevBlueFirst", RevAndAngleWithPose.createCommand(Arm.getInstance(), Intake.getInstance(), Constants.SetPoints.blueFirstMiddle));
-        NamedCommands.registerCommand("RevBlueSecond", RevAndAngleWithPose.createCommand(Arm.getInstance(), Intake.getInstance(), Constants.SetPoints.blueSecondMiddle));
-        NamedCommands.registerCommand("RevBlueThird", RevAndAngleWithPose.createCommand(Arm.getInstance(), Intake.getInstance(), Constants.SetPoints.blueThirdMiddle));
+        NamedCommands.registerCommand("Shoot", Commands.runOnce(() -> {
+            rotationConsumer.accept(null);
+        }).andThen(OuttakeToSpeaker.shoot(Intake.getInstance())).finallyDo(() -> Arm.getInstance().goToAngle(Constants.ArmConstants.kTravelPosition)));
         NamedCommands.registerCommand("RevBlueCenter", RevAndAngleWithPose.createCommand(Arm.getInstance(), Intake.getInstance(), Constants.SetPoints.blueCenter));
         NamedCommands.registerCommand("RevOut", new GoToAngle(Arm.getInstance(), 20).alongWith(new SetShooterSpeed(Intake.getInstance(), 2400, 2400)));
+        NamedCommands.registerCommand("RevAndAim", RevAndAngleWithSuppliedPose.createCommand(Arm.getInstance(), Intake.getInstance(), () -> this.currentPathTarget, rotationConsumer));
+        
         NamedCommands.registerCommand("AutomaticallyPickupNote", AutomationCommands.pickupNote());
 
-        NamedCommands.registerCommand("AngleBlueFirst", RevAndAngleWithPose.createRotationCommand(Constants.SetPoints.blueFirstMiddle, rotationConsumer));
 
 
 

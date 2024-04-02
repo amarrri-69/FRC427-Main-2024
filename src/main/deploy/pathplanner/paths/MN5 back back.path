@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 7.796643285594264,
-        "y": 2.4075340458373238
+        "x": 7.707840800296987,
+        "y": 0.7400207108106523
       },
       "prevControl": null,
       "nextControl": {
-        "x": 5.921924151540613,
-        "y": 1.262968679783513
+        "x": 7.017154803540378,
+        "y": 0.8485570817295487
       },
       "isLocked": false,
-      "linkedName": "Middle Note 4"
+      "linkedName": "MN5"
     },
     {
       "anchor": {
-        "x": 2.55049612856118,
-        "y": 3.1479256943476295
+        "x": 2.55,
+        "y": 3.15
       },
       "prevControl": {
-        "x": 3.4354545632168203,
-        "y": 2.3384654461616616
+        "x": 3.4058537347843933,
+        "y": 2.930482014810184
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Middle 4 Back"
+      "linkedName": "MN4 going back"
     }
   ],
   "rotationTargets": [],
@@ -39,11 +39,14 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -60.0,
+    "rotation": 0,
     "rotateFast": false
   },
   "reversed": false,
   "folder": "Middle Back",
-  "previewStartingState": null,
+  "previewStartingState": {
+    "rotation": 0,
+    "velocity": 0
+  },
   "useDefaultConstraints": true
 }
