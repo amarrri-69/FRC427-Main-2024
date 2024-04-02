@@ -125,17 +125,17 @@ public class RobotContainer {
       }))
     ); 
 
-    driverController.y()
-    .whileTrue(Commands.defer(() -> Commands.parallel(OuttakeToSpeaker.revAndIndex(intake, IOUtils.get("TuneShot/ShotSpeedTop", 0), IOUtils.get("TuneShot/ShotSpeedBottom", 0)), new GoToAngle(arm, IOUtils.get("TuneShot/ShotAngle", 0))), Set.of(arm, intake)))
-    .onFalse(
-      OuttakeToSpeaker.shoot(intake, 0.5)
-      .andThen(Commands.runOnce(() -> {
-        arm.goToAngle(Constants.ArmConstants.kTravelPosition);
-      }))
-    ); 
+    // driverController.y()
+    // .whileTrue(Commands.defer(() -> Commands.parallel(OuttakeToSpeaker.revAndIndex(intake, IOUtils.get("TuneShot/ShotSpeedTop", 0), IOUtils.get("TuneShot/ShotSpeedBottom", 0)), new GoToAngle(arm, IOUtils.get("TuneShot/ShotAngle", 0))), Set.of(arm, intake)))
+    // .onFalse(
+    //   OuttakeToSpeaker.shoot(intake, 0.5)
+    //   .andThen(Commands.runOnce(() -> {
+    //     arm.goToAngle(Constants.ArmConstants.kTravelPosition);
+    //   }))
+    // ); 
 
     // TODO: tune
-    // driverController.y().whileTrue(TuningCommands.tuneShooting(drivetrain, arm, intake)); 
+    driverController.y().whileTrue(TuningCommands.tuneShooting(drivetrain, arm, intake)); 
 
     // TODO: tune
     // driverController.y().whileTrue(new TuneTurnToAngle(drivetrain)); 

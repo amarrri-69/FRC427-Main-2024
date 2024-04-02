@@ -4,16 +4,19 @@
 
 package frc.robot;
 
+import java.util.function.BooleanSupplier;
 import java.util.function.Function;
-import java.util.function.BooleanSupplier; 
 
 import com.ctre.phoenix6.signals.SensorDirectionValue;
 
+import edu.wpi.first.apriltag.AprilTagFieldLayout;
+import edu.wpi.first.apriltag.AprilTagFieldLayout.OriginPosition;
+import edu.wpi.first.apriltag.AprilTagFields;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.math.geometry.Transform3d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.interpolation.InterpolatingDoubleTreeMap;
-import edu.wpi.first.math.geometry.Transform3d;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.util.Color;
@@ -21,9 +24,6 @@ import frc.robot.subsystems.arm.Arm;
 import frc.robot.subsystems.drivetrain.Drivetrain;
 import frc.robot.subsystems.drivetrain.SwerveModuleConfig;
 import frc.robot.subsystems.intake.Intake;
-import edu.wpi.first.apriltag.AprilTagFieldLayout;
-import edu.wpi.first.apriltag.AprilTagFieldLayout.OriginPosition;
-import edu.wpi.first.apriltag.AprilTagFields;
 import frc.robot.subsystems.leds.patterns.ConditionalPattern;
 import frc.robot.subsystems.leds.patterns.FadeLEDPattern;
 import frc.robot.subsystems.leds.patterns.LEDPattern;
@@ -417,17 +417,52 @@ public final class Constants {
       // flywheelInterpolationMap.put(2.98085, 3200.0);
       // flywheelInterpolationMap.put(3.222661, 3200.0);
 
-      armInterpolationMap.put(1.337, 21.5);
-      armInterpolationMap.put(1.714, 30.0);
-      armInterpolationMap.put(2.16038, 35.0);
-      armInterpolationMap.put(2.631287, 38.5);
-      armInterpolationMap.put(3.00, 40.0);
+      // armInterpolationMap.put(1.337, 21.5);
+      // armInterpolationMap.put(1.714, 30.0);
+      // armInterpolationMap.put(2.16038, 35.0);
+      // armInterpolationMap.put(2.631287, 38.5);
+      // armInterpolationMap.put(3.00, 40.0);
 
-      flywheelInterpolationMap.put(1.337, 2400.0);
-      flywheelInterpolationMap.put(1.714, 2500.0);
-      flywheelInterpolationMap.put(2.16038, 2500.0);
-      flywheelInterpolationMap.put(2.631287, 2600.0);
-      flywheelInterpolationMap.put(3.00, 2800.0);
+      // flywheelInterpolationMap.put(1.337, 2400.0);
+      // flywheelInterpolationMap.put(1.714, 2500.0);
+      // flywheelInterpolationMap.put(2.16038, 2500.0);
+      // flywheelInterpolationMap.put(2.631287, 2600.0);
+      // flywheelInterpolationMap.put(3.00, 2800.0);
+
+      armInterpolationMap.put(1.236991, 19.0);
+      armInterpolationMap.put(1.475904, 22.0);
+      armInterpolationMap.put(1.731548, 27.0);
+      armInterpolationMap.put(1.945692, 30.0);
+      armInterpolationMap.put(2.160266, 32.0);
+      armInterpolationMap.put(2.346438, 34.75);
+      armInterpolationMap.put(2.551097, 36.75);
+      armInterpolationMap.put(2.780076, 38.0);
+      armInterpolationMap.put(3.013878, 40.0);
+      armInterpolationMap.put(3.179525, 41.75);
+      armInterpolationMap.put(3.395265, 42.65);
+      armInterpolationMap.put(3.597070, 43.85);
+
+      flywheelInterpolationMap.put(1.236991, 2400.0);
+      flywheelInterpolationMap.put(1.475904, 2400.0);
+      flywheelInterpolationMap.put(1.731548, 2400.0);
+      flywheelInterpolationMap.put(1.945692, 2500.0);
+      flywheelInterpolationMap.put(2.160266, 2500.0);
+      flywheelInterpolationMap.put(2.346438, 2550.0);
+      flywheelInterpolationMap.put(2.551097, 2550.0);
+      flywheelInterpolationMap.put(2.780076, 2650.0);
+      flywheelInterpolationMap.put(3.013878, 2650.0);
+      flywheelInterpolationMap.put(3.179525, 2775.0);
+      flywheelInterpolationMap.put(3.395265, 3000.0);
+      flywheelInterpolationMap.put(3.597070, 3200.0);
+
+
+      
+      
+      
+
+
+
+
 
       // 1.337, 21.5, 2400
       // 1.714, 30, 2500

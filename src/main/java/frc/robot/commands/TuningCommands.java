@@ -32,8 +32,8 @@ public class TuningCommands {
         IOUtils.set("TuneShooting/Preset Bottom Speed", res.getOuttakeBottomSpeed()); 
         
         double angle = usePresetAngle ? res.getArmAngleDeg() : IOUtils.getNumber("TuneShooting/Desired Angle"); 
-        double topSpeed = usePresetSpeed ? res.getOuttakeTopSpeed() : IOUtils.getNumber("TuneShooting/Desired Top Speed");
-        double bottomSpeed = usePresetSpeed ? res.getOuttakeTopSpeed() : IOUtils.getNumber("TuneShooting/Desired Bottom Speed");
+        double topSpeed = usePresetSpeed ? res.getOuttakeTopSpeed() : IOUtils.getNumber("TuneShooting/Desired Speed") - 600;
+        double bottomSpeed = usePresetSpeed ? res.getOuttakeBottomSpeed() : IOUtils.getNumber("TuneShooting/Desired Speed") + 600;
         TurnToAngle turnToAngle = new TurnToAngle(drivetrain, res.getDriveAngleDeg());
 
         return Commands.sequence(
