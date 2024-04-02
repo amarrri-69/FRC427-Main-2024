@@ -30,7 +30,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "RevBlueFirst"
+                  "name": "RevAndAim"
                 }
               }
             ]
@@ -61,7 +61,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "RevBlueSecond"
+                  "name": "RevAndAim"
                 }
               }
             ]
@@ -92,7 +92,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "RevBlueFirst"
+                  "name": "RevAndAim"
                 }
               }
             ]

@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.3057281252407118,
-      "y": 5.503726295673142
+      "x": 0.6987751318861041,
+      "y": 4.4544177308906
     },
-    "rotation": 0
+    "rotation": -60.0
   },
   "command": {
     "type": "sequential",
@@ -20,17 +20,17 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Speaker to Note 2"
+            "pathName": "Speaker to Middle 4th"
           }
         },
         {
-          "type": "sequential",
+          "type": "parallel",
           "data": {
             "commands": [
               {
                 "type": "path",
                 "data": {
-                  "pathName": "Note to Speaker 2"
+                  "pathName": "MN4 going back"
                 }
               },
               {
@@ -51,7 +51,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Note to Middle 2nd"
+            "pathName": "MN4 back to MN 5"
           }
         },
         {
@@ -61,7 +61,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "2nd middle note back score"
+                  "pathName": "MN5 back back"
                 }
               },
               {
@@ -82,6 +82,6 @@
       ]
     }
   },
-  "folder": "1+1+n",
+  "folder": "Fling",
   "choreoAuto": false
 }

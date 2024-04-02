@@ -3,45 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.6987751318861041,
-        "y": 4.4544177308906
+        "x": 2.55049612856118,
+        "y": 3.1479256943476295
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.501187563778637,
-        "y": 3.045052305643458
+        "x": 4.570152986459821,
+        "y": 0.8978917957835928
       },
       "isLocked": false,
-      "linkedName": "Speaker 3"
+      "linkedName": "Middle 4 Back"
     },
     {
       "anchor": {
-        "x": 5.596315038783925,
-        "y": 1.7661827631347582
+        "x": 7.707840800296987,
+        "y": 0.7400207108106523
       },
       "prevControl": {
-        "x": 4.935229870459742,
-        "y": 1.7760497059455667
-      },
-      "nextControl": {
-        "x": 6.7320446703640835,
-        "y": 1.7492315746037115
-      },
-      "isLocked": false,
-      "linkedName": null
-    },
-    {
-      "anchor": {
-        "x": 7.796643285594264,
-        "y": 2.4075340458373238
-      },
-      "prevControl": {
-        "x": 7.096090346026848,
-        "y": 2.496336531134601
+        "x": 7.046755631972805,
+        "y": 0.6906859967566084
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Middle Note 4"
+      "linkedName": "MN5"
     }
   ],
   "rotationTargets": [],
@@ -49,7 +33,7 @@
   "eventMarkers": [
     {
       "name": "New Event Marker",
-      "waypointRelativePos": 1.05,
+      "waypointRelativePos": 0.35,
       "command": {
         "type": "parallel",
         "data": {
@@ -73,14 +57,11 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0,
-    "rotateFast": true
+    "rotation": 0.0,
+    "rotateFast": false
   },
   "reversed": false,
-  "folder": "Speaker Middle",
-  "previewStartingState": {
-    "rotation": -60.0,
-    "velocity": 0
-  },
+  "folder": "Middle Back",
+  "previewStartingState": null,
   "useDefaultConstraints": true
 }
