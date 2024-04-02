@@ -50,8 +50,8 @@
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 3.5,
-    "maxAcceleration": 2.25,
+    "maxVelocity": 1.5,
+    "maxAcceleration": 1.5,
     "maxAngularVelocity": 360.0,
     "maxAngularAcceleration": 300.0
   },
@@ -61,7 +61,10 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Middle Back",
-  "previewStartingState": null,
+  "folder": "Speaker Middle",
+  "previewStartingState": {
+    "rotation": -60.0,
+    "velocity": 0
+  },
   "useDefaultConstraints": true
 }

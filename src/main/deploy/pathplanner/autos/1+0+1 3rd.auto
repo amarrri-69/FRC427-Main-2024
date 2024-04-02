@@ -14,7 +14,7 @@
         {
           "type": "named",
           "data": {
-            "name": "ShootSpeaker"
+            "name": "ShootAnywhere"
           }
         },
         {
@@ -30,13 +30,44 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "Middle Note 4th going back score"
+                  "pathName": "MN4 going back"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "RevBlueThird"
+                  "name": "RevAndAim"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Shoot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "MN4 back to MN 5"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "MN5 back back"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "RevAndAim"
                 }
               }
             ]

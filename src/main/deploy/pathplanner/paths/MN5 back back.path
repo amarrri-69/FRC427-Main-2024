@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.7193498096269378,
-        "y": 6.6250462325486055
+        "x": 7.707840800296987,
+        "y": 0.7400207108106523
       },
       "prevControl": null,
       "nextControl": {
-        "x": 0.8331708037023332,
-        "y": 6.6250462325486055
+        "x": 7.017154803540378,
+        "y": 0.8485570817295487
       },
       "isLocked": false,
-      "linkedName": "Speaker 1"
+      "linkedName": "MN5"
     },
     {
       "anchor": {
-        "x": 1.0673882886227328,
-        "y": 6.896993024755281
+        "x": 2.55,
+        "y": 3.15
       },
       "prevControl": {
-        "x": 0.807836654527428,
-        "y": 6.896993024755281
+        "x": 3.4058537347843933,
+        "y": 2.930482014810184
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "speaker 1 move out"
+      "linkedName": "MN4 going back"
     }
   ],
   "rotationTargets": [],
@@ -39,13 +39,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 40.0,
-    "rotateFast": true
+    "rotation": 0,
+    "rotateFast": false
   },
   "reversed": false,
-  "folder": "Speaker Misc",
+  "folder": "Middle Back",
   "previewStartingState": {
-    "rotation": 60.0,
+    "rotation": 0,
     "velocity": 0
   },
   "useDefaultConstraints": true

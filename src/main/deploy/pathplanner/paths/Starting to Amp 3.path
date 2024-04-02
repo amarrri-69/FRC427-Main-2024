@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.6987751318861041,
-        "y": 4.4544177308906
+        "x": 0.656290778230412,
+        "y": 4.438868928628442
       },
       "prevControl": null,
       "nextControl": {
-        "x": 0.756641812779734,
-        "y": 4.4544177308906
+        "x": 0.7141574591240419,
+        "y": 4.438868928628442
       },
       "isLocked": false,
       "linkedName": "Speaker 3"
@@ -30,28 +30,10 @@
   ],
   "rotationTargets": [],
   "constraintZones": [],
-  "eventMarkers": [
-    {
-      "name": "New Event Marker",
-      "waypointRelativePos": 0,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": [
-            {
-              "type": "named",
-              "data": {
-                "name": null
-              }
-            }
-          ]
-        }
-      }
-    }
-  ],
+  "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 3.5,
-    "maxAcceleration": 2.25,
+    "maxVelocity": 1.5,
+    "maxAcceleration": 1.5,
     "maxAngularVelocity": 360.0,
     "maxAngularAcceleration": 300.0
   },
