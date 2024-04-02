@@ -25,8 +25,8 @@
     "Score Preload",
     "Testing"
   ],
-  "defaultMaxVel": 3.5,
-  "defaultMaxAccel": 2.25,
+  "defaultMaxVel": 1.5,
+  "defaultMaxAccel": 1.5,
   "defaultMaxAngVel": 360.0,
   "defaultMaxAngAccel": 300.0,
   "maxModuleSpeed": 4.5
