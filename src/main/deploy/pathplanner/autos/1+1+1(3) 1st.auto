@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.6987751318861041,
-      "y": 4.4544177308906
+      "x": 0.7193498096269378,
+      "y": 6.6250462325486055
     },
-    "rotation": -60.0
+    "rotation": 60.0
   },
   "command": {
     "type": "sequential",
@@ -14,7 +14,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Speaker 3 moves out"
+            "pathName": "Speaker to Note 1"
           }
         },
         {
@@ -26,19 +26,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Speaker 3 move out to note"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "ShootAnywhere"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "Note 3 to Middle 4th"
+            "pathName": "Note 1 to Middle 3rd"
           }
         },
         {
@@ -48,7 +36,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "MN4 going back"
+                  "pathName": "MN3 back"
                 }
               },
               {

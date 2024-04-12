@@ -116,7 +116,7 @@ public final class Constants {
     public static final double kTurn_I = 0; 
     public static final double kTurn_D = 0.0015; 
     public static final double kTurn_FF = 0; 
-    public static final double kTurnErrorThreshold = 4.0; 
+    public static final double kTurnErrorThreshold = 5.0; 
     public static final double kTurnVelocityThreshold = 0; 
 
     // current limits for each motor
@@ -222,7 +222,7 @@ public final class Constants {
     public static final double kGroundPosition = 0;
     public static final double kTravelPosition = 20;
     public static final double kAmpPosition = 90;
-    public static final double kSpeakerPosition = 20;
+    public static final double kSpeakerPosition = 19;
 
     public static final double kTravelSpeed = 0.5;
 

@@ -9,6 +9,7 @@ import java.util.Set;
 import frc.robot.commands.AutoHang;
 import frc.robot.commands.AutomaticallyMoveToPiece;
 import frc.robot.commands.AutomationCommands;
+import frc.robot.commands.DriverCommands;
 import frc.robot.commands.TuningCommands;
 import frc.robot.subsystems.arm.Arm;
 import frc.robot.subsystems.arm.Arm.ArmControlState;
@@ -91,6 +92,10 @@ public class RobotContainer {
 
 
   private void configureBindings() {
+
+    new Trigger(() -> DriverStation.getMatchTime() < 21 && DriverStation.getMatchTime() > 19)
+    .onTrue(DriverCommands.vibrateController(driverController.getHID(), 2).alongWith(DriverCommands.vibrateController(manipulatorController.getHID(), 2)));
+
     // --- Driver ---
 
     driverController.b().onTrue(new InstantCommand(() -> {
@@ -117,7 +122,7 @@ public class RobotContainer {
     }));
 
     manipulatorController.rightBumper()
-    .whileTrue(Commands.parallel(OuttakeToSpeaker.revAndIndex(intake, 2500, 2500), new GoToAngle(arm, 40)))
+    .whileTrue(Commands.parallel(OuttakeToSpeaker.revAndIndex(intake, 3000, 3000), new GoToAngle(arm, 12)))
     .onFalse(
       OuttakeToSpeaker.shoot(intake, 0.5)
       .andThen(Commands.runOnce(() -> {
@@ -135,7 +140,7 @@ public class RobotContainer {
     // ); 
 
     // TODO: tune
-    driverController.y().whileTrue(TuningCommands.tuneShooting(drivetrain, arm, intake)); 
+    // driverController.y().whileTrue(TuningCommands.tuneShooting(drivetrain, arm, intake)); 
 
     // TODO: tune
     // driverController.y().whileTrue(new TuneTurnToAngle(drivetrain)); 

@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.3299590134174344,
-        "y": 4.109517305630104
+        "x": 7.705441365805627,
+        "y": 4.099779112962734
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.4329353494313526,
-        "y": 3.8862042734030906
+        "x": 7.64551402631412,
+        "y": 4.76620155996038
       },
       "isLocked": false,
-      "linkedName": "Note 3"
+      "linkedName": "Middle Note 3"
     },
     {
       "anchor": {
-        "x": 1.3171869760109631,
-        "y": 5.482602471729262
+        "x": 3.589517354473306,
+        "y": 6.213552677731922
       },
       "prevControl": {
-        "x": 2.0590102768339578,
-        "y": 5.2375002164358735
+        "x": 7.121149805763432,
+        "y": 7.177047995851627
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Speaker 2"
+      "linkedName": "Middle 2 Back"
     }
   ],
   "rotationTargets": [],
@@ -43,7 +43,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Speaker Note",
+  "folder": "Middle Back",
   "previewStartingState": null,
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

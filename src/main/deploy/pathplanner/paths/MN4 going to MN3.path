@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.55,
-        "y": 3.15
+        "x": 1.5314272146931014,
+        "y": 3.3986292409121006
       },
       "prevControl": null,
       "nextControl": {
-        "x": 4.330205753137036,
-        "y": 3.1170636777416734
+        "x": 3.3116329678301373,
+        "y": 3.365692918653774
       },
       "isLocked": false,
       "linkedName": "MN4 going back"
     },
     {
       "anchor": {
-        "x": 7.638772200621325,
-        "y": 4.153982923350462
+        "x": 7.705441365805627,
+        "y": 4.099779112962734
       },
       "prevControl": {
-        "x": 6.743773718888739,
-        "y": 4.472890428338687
+        "x": 6.810442884073041,
+        "y": 4.418686617950959
       },
       "nextControl": null,
       "isLocked": false,
@@ -50,15 +50,15 @@
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 1.5,
-    "maxAcceleration": 1.5,
+    "maxVelocity": 3.5,
+    "maxAcceleration": 2.25,
     "maxAngularVelocity": 360.0,
     "maxAngularAcceleration": 300.0
   },
   "goalEndState": {
     "velocity": 0,
     "rotation": 0,
-    "rotateFast": false
+    "rotateFast": true
   },
   "reversed": false,
   "folder": "Middle Back",

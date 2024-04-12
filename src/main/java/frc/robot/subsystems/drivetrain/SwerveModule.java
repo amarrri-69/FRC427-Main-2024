@@ -1,5 +1,9 @@
 package frc.robot.subsystems.drivetrain;
 
+import com.ctre.phoenix.sensors.CANCoder;
+import com.ctre.phoenix.sensors.CANCoderStatusFrame;
+import com.ctre.phoenix6.StatusSignal;
+import com.ctre.phoenix6.configs.CANcoderConfiguration;
 import com.ctre.phoenix6.configs.MagnetSensorConfigs;
 import com.ctre.phoenix6.hardware.CANcoder;
 import com.ctre.phoenix6.signals.AbsoluteSensorRangeValue;
@@ -126,7 +130,7 @@ public class SwerveModule {
         final MagnetSensorConfigs config = new MagnetSensorConfigs(); 
         config.AbsoluteSensorRange = AbsoluteSensorRangeValue.Signed_PlusMinusHalf; 
         config.MagnetOffset = kAbsoluteOffset; 
-        config.SensorDirection = direction; 
+        config.SensorDirection = direction;         
 
         this.absoluteTurnEncoder.getConfigurator().apply(config); 
     }

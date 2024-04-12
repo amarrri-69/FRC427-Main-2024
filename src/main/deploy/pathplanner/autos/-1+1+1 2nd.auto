@@ -12,6 +12,12 @@
     "data": {
       "commands": [
         {
+          "type": "path",
+          "data": {
+            "pathName": "Speaker 2 moves out"
+          }
+        },
+        {
           "type": "named",
           "data": {
             "name": "ShootAnywhere"
@@ -20,32 +26,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Speaker to Note 2"
-          }
-        },
-        {
-          "type": "sequential",
-          "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "Note to Speaker 2"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "RevAndAim"
-                }
-              }
-            ]
+            "pathName": "Speaker 2 move out to note"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "Shoot"
+            "name": "ShootAnywhere"
           }
         },
         {

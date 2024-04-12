@@ -1,5 +1,5 @@
 {
-  "robotWidth": 0.7262,
+  "robotWidth": 0.73,
   "robotLength": 0.79,
   "holonomicMode": true,
   "pathFolders": [
@@ -25,8 +25,8 @@
     "Score Preload",
     "Testing"
   ],
-  "defaultMaxVel": 1.5,
-  "defaultMaxAccel": 1.5,
+  "defaultMaxVel": 3.5,
+  "defaultMaxAccel": 2.25,
   "defaultMaxAngVel": 360.0,
   "defaultMaxAngAccel": 300.0,
   "maxModuleSpeed": 4.5

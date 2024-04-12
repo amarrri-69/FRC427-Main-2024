@@ -40,6 +40,8 @@ public class Vision_old extends SubsystemBase {
     private double limelightTargetY;
     private Drivetrain drivetrain;
     private double[] botPoseValues;
+    private boolean isConnected = true; 
+    private int disconnectCount = 0; 
 
     // Creates a new limelight object
     private Vision_old(Drivetrain drivetrain) {
@@ -54,6 +56,16 @@ public class Vision_old extends SubsystemBase {
 
         // Reads values periodically
         botPoseValues = botPose.getDoubleArray(new double[7]); // Make sure these are the right indices
+
+        if (limelightX != botPoseValues[0] || limelightY != botPoseValues[1] || limelightZ != botPoseValues[2]) {
+            isConnected = true; 
+            disconnectCount = 0; 
+        } else {
+            disconnectCount += 1; 
+            if (disconnectCount >= 50) {
+                isConnected = false; 
+            }
+        }
 
         // Converts these values into variables
         limelightX = botPoseValues[0];
@@ -80,6 +92,7 @@ public class Vision_old extends SubsystemBase {
         SmartDashboard.putNumber("LimelightTargetY", limelightTargetY);
         // SmartDashboard.putNumber("LimelightDistanceToTarget", getDistanceToAprilTag());
         SmartDashboard.putNumber("LimelightNearestAprilTag", getClosestAprilTagID());
+        SmartDashboard.putBoolean("Limelight Connected", isConnected); 
         // if (getAprilTagPos(getClosestAprilTagID()) != null) SmartDashboard.putNumber("LimelightNearestAprilTagPositionX", getAprilTagPos(getClosestAprilTagID()).getX());
         // if (getAprilTagPos(getClosestAprilTagID()) != null) SmartDashboard.putNumber("LimelightNearestAprilTagPositionY", getAprilTagPos(getClosestAprilTagID()).getY());
         // if (getAprilTagPos(getClosestAprilTagID()) != null) SmartDashboard.putNumber("LimelightNearestAprilTagPositionZ", getAprilTagPos(getClosestAprilTagID()).getZ());
@@ -143,6 +156,10 @@ public class Vision_old extends SubsystemBase {
     // Adds vision measurements to the drivetrain if they are within the field
     public void addVisionFromDrivetrain() {
         if (!isPoseValid()) return; 
+        // if (getDistanceToAprilTag() >= 4.0) {
+        //     // System.out.println("WARNING: distance to tag is greater than 4.0");
+        //     return; 
+        // } 
         drivetrain.addVisionPoseEstimate(getCurrentPose3d(), getDistanceToAprilTag(), Timer.getFPGATimestamp() - (limelightTotalLatency/1000.0), calculateVisionStdDevs());
     }
 

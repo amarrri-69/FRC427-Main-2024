@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.3057281252407118,
-      "y": 5.503726295673142
+      "x": 1.3171869760109631,
+      "y": 5.482602471729262
     },
     "rotation": 0
   },
@@ -45,7 +45,7 @@
         {
           "type": "named",
           "data": {
-            "name": "Shoot"
+            "name": "NCShoot"
           }
         },
         {
@@ -76,7 +76,7 @@
         {
           "type": "named",
           "data": {
-            "name": "Shoot"
+            "name": "NCShoot"
           }
         },
         {
@@ -107,7 +107,7 @@
         {
           "type": "named",
           "data": {
-            "name": "Shoot"
+            "name": "NCShoot"
           }
         }
       ]

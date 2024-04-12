@@ -1858,6 +1858,45 @@
               "_glyph": 148,
               "_showGlyph": false
             }
+          },
+          "5,0": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/TuneShot/ShotAngle",
+              "_title": "/SmartDashboard/TuneShot/ShotAngle",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
+          },
+          "6,0": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/TuneShot/ShotSpeedTop",
+              "_title": "/SmartDashboard/TuneShot/ShotSpeedTop",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
+          },
+          "7,0": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/TuneShot/ShotSpeedBottom",
+              "_title": "/SmartDashboard/TuneShot/ShotSpeedBottom",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
           }
         }
       }

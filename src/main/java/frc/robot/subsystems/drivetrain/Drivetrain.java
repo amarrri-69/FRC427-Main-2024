@@ -16,6 +16,8 @@ import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.math.numbers.N1;
 import edu.wpi.first.math.numbers.N3;
+import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.networktables.StructArrayPublisher;
 import edu.wpi.first.math.Matrix;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.SPI;
@@ -33,6 +35,9 @@ import frc.robot.util.SwerveUtils;
 public class Drivetrain extends SubsystemBase {
 
   private static Drivetrain instance = new Drivetrain();
+
+  private final StructArrayPublisher<SwerveModuleState> moduleStatePublisher;
+  private final StructArrayPublisher<SwerveModuleState> moduleDesiredStatePublisher; 
 
     public static Drivetrain getInstance() {
         return instance; 
@@ -74,6 +79,9 @@ public class Drivetrain extends SubsystemBase {
 
     // create the pose estimator
     this.odometry = new SwerveDrivePoseEstimator(Constants.DrivetrainConstants.kDriveKinematics, gyro.getRotation2d(), getPositions(), new Pose2d()); 
+
+    this.moduleStatePublisher = NetworkTableInstance.getDefault().getStructArrayTopic("/SwerveCurrentState", SwerveModuleState.struct).publish(); 
+    this.moduleDesiredStatePublisher = NetworkTableInstance.getDefault().getStructArrayTopic("/SwerveDesiredState", SwerveModuleState.struct).publish(); 
     
   }
 
@@ -114,6 +122,9 @@ public class Drivetrain extends SubsystemBase {
     backRight.doSendables();
 
     SmartDashboard.putBoolean("Turn at desired angle", atTargetAngle());
+
+    moduleDesiredStatePublisher.set(getDesiredStates());
+    moduleStatePublisher.set(getStates());
   }
 
   
@@ -266,6 +277,15 @@ public class Drivetrain extends SubsystemBase {
       frontRight.getCurrentState(), 
       backLeft.getCurrentState(), 
       backRight.getCurrentState()
+    }; 
+  }
+
+  public SwerveModuleState[] getDesiredStates() {
+    return new SwerveModuleState[] {
+      frontLeft.getReferenceState(), 
+      frontRight.getReferenceState(), 
+      backLeft.getReferenceState(), 
+      backRight.getReferenceState()
     }; 
   }
 

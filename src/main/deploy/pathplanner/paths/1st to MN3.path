@@ -3,45 +3,61 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.3299590134174344,
-        "y": 4.109517305630104
+        "x": 0.7193498096269378,
+        "y": 6.6250462325486055
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.041913525045756,
-        "y": 3.02934672423631
+        "x": 1.2684960126741138,
+        "y": 7.537361124544314
       },
       "isLocked": false,
-      "linkedName": "Note 3"
+      "linkedName": "Speaker 1"
     },
     {
       "anchor": {
-        "x": 5.494871630312656,
-        "y": 1.3730851660991583
+        "x": 2.8655596101227796,
+        "y": 7.751601363226451
       },
       "prevControl": {
-        "x": 4.326288510228267,
-        "y": 1.3341323954296782
+        "x": 2.209065675995336,
+        "y": 7.746220265405734
       },
       "nextControl": {
-        "x": 6.898047916089275,
-        "y": 1.4198577089583795
+        "x": 4.05361911554191,
+        "y": 7.76133955589382
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 7.793085099811956,
-        "y": 2.34690443283615
+        "x": 6.760836677065876,
+        "y": 5.803962829747599
       },
       "prevControl": {
-        "x": 7.078638849311644,
-        "y": 2.4420859025128947
+        "x": 6.354714882569938,
+        "y": 6.664941034053645
+      },
+      "nextControl": {
+        "x": 7.004291493754992,
+        "y": 5.287838618381864
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 7.705441365805627,
+        "y": 4.099779112962734
+      },
+      "prevControl": {
+        "x": 6.8080294569154365,
+        "y": 4.123480843909096
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Middle Note 4"
+      "linkedName": "Middle Note 3"
     }
   ],
   "rotationTargets": [],
@@ -49,7 +65,7 @@
   "eventMarkers": [
     {
       "name": "New Event Marker",
-      "waypointRelativePos": 0.95,
+      "waypointRelativePos": 1.9,
       "command": {
         "type": "parallel",
         "data": {
@@ -77,7 +93,10 @@
     "rotateFast": true
   },
   "reversed": false,
-  "folder": "Note Middle",
-  "previewStartingState": null,
-  "useDefaultConstraints": true
+  "folder": "Middle Back",
+  "previewStartingState": {
+    "rotation": 60.0,
+    "velocity": 0
+  },
+  "useDefaultConstraints": false
 }

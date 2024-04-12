@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.3171869760109631,
-      "y": 5.482602471729262
+      "x": 0.6987751318861041,
+      "y": 4.4544177308906
     },
-    "rotation": 0
+    "rotation": -60.0
   },
   "command": {
     "type": "sequential",
@@ -20,38 +20,19 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Speaker to Note 2"
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "Note to Speaker 2"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "RevAndAim"
-                }
-              }
-            ]
+            "pathName": "Speaker to Note 3"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "NCShoot"
+            "name": "ShootAnywhere"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Speaker 2 to Note 3"
+            "pathName": "Note 3 to Middle 4th"
           }
         },
         {
@@ -61,7 +42,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "Note 3 to Speaker 2"
+                  "pathName": "MN4 going back"
                 }
               },
               {
@@ -76,12 +57,12 @@
         {
           "type": "named",
           "data": {
-            "name": "NCShoot"
+            "name": "Shoot"
           }
         }
       ]
     }
   },
-  "folder": "1+2",
+  "folder": "1+1+n",
   "choreoAuto": false
 }
